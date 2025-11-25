@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Plant {
+    let name: String
+    let subtitle: String
+    let imageName: String
+}

@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1944812A2ED4124F00279E4D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194481292ED4124F00279E4D /* HomeViewController.swift */; };
+		1944812D2ED4124F00279E4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1944812B2ED4124F00279E4D /* Main.storyboard */; };
+		1944813E2ED4365400279E4D /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1944813D2ED4365400279E4D /* Plant.swift */; };
+		194481402ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1944813F2ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		194481222ED4124F00279E4D /* PlantApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		194481292ED4124F00279E4D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1944812C2ED4124F00279E4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1944813D2ED4365400279E4D /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
+		1944813F2ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantColeectionViewCellCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,6 +56,9 @@
 		194481192ED4124F00279E4D = {
 			isa = PBXGroup;
 			children = (
+				1944813C2ED423A100279E4D /* Controllers */,
+				1944813B2ED4239700279E4D /* Views */,
+				1944813A2ED4238900279E4D /* Models */,
 				194481242ED4124F00279E4D /* PlantApp */,
 				194481232ED4124F00279E4D /* Products */,
 			);
@@ -56,6 +70,31 @@
 				194481222ED4124F00279E4D /* PlantApp.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		1944813A2ED4238900279E4D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1944813D2ED4365400279E4D /* Plant.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1944813B2ED4239700279E4D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1944812B2ED4124F00279E4D /* Main.storyboard */,
+				1944813F2ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1944813C2ED423A100279E4D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				194481292ED4124F00279E4D /* HomeViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1944812D2ED4124F00279E4D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +172,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				194481402ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift in Sources */,
+				1944812A2ED4124F00279E4D /* HomeViewController.swift in Sources */,
+				1944813E2ED4365400279E4D /* Plant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1944812B2ED4124F00279E4D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1944812C2ED4124F00279E4D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		194481362ED4125000279E4D /* Debug */ = {
