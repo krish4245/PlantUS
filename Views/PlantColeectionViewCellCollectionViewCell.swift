@@ -14,6 +14,9 @@ class PlantCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
 
+   
+
+    
     private var imageTask: URLSessionDataTask?
 
     override func awakeFromNib() {
@@ -22,6 +25,7 @@ class PlantCollectionViewCell: UICollectionViewCell {
         cardView.layer.masksToBounds = true
         plantImageView.contentMode = .scaleAspectFill
         plantImageView.clipsToBounds = true
+        plantImageView.layer.cornerRadius = 12
     }
 
     override func prepareForReuse() {
@@ -43,6 +47,7 @@ class PlantCollectionViewCell: UICollectionViewCell {
         } else {
             // Debug aid: see which names fail
             print("DEBUG: UIImage(named:) failed for asset '\(plant.imageName)'")
+            plantImageView.image = UIImage(named: plant.imageName)
         }
 
         if let url = URL(string: plant.imageName), url.scheme != nil {
