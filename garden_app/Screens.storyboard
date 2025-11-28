@@ -8,6 +8,51 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Search People View Controller-->
+        <scene sceneID="kEu-mU-33d">
+            <objects>
+                <viewController id="Ghy-4d-fY6" customClass="SearchPeopleViewController" customModule="garden_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zri-JQ-8nS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1be-yq-SQW">
+                                <rect key="frame" x="16" y="181" width="361" height="32"/>
+                                <segments>
+                                    <segment title="Accounts"/>
+                                    <segment title="Posts"/>
+                                    <segment title="Tags"/>
+                                    <segment title="Places"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="E97-4Y-nuG">
+                                <rect key="frame" x="0.0" y="222" width="393" height="513"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="O3o-E6-Y2b"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1be-yq-SQW" firstAttribute="leading" secondItem="O3o-E6-Y2b" secondAttribute="leading" constant="16" id="5k5-lC-N91"/>
+                            <constraint firstItem="O3o-E6-Y2b" firstAttribute="bottom" secondItem="E97-4Y-nuG" secondAttribute="bottom" id="Ddk-cZ-pmp"/>
+                            <constraint firstItem="E97-4Y-nuG" firstAttribute="top" secondItem="1be-yq-SQW" secondAttribute="bottom" constant="10" id="VfQ-FK-PW4"/>
+                            <constraint firstItem="O3o-E6-Y2b" firstAttribute="trailing" secondItem="1be-yq-SQW" secondAttribute="trailing" constant="16" id="hL3-qw-HQg"/>
+                            <constraint firstItem="O3o-E6-Y2b" firstAttribute="trailing" secondItem="E97-4Y-nuG" secondAttribute="trailing" id="hlm-jA-Q6D"/>
+                            <constraint firstItem="E97-4Y-nuG" firstAttribute="leading" secondItem="O3o-E6-Y2b" secondAttribute="leading" id="ivS-Xa-TvO"/>
+                            <constraint firstItem="1be-yq-SQW" firstAttribute="top" secondItem="O3o-E6-Y2b" secondAttribute="top" constant="9" id="xuX-UE-W90"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vsE-Y8-xSD"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="1be-yq-SQW" id="5VO-i4-dyS"/>
+                        <outlet property="tableView" destination="E97-4Y-nuG" id="HhZ-P0-nfT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5ZO-3f-vcQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5896.9465648854957" y="-25.35211267605634"/>
+        </scene>
         <!--Community-->
         <scene sceneID="ViU-55-3Yp">
             <objects>
@@ -142,8 +187,16 @@
                     <navigationItem key="navigationItem" title="Community" id="RoP-qd-0Ri">
                         <rightBarButtonItems>
                             <barButtonItem image="magnifyingglass" catalog="system" id="3xb-Fm-PXe"/>
-                            <barButtonItem image="plus" catalog="system" id="jGk-Sy-g8y"/>
-                            <barButtonItem image="message" catalog="system" id="xAr-1c-lRh"/>
+                            <barButtonItem image="plus" catalog="system" id="jGk-Sy-g8y">
+                                <connections>
+                                    <segue destination="Ghy-4d-fY6" kind="show" id="rK0-Y0-gMH"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="message" catalog="system" id="xAr-1c-lRh">
+                                <connections>
+                                    <segue destination="TAA-DB-jr7" kind="show" id="VB0-rZ-f6y"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -154,6 +207,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TaU-qa-5iR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5412.9770992366412" y="688.73239436619724"/>
+        </scene>
+        <!--People-->
+        <scene sceneID="bX9-Fe-bqh">
+            <objects>
+                <viewController id="TAA-DB-jr7" customClass="PeopleViewController" customModule="garden_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Dw-VE-ohx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bNj-82-OZo">
+                                <rect key="frame" x="0.0" y="172" width="393" height="563"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search" id="azp-w9-gbr">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="TAA-DB-jr7" id="sgf-1y-5gI"/>
+                                    </connections>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PeopleCell" rowHeight="134" id="cyc-7q-hzW" customClass="PeopleTableViewCell" customModule="garden_app" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="94" width="393" height="134"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cyc-7q-hzW" id="xXV-z1-vff">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="134"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0GV-IO-XHB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0GV-IO-XHB" firstAttribute="trailing" secondItem="bNj-82-OZo" secondAttribute="trailing" id="0JP-Qg-M3g"/>
+                            <constraint firstItem="bNj-82-OZo" firstAttribute="leading" secondItem="0GV-IO-XHB" secondAttribute="leading" id="QNM-1e-XAH"/>
+                            <constraint firstItem="bNj-82-OZo" firstAttribute="top" secondItem="0GV-IO-XHB" secondAttribute="top" id="TD8-Im-Xl1"/>
+                            <constraint firstItem="0GV-IO-XHB" firstAttribute="bottom" secondItem="bNj-82-OZo" secondAttribute="bottom" id="nBf-l4-m7C"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="People" id="Ppr-dD-S7W">
+                        <barButtonItem key="rightBarButtonItem" image="person.fill.badge.plus" catalog="system" id="1JX-5c-O0D"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qrM-IX-QCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6304.5801526717551" y="688.73239436619724"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hVT-CA-vcP">
@@ -166,7 +267,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="eW2-Bo-7vF" kind="relationship" relationship="viewControllers" id="gky-FO-A4R"/>
-                        <segue destination="foz-tC-u39" kind="relationship" relationship="viewControllers" id="0mR-i3-20H"/>
                         <segue destination="J0y-h1-ZeB" kind="relationship" relationship="viewControllers" id="u2g-oX-gH0"/>
                     </connections>
                 </tabBarController>
@@ -206,63 +306,15 @@
             </objects>
             <point key="canvasLocation" x="4462" y="689"/>
         </scene>
-        <!--My Garden-->
-        <scene sceneID="LRK-Cx-nTv">
-            <objects>
-                <viewController id="knW-M1-9c0" customClass="MyGardenViewController" customModule="garden_app" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Jcf-e4-Xe9">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="X3G-DQ-0lu">
-                                <rect key="frame" x="0.0" y="172" width="393" height="563"/>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="uKZ-by-29g"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="uKZ-by-29g" firstAttribute="bottom" secondItem="X3G-DQ-0lu" secondAttribute="bottom" id="7wo-Jm-Dex"/>
-                            <constraint firstItem="X3G-DQ-0lu" firstAttribute="top" secondItem="uKZ-by-29g" secondAttribute="top" id="Sll-wJ-BHC"/>
-                            <constraint firstItem="X3G-DQ-0lu" firstAttribute="leading" secondItem="uKZ-by-29g" secondAttribute="leading" id="Ynp-gU-xoD"/>
-                            <constraint firstItem="uKZ-by-29g" firstAttribute="trailing" secondItem="X3G-DQ-0lu" secondAttribute="trailing" id="nbT-IV-Bdo"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="My Garden" id="IRn-Tt-WD3"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="s5V-dm-isO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5606.8702290076335" y="2183.8028169014087"/>
-        </scene>
-        <!--My Garden-->
-        <scene sceneID="wSu-Yf-egv">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="foz-tC-u39" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Garden" image="leaf.circle" catalog="system" id="u6k-oB-gIP">
-                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NyK-hC-Btm">
-                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="knW-M1-9c0" kind="relationship" relationship="rootViewController" id="bKO-kR-anw"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ndE-wT-eGc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4607" y="2184"/>
-        </scene>
     </scenes>
     <resources>
         <image name="bubble.left" catalog="system" width="128" height="110"/>
         <image name="heart" catalog="system" width="128" height="107"/>
-        <image name="leaf.circle" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="message" catalog="system" width="128" height="106"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="person.2.fill" catalog="system" width="128" height="86"/>
+        <image name="person.fill.badge.plus" catalog="system" width="128" height="126"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
         <systemColor name="systemBackgroundColor">
