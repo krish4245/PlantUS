@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -51,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5ZO-3f-vcQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5896.9465648854957" y="-25.35211267605634"/>
+            <point key="canvasLocation" x="6305" y="-35"/>
         </scene>
         <!--Community-->
         <scene sceneID="ViU-55-3Yp">
@@ -162,9 +163,9 @@
                                             <outlet property="cardView" destination="a6t-Sg-Eo9" id="6ZM-0e-SfK"/>
                                             <outlet property="commentButton" destination="YLE-l4-H7V" id="VI6-dH-fhw"/>
                                             <outlet property="likeButton" destination="rpx-0A-pC2" id="hP8-Ui-sOz"/>
-                                            <outlet property="nameLabel" destination="4Q3-lf-opl" id="qng-b3-iO8"/>
                                             <outlet property="postImageView" destination="ARr-qE-WYE" id="AmF-YV-GX0"/>
                                             <outlet property="shareButton" destination="NLy-eQ-tr8" id="umd-Bq-Uwr"/>
+                                            <outlet property="usernameLabel" destination="4Q3-lf-opl" id="IEc-2w-rcq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -186,10 +187,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="Community" id="RoP-qd-0Ri">
                         <rightBarButtonItems>
-                            <barButtonItem image="magnifyingglass" catalog="system" id="3xb-Fm-PXe"/>
+                            <barButtonItem image="magnifyingglass" catalog="system" id="3xb-Fm-PXe">
+                                <connections>
+                                    <segue destination="Ghy-4d-fY6" kind="show" id="BHB-NL-SyA"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem image="plus" catalog="system" id="jGk-Sy-g8y">
                                 <connections>
-                                    <segue destination="Ghy-4d-fY6" kind="show" id="rK0-Y0-gMH"/>
+                                    <segue destination="09h-Du-MyE" kind="show" id="3tC-eB-wxh"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="message" catalog="system" id="xAr-1c-lRh">
@@ -256,6 +261,44 @@
             </objects>
             <point key="canvasLocation" x="6304.5801526717551" y="688.73239436619724"/>
         </scene>
+        <!--New Post-->
+        <scene sceneID="nEc-FZ-pTP">
+            <objects>
+                <viewController id="09h-Du-MyE" customClass="NewPostViewController" customModule="garden_app" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rVV-5Y-M8z">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q11-Ht-dRv">
+                                <rect key="frame" x="16" y="184" width="361" height="201"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <imageReference key="image" image="plus.app" catalog="system" symbolScale="small"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a caption..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7LX-Qd-gqC">
+                                <rect key="frame" x="16" y="409" width="361" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QTg-MK-HKS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Post" style="browser" id="3fR-0Y-Mnk">
+                        <barButtonItem key="backBarButtonItem" title="Close" image="xmark.circle" catalog="system" id="GYD-ao-Wnq"/>
+                        <barButtonItem key="rightBarButtonItem" title="Share" style="plain" id="fgA-4a-MWH"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="captionTextField" destination="7LX-Qd-gqC" id="t3m-Dr-cP6"/>
+                        <outlet property="selectedImageView" destination="q11-Ht-dRv" id="wr7-IQ-XYe"/>
+                        <outlet property="shareButton" destination="fgA-4a-MWH" id="9Sq-Aa-k6U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uYs-eo-Wix" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6335.1145038167933" y="1347.8873239436621"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hVT-CA-vcP">
             <objects>
@@ -316,7 +359,9 @@
         <image name="person.2.fill" catalog="system" width="128" height="86"/>
         <image name="person.fill.badge.plus" catalog="system" width="128" height="126"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="square.and.arrow.up" catalog="system" width="110" height="128"/>
+        <image name="xmark.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
