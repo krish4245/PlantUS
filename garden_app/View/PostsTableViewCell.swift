@@ -29,6 +29,8 @@ class PostsTableViewCell: UITableViewCell {
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     
+    var onAvatarTapped: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
@@ -47,6 +49,13 @@ class PostsTableViewCell: UITableViewCell {
         if let avatar = avatarImageView {
             avatar.layer.cornerRadius = 10
             avatar.clipsToBounds = true
+            
+            // 2. ENABLE INTERACTION
+        avatar.isUserInteractionEnabled = true
+                        
+                        // 3. ADD GESTURE RECOGNIZER
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarTapped))
+        avatar.addGestureRecognizer(tapGesture)
         }
         
         // Image Styling
@@ -57,6 +66,10 @@ class PostsTableViewCell: UITableViewCell {
             // If you want top corners only to be rounded, you need masked corners,
             // but for now, full rounded looks clean inside the card.
         }
+    }
+    
+    @objc func avatarTapped() {
+            onAvatarTapped?()
     }
     
     // MARK: - Configuration

@@ -8,7 +8,7 @@
 import UIKit
 
 class CommunityViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var postsTableView: UITableView!
     @IBOutlet weak var filterSegmentedControl: UISegmentedControl!
@@ -21,6 +21,13 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTable()
+        loadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: NSNotification.Name("NewPostAdded"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
     }
     
@@ -49,13 +56,13 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostsTableViewCell else {
             return UITableViewCell()
         }
-
+        
         let post = posts[indexPath.row]
         
         // --- CONFIGURE CELL ---
@@ -67,6 +74,10 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         cell.captionLabel?.text = post.caption
         cell.timeLabel?.text = "2h ago" // We will fix the Date logic later
         
+        cell.onAvatarTapped = { [weak self] in
+            self?.performSegue(withIdentifier: "ShowUserProfile", sender: post.author)
+        }
+        
         // 2. Images (Using the helper extension we made)
         cell.postImageView?.configureImage(with: post.postImageString)
         
@@ -76,7 +87,36 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         } else {
             cell.avatarImageView?.image = UIImage(systemName: "person.circle")
         }
-
+        
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // This checks if the screen we are opening is the NewPostViewController
+        if let newPostVC = segue.destination as? NewPostViewController {
+            
+            // We pass a "Callback" function.
+            // When NewPostViewController finishes uploading, it runs this code block.
+            newPostVC.onPostSuccess = { [weak self] in
+                // Reload the data instantly
+                self?.loadData()
+            }
+        }
+        if segue.identifier == "ShowUserProfile"{
+            if let profileVC = segue.destination as? ProfileViewController {
+                
+                // The 'sender' is the User object we passed in Step 3
+                if let selectedUser = sender as? User {
+                    profileVC.user = selectedUser
+                }
+                
+                // Optional: Scroll to the top so the user sees their new post
+                //                    if let count = self?.posts.count, count > 0 {
+                //                        self?.postsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                //                    }
+            }
+        }
+    }
+    
+    
 }

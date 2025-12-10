@@ -9,6 +9,8 @@ class CommunityDataStore {
     private var posts: [Post] = []
     private var comments: [String: [Comment]] = [:]
     
+    var currentLoggedInUserID: String = "u2"
+    
     private init() {
         seedDummyData()
     }
@@ -23,10 +25,27 @@ class CommunityDataStore {
         }
     }
     
+    func fetchPosts(forUserId userId: String, completion: @escaping ([Post]) -> Void) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                let userPosts = self.posts.filter { $0.userId == userId }
+                completion(userPosts)
+            }
+        }
+    
     func fetchAllUsers(completion: @escaping ([User]) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             completion(self.users)
         }
+    }
+    
+    func fetchCurrentUser(completion: @escaping (User?) -> Void) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                let foundUser = self.users.first(where: { $0.id == self.currentLoggedInUserID })
+                completion(foundUser)
+            }
+        }
+    func isCurrentUser(userID: String) -> Bool {
+        return currentLoggedInUserID == userID
     }
 
     // MARK: - Seed Data
