@@ -110,6 +110,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             self?.userPosts = posts
             self?.collectionView.reloadData()
         }
+        
+        setupMenu()
     }
 
     func setupTabs(forCurrentUser: Bool) {
@@ -136,72 +138,46 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
 
     // MARK: - Actions
 
-    // Connect the Ellipsis Bar Button to this!
-    @IBAction func menuTapped(_ sender: UIBarButtonItem) {
 
-        print("🔘 Menu Tapped! isCurrentUser = \(isCurrentUser)")
-
-        // Create the Action Sheet
-        let alert = UIAlertController(
-            title: nil,
-            message: nil,
-            preferredStyle: .actionSheet
-        )
-
-        if isCurrentUser {
-
-            // Option 1: Edit Profile
-            alert.addAction(
-                UIAlertAction(
-                    title: "Edit Profile",
-                    style: .default,
-                    handler: { _ in
-                        self.openEditProfile()
-                    }
-                )
-            )
-
-            // Option 2: Settings
-            alert.addAction(
-                UIAlertAction(
-                    title: "Settings",
-                    style: .default,
-                    handler: { _ in
-                        print("Open Settings")
-                    }
-                )
-            )
-        } else {
-            alert.addAction(
-                UIAlertAction(
-                    title: "Report User",
-                    style: .destructive,
-                    handler: { _ in
-                        print("Reported \(self.user?.name ?? "User")")
-                    }
-                )
-            )
-
-            alert.addAction(
-                UIAlertAction(
-                    title: "Block",
-                    style: .destructive,
-                    handler: { _ in
-                        print("Blocked")
-                    }
-                )
-            )
-
+    
+    func setupMenu() {
+            // 1. Define Actions for "My Profile"
+            let editAction = UIAction(title: "Edit Profile", image: UIImage(systemName: "pencil")) { [weak self] _ in
+                self?.openEditProfile()
+            }
+            
+            let settingsAction = UIAction(title: "Settings", image: UIImage(systemName: "gearshape")) { _ in
+                print("Settings tapped")
+            }
+            
+            // 2. Define Actions for "Other Profiles"
+            
+            let blockAction = UIAction(title: "Block", image: UIImage(systemName: "hand.raised.slash"), attributes: .destructive) { _ in
+                print("Block tapped")
+            }
+            
+            let shareAction = UIAction(title: "Share Profile", image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                print("Share tapped")
+            }
+            
+            // 3. Choose which menu to show
+            var menuItems: [UIAction] = []
+            
+            if isCurrentUser {
+                menuItems = [editAction, settingsAction]
+            } else {
+                menuItems = [shareAction, blockAction]
+            }
+            
+            // 4. Create and Attach the Menu
+            let demoMenu = UIMenu(title: isCurrentUser ? "My Options" : "User Options", children: menuItems)
+            
+            menuButton.menu = demoMenu
         }
-        // Option 3: Cancel
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-
-        present(alert, animated: true)
-    }
 
     func openEditProfile() {
         // Standard code to open the Edit Screen
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Screens", bundle: nil)
         // Make sure you give your Edit VC this ID in Storyboard!
         if let editVC = storyboard.instantiateViewController(
             withIdentifier: "EditProfileViewController"

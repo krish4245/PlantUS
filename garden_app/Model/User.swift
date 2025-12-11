@@ -16,6 +16,7 @@ class User: Codable {
     // Stats for Profile Page
     let plantCount: Int
     let friendCount: Int
+    var personality: String?
     
     // Relationship status (For that "Add to Friends" button)
     var isFriend: Bool

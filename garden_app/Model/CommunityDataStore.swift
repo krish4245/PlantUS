@@ -52,7 +52,7 @@ class CommunityDataStore {
     private func seedDummyData() {
         // Users
         let vedant = User(id: "u1", name: "Vedant Arya", username: "vedantarya.22", profileImageString: "person.circle", plantCount: 12, friendCount: 5, isFriend: false)
-        let shubham = User(id: "u2", name: "Shubham", username: "Shubham_r24", profileImageString: "person.fill", plantCount: 32, friendCount: 15, isFriend: true)
+        let shubham = User(id: "u2", name: "Shubham", username: "Shubham_r24", profileImageString: "person.circle.fill", plantCount: 32, friendCount: 15, isFriend: true)
         
         self.users = [vedant, shubham]
         
