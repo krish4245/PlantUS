@@ -16,6 +16,28 @@
 		19A073B92ED6CA0E001A4F68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A073B82ED6CA0E001A4F68 /* User.swift */; };
 		19A073BB2ED6CA1A001A4F68 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A073BA2ED6CA1A001A4F68 /* CommunityViewController.swift */; };
 		19A073BF2ED6CA9E001A4F68 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A073BE2ED6CA9E001A4F68 /* PostsTableViewCell.swift */; };
+		19CA86A22EEABAE100A94739 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86A02EEABAE100A94739 /* DataStore.swift */; };
+		19CA86B52EEABBE200A94739 /* Plant_Q4CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CA86AE2EEABBE200A94739 /* Plant_Q4CollectionViewCell.xib */; };
+		19CA86B62EEABBE200A94739 /* CustomSiteModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CA86AC2EEABBE200A94739 /* CustomSiteModalViewController.xib */; };
+		19CA86B72EEABBE200A94739 /* Add-Plant_Ques.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19CA86A72EEABBE200A94739 /* Add-Plant_Ques.storyboard */; };
+		19CA86B82EEABBE200A94739 /* Add_plant_lightCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CA86A42EEABBE200A94739 /* Add_plant_lightCollectionViewCell.xib */; };
+		19CA86B92EEABBE200A94739 /* addplantbuttonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CA86A92EEABBE200A94739 /* addplantbuttonCollectionViewCell.xib */; };
+		19CA86BA2EEABBE200A94739 /* Plant_Q4CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86AD2EEABBE200A94739 /* Plant_Q4CollectionViewCell.swift */; };
+		19CA86BB2EEABBE200A94739 /* UIViewController+Alerts.swift .swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86B42EEABBE200A94739 /* UIViewController+Alerts.swift .swift */; };
+		19CA86BC2EEABBE200A94739 /* Add_plant_q1_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86A52EEABBE200A94739 /* Add_plant_q1_ViewController.swift */; };
+		19CA86BD2EEABBE200A94739 /* Add_plant_lightCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86A32EEABBE200A94739 /* Add_plant_lightCollectionViewCell.swift */; };
+		19CA86BE2EEABBE200A94739 /* PlantLight_Q3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86B22EEABBE200A94739 /* PlantLight_Q3ViewController.swift */; };
+		19CA86BF2EEABBE200A94739 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86B32EEABBE200A94739 /* PostsTableViewCell.swift */; };
+		19CA86C02EEABBE200A94739 /* CustomSiteModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86AB2EEABBE200A94739 /* CustomSiteModalViewController.swift */; };
+		19CA86C12EEABBE200A94739 /* Add_plant_q2_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86A62EEABBE200A94739 /* Add_plant_q2_ViewController.swift */; };
+		19CA86C22EEABBE200A94739 /* addplantbuttonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86A82EEABBE200A94739 /* addplantbuttonCollectionViewCell.swift */; };
+		19CA86C32EEABBE200A94739 /* PlantColeectionViewCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86B12EEABBE200A94739 /* PlantColeectionViewCellCollectionViewCell.swift */; };
+		19CA86C42EEABBE200A94739 /* Plant_Q5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86B02EEABBE200A94739 /* Plant_Q5ViewController.swift */; };
+		19CA86C52EEABBE200A94739 /* Plant_Q4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86AF2EEABBE200A94739 /* Plant_Q4ViewController.swift */; };
+		19CA86C62EEABBE200A94739 /* CameraOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86AA2EEABBE200A94739 /* CameraOptionViewController.swift */; };
+		19CA86CB2EEABC1E00A94739 /* PlantAddOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86C82EEABC1E00A94739 /* PlantAddOptions.swift */; };
+		19CA86CC2EEABC1E00A94739 /* PlantLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86C92EEABC1E00A94739 /* PlantLight.swift */; };
+		19CA86CD2EEABC1E00A94739 /* PlantSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19CA86CA2EEABC1E00A94739 /* PlantSite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +52,28 @@
 		19A073BA2ED6CA1A001A4F68 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		19A073BE2ED6CA9E001A4F68 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 		19A073C02ED6CADE001A4F68 /* Screens.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Screens.storyboard; sourceTree = "<group>"; };
+		19CA86A02EEABAE100A94739 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		19CA86A32EEABBE200A94739 /* Add_plant_lightCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add_plant_lightCollectionViewCell.swift; sourceTree = "<group>"; };
+		19CA86A42EEABBE200A94739 /* Add_plant_lightCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Add_plant_lightCollectionViewCell.xib; sourceTree = "<group>"; };
+		19CA86A52EEABBE200A94739 /* Add_plant_q1_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add_plant_q1_ViewController.swift; sourceTree = "<group>"; };
+		19CA86A62EEABBE200A94739 /* Add_plant_q2_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add_plant_q2_ViewController.swift; sourceTree = "<group>"; };
+		19CA86A72EEABBE200A94739 /* Add-Plant_Ques.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Add-Plant_Ques.storyboard"; sourceTree = "<group>"; };
+		19CA86A82EEABBE200A94739 /* addplantbuttonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addplantbuttonCollectionViewCell.swift; sourceTree = "<group>"; };
+		19CA86A92EEABBE200A94739 /* addplantbuttonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addplantbuttonCollectionViewCell.xib; sourceTree = "<group>"; };
+		19CA86AA2EEABBE200A94739 /* CameraOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOptionViewController.swift; sourceTree = "<group>"; };
+		19CA86AB2EEABBE200A94739 /* CustomSiteModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSiteModalViewController.swift; sourceTree = "<group>"; };
+		19CA86AC2EEABBE200A94739 /* CustomSiteModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSiteModalViewController.xib; sourceTree = "<group>"; };
+		19CA86AD2EEABBE200A94739 /* Plant_Q4CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant_Q4CollectionViewCell.swift; sourceTree = "<group>"; };
+		19CA86AE2EEABBE200A94739 /* Plant_Q4CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Plant_Q4CollectionViewCell.xib; sourceTree = "<group>"; };
+		19CA86AF2EEABBE200A94739 /* Plant_Q4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant_Q4ViewController.swift; sourceTree = "<group>"; };
+		19CA86B02EEABBE200A94739 /* Plant_Q5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant_Q5ViewController.swift; sourceTree = "<group>"; };
+		19CA86B12EEABBE200A94739 /* PlantColeectionViewCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantColeectionViewCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		19CA86B22EEABBE200A94739 /* PlantLight_Q3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantLight_Q3ViewController.swift; sourceTree = "<group>"; };
+		19CA86B32EEABBE200A94739 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
+		19CA86B42EEABBE200A94739 /* UIViewController+Alerts.swift .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift .swift"; sourceTree = "<group>"; };
+		19CA86C82EEABC1E00A94739 /* PlantAddOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantAddOptions.swift; sourceTree = "<group>"; };
+		19CA86C92EEABC1E00A94739 /* PlantLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantLight.swift; sourceTree = "<group>"; };
+		19CA86CA2EEABC1E00A94739 /* PlantSite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantSite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -69,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				1944813C2ED423A100279E4D /* Controllers */,
+				19CA86A12EEABAE100A94739 /* Data 2 */,
 				1944813B2ED4239700279E4D /* Views */,
 				1944813A2ED4238900279E4D /* Models */,
 				194481242ED4124F00279E4D /* PlantApp */,
@@ -88,6 +133,9 @@
 		1944813A2ED4238900279E4D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				19CA86C82EEABC1E00A94739 /* PlantAddOptions.swift */,
+				19CA86C92EEABC1E00A94739 /* PlantLight.swift */,
+				19CA86CA2EEABC1E00A94739 /* PlantSite.swift */,
 				19A073B42ED6C9FD001A4F68 /* InterestTag.swift */,
 				19A073B62ED6CA07001A4F68 /* Post.swift */,
 				19A073B82ED6CA0E001A4F68 /* User.swift */,
@@ -102,6 +150,24 @@
 				1944812B2ED4124F00279E4D /* Main.storyboard */,
 				1944813F2ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift */,
 				19A073BE2ED6CA9E001A4F68 /* PostsTableViewCell.swift */,
+				19CA86A32EEABBE200A94739 /* Add_plant_lightCollectionViewCell.swift */,
+				19CA86A42EEABBE200A94739 /* Add_plant_lightCollectionViewCell.xib */,
+				19CA86A52EEABBE200A94739 /* Add_plant_q1_ViewController.swift */,
+				19CA86A62EEABBE200A94739 /* Add_plant_q2_ViewController.swift */,
+				19CA86A72EEABBE200A94739 /* Add-Plant_Ques.storyboard */,
+				19CA86A82EEABBE200A94739 /* addplantbuttonCollectionViewCell.swift */,
+				19CA86A92EEABBE200A94739 /* addplantbuttonCollectionViewCell.xib */,
+				19CA86AA2EEABBE200A94739 /* CameraOptionViewController.swift */,
+				19CA86AB2EEABBE200A94739 /* CustomSiteModalViewController.swift */,
+				19CA86AC2EEABBE200A94739 /* CustomSiteModalViewController.xib */,
+				19CA86AD2EEABBE200A94739 /* Plant_Q4CollectionViewCell.swift */,
+				19CA86AE2EEABBE200A94739 /* Plant_Q4CollectionViewCell.xib */,
+				19CA86AF2EEABBE200A94739 /* Plant_Q4ViewController.swift */,
+				19CA86B02EEABBE200A94739 /* Plant_Q5ViewController.swift */,
+				19CA86B12EEABBE200A94739 /* PlantColeectionViewCellCollectionViewCell.swift */,
+				19CA86B22EEABBE200A94739 /* PlantLight_Q3ViewController.swift */,
+				19CA86B32EEABBE200A94739 /* PostsTableViewCell.swift */,
+				19CA86B42EEABBE200A94739 /* UIViewController+Alerts.swift .swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -121,6 +187,14 @@
 				19A073C02ED6CADE001A4F68 /* Screens.storyboard */,
 			);
 			path = fake;
+			sourceTree = "<group>";
+		};
+		19CA86A12EEABAE100A94739 /* Data 2 */ = {
+			isa = PBXGroup;
+			children = (
+				19CA86A02EEABAE100A94739 /* DataStore.swift */,
+			);
+			path = "Data 2";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +261,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19CA86B52EEABBE200A94739 /* Plant_Q4CollectionViewCell.xib in Resources */,
+				19CA86B62EEABBE200A94739 /* CustomSiteModalViewController.xib in Resources */,
+				19CA86B72EEABBE200A94739 /* Add-Plant_Ques.storyboard in Resources */,
+				19CA86B82EEABBE200A94739 /* Add_plant_lightCollectionViewCell.xib in Resources */,
+				19CA86B92EEABBE200A94739 /* addplantbuttonCollectionViewCell.xib in Resources */,
 				19A073842ED5815B001A4F68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +279,23 @@
 			files = (
 				194481402ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift in Sources */,
 				1944812A2ED4124F00279E4D /* HomeViewController.swift in Sources */,
+				19CA86BA2EEABBE200A94739 /* Plant_Q4CollectionViewCell.swift in Sources */,
+				19CA86BB2EEABBE200A94739 /* UIViewController+Alerts.swift .swift in Sources */,
+				19CA86BC2EEABBE200A94739 /* Add_plant_q1_ViewController.swift in Sources */,
+				19CA86BD2EEABBE200A94739 /* Add_plant_lightCollectionViewCell.swift in Sources */,
+				19CA86BE2EEABBE200A94739 /* PlantLight_Q3ViewController.swift in Sources */,
+				19CA86BF2EEABBE200A94739 /* PostsTableViewCell.swift in Sources */,
+				19CA86C02EEABBE200A94739 /* CustomSiteModalViewController.swift in Sources */,
+				19CA86C12EEABBE200A94739 /* Add_plant_q2_ViewController.swift in Sources */,
+				19CA86C22EEABBE200A94739 /* addplantbuttonCollectionViewCell.swift in Sources */,
+				19CA86C32EEABBE200A94739 /* PlantColeectionViewCellCollectionViewCell.swift in Sources */,
+				19CA86C42EEABBE200A94739 /* Plant_Q5ViewController.swift in Sources */,
+				19CA86C52EEABBE200A94739 /* Plant_Q4ViewController.swift in Sources */,
+				19CA86C62EEABBE200A94739 /* CameraOptionViewController.swift in Sources */,
+				19CA86A22EEABAE100A94739 /* DataStore.swift in Sources */,
+				19CA86CB2EEABC1E00A94739 /* PlantAddOptions.swift in Sources */,
+				19CA86CC2EEABC1E00A94739 /* PlantLight.swift in Sources */,
+				19CA86CD2EEABC1E00A94739 /* PlantSite.swift in Sources */,
 				19A073BB2ED6CA1A001A4F68 /* CommunityViewController.swift in Sources */,
 				19A073B52ED6C9FD001A4F68 /* InterestTag.swift in Sources */,
 				1944813E2ED4365400279E4D /* Plant.swift in Sources */,
@@ -237,6 +333,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -268,6 +365,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
