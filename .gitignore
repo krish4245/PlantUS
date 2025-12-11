@@ -1,0 +1,17 @@
+
+# Xcode temporary files
+*.xcuserstate
+xcuserdata/
+*.xcuserdatad
+
+# Build artifacts
+DerivedData/
+build/
+*.ipa
+*.dSYM
+
+# macOS system files
+.DS_Store
+
+# Swift Package Manager
+/.build/
