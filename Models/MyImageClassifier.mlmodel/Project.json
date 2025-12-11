@@ -1,0 +1,29 @@
+{
+  "activityEntities" : [
+    "projectCreated",
+    [
+      {
+        "createdDate" : "2025-12-10T09:12:52Z",
+        "event" : "projectCreated",
+        "id" : "AB6FAFA7-1FE8-40F6-B528-4F14C533F54E",
+        "subtitle" : "MyImageClassifier",
+        "title" : "Project Created"
+      }
+    ]
+  ],
+  "authorName" : "SDC-USER",
+  "createdDate" : "2025-12-10T09:12:52Z",
+  "description" : "",
+  "id" : "933DAF0C-2449-4836-9AB4-BA8CF280CD07",
+  "license" : "",
+  "location" : "",
+  "modifiedDate" : "2025-12-10T09:12:52Z",
+  "projectName" : "MyImageClassifier",
+  "settingsEntity" : {
+    "snapshotOnExtendTraining" : true,
+    "snapshotOnResumeTraining" : false
+  },
+  "taskType" : "imageClassifier",
+  "title" : "Image Classification",
+  "version" : "1.1"
+}

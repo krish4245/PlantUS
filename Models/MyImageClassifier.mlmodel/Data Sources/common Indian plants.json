@@ -1,0 +1,37 @@
+{
+  "activityEntities" : [
+    "dataSourceCreated",
+    [
+      {
+        "createdDate" : "2025-12-10T09:13:28Z",
+        "event" : "dataSourceCreated",
+        "id" : "D0FD388F-8A56-4E91-BBF4-1EADC45970A4",
+        "subtitle" : "common Indian plants",
+        "title" : "Data Source Created"
+      }
+    ]
+  ],
+  "createdDate" : "2025-12-10T09:13:28Z",
+  "dataPathRelativeToProjectURL" : "../../Downloads/common%20Indian%20plants/",
+  "dataResult" : {
+    "createdDate" : "2025-12-10T09:13:28Z",
+    "dataSourceID" : "21754F9F-EFE2-4828-BE1B-33793763E9ED",
+    "dataURL" : "file:///Users/sdc-user/Downloads/common%20Indian%20plants/",
+    "error" : {
+      "code" : 0,
+      "domain" : "com.apple.CreateML.xpc",
+      "errorType" : "error",
+      "reason" : "Missing data for label common Indian plants. Detailed list of labels missing files: [\"common Indian plants\"]."
+    }
+  },
+  "dataURL" : "file:///Users/sdc-user/Downloads/common%20Indian%20plants/",
+  "experimentIDs" : [
+
+  ],
+  "id" : "21754F9F-EFE2-4828-BE1B-33793763E9ED",
+  "modifiedDate" : "2025-12-10T09:13:38Z",
+  "pathType" : 0,
+  "preferredFilename" : "common Indian plants",
+  "title" : "common Indian plants",
+  "version" : "1.0"
+}

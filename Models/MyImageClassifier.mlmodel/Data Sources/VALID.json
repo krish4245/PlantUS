@@ -1,0 +1,51 @@
+{
+  "activityEntities" : [
+    "dataSourceTrainingStarted",
+    [
+      {
+        "createdDate" : "2025-12-10T09:13:53Z",
+        "event" : "dataSourceTrainingStarted",
+        "id" : "045AE506-A22E-4B9C-8200-8142909C269B",
+        "subtitle" : "MyImageClassifier 1",
+        "title" : "Used By"
+      }
+    ],
+    "dataSourceMetrics",
+    [
+      {
+        "createdDate" : "2025-12-10T09:13:53Z",
+        "event" : "dataSourceMetrics",
+        "id" : "6542C6EB-C7E9-490D-B875-C4FDF6A2600A",
+        "subtitle" : "10 Classes, 2,173 Items",
+        "title" : "Data Summary"
+      }
+    ],
+    "dataSourceCreated",
+    [
+      {
+        "createdDate" : "2025-12-10T09:13:47Z",
+        "event" : "dataSourceCreated",
+        "id" : "433E3A1A-8BF2-4DE5-BF65-C3DA6BB5DAB3",
+        "subtitle" : "VALID",
+        "title" : "Data Source Created"
+      }
+    ]
+  ],
+  "createdDate" : "2025-12-10T09:13:47Z",
+  "dataPathRelativeToProjectURL" : "../../Downloads/Common_Indian_Plants/VALID/",
+  "dataResult" : {
+    "createdDate" : "2025-12-10T09:13:47Z",
+    "dataSourceID" : "1CF88DFB-E7A9-4528-8809-07F9283013CA",
+    "dataURL" : "file:///Users/sdc-user/Downloads/Common_Indian_Plants/VALID/"
+  },
+  "dataURL" : "file:///Users/sdc-user/Downloads/Common_Indian_Plants/VALID/",
+  "experimentIDs" : [
+    "CCECEBEE-C55A-4922-B46D-F47781B1598F"
+  ],
+  "id" : "1CF88DFB-E7A9-4528-8809-07F9283013CA",
+  "modifiedDate" : "2025-12-10T09:13:53Z",
+  "pathType" : 0,
+  "preferredFilename" : "VALID",
+  "title" : "VALID",
+  "version" : "1.0"
+}
