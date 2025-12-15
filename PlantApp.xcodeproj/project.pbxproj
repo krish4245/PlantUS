@@ -7,29 +7,102 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191499A02EEFEDE9003FD7F9 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1914999F2EEFEDE9003FD7F9 /* ChatViewController.swift */; };
+		191499A22EEFEE10003FD7F9 /* CommunityViewController 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499A12EEFEE10003FD7F9 /* CommunityViewController 2.swift */; };
+		191499A42EEFEE56003FD7F9 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499A32EEFEE56003FD7F9 /* EditProfileViewController.swift */; };
+		191499A62EEFEE5C003FD7F9 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499A52EEFEE5C003FD7F9 /* NewPostViewController.swift */; };
+		191499A82EEFEE62003FD7F9 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499A72EEFEE62003FD7F9 /* PeopleViewController.swift */; };
+		191499AA2EEFEE7D003FD7F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499A92EEFEE7D003FD7F9 /* ProfileViewController.swift */; };
+		191499AC2EEFEE85003FD7F9 /* SearchPeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499AB2EEFEE85003FD7F9 /* SearchPeopleViewController.swift */; };
+		191499AE2EEFEEA5003FD7F9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499AD2EEFEEA5003FD7F9 /* Comment.swift */; };
+		191499B02EEFEEAB003FD7F9 /* CommunityDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499AF2EEFEEAB003FD7F9 /* CommunityDataStore.swift */; };
+		191499B42EEFEEEC003FD7F9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499B32EEFEEEC003FD7F9 /* Post.swift */; };
+		191499B62EEFEF08003FD7F9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499B52EEFEF08003FD7F9 /* User.swift */; };
+		191499B82EEFEF6F003FD7F9 /* ChatBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499B72EEFEF6F003FD7F9 /* ChatBubbleCell.swift */; };
+		191499BA2EEFEF7C003FD7F9 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499B92EEFEF7C003FD7F9 /* CircularProgressView.swift */; };
+		191499BC2EEFEF83003FD7F9 /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499BB2EEFEF83003FD7F9 /* PeopleTableViewCell.swift */; };
+		191499BE2EEFEF8D003FD7F9 /* PeopleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 191499BD2EEFEF8D003FD7F9 /* PeopleTableViewCell.xib */; };
+		191499C02EEFEF9C003FD7F9 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499BF2EEFEF9C003FD7F9 /* PostsTableViewCell.swift */; };
+		191499C22EEFEFA5003FD7F9 /* ProfileGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 191499C12EEFEFA5003FD7F9 /* ProfileGridCell.swift */; };
 		1944812A2ED4124F00279E4D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194481292ED4124F00279E4D /* HomeViewController.swift */; };
 		1944813E2ED4365400279E4D /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1944813D2ED4365400279E4D /* Plant.swift */; };
 		194481402ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1944813F2ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift */; };
+		196555672EE68CD300727033 /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196555662EE68CD300727033 /* SearchHeaderView.swift */; };
+		1965557A2EE6B0AE00727033 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196555792EE6B0AE00727033 /* SplashViewController.swift */; };
+		196555AE2EE7F44600727033 /* SearchSuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196555AD2EE7F44600727033 /* SearchSuggestionsViewController.swift */; };
 		19A073842ED5815B001A4F68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1944812B2ED4124F00279E4D /* Main.storyboard */; };
 		19A073B52ED6C9FD001A4F68 /* InterestTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A073B42ED6C9FD001A4F68 /* InterestTag.swift */; };
-		19A073B72ED6CA07001A4F68 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A073B62ED6CA07001A4F68 /* Post.swift */; };
-		19A073B92ED6CA0E001A4F68 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A073B82ED6CA0E001A4F68 /* User.swift */; };
-		19A073BB2ED6CA1A001A4F68 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A073BA2ED6CA1A001A4F68 /* CommunityViewController.swift */; };
-		19A073BF2ED6CA9E001A4F68 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A073BE2ED6CA9E001A4F68 /* PostsTableViewCell.swift */; };
+		19A073C62ED722D5001A4F68 /* MyGardenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A073C52ED722D5001A4F68 /* MyGardenViewController.swift */; };
+		19B890252EEAB42B00352C5C /* MyImageClassifier_2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 19B890242EEAB42B00352C5C /* MyImageClassifier_2.mlmodel */; };
+		19B8902B2EEAC3CB00352C5C /* PlantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8902A2EEAC3CB00352C5C /* PlantDetailViewController.swift */; };
+		19B8902D2EEAC41F00352C5C /* PlantModel 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B8902C2EEAC41F00352C5C /* PlantModel 2.swift */; };
+		19C5A8E62EEBF2DB00226660 /* LiveCameraClassifierViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C5A8E52EEBF2DB00226660 /* LiveCameraClassifierViewController.swift */; };
+		19C5A8E82EEBF6AE00226660 /* PlantStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C5A8E72EEBF6AE00226660 /* PlantStore.swift */; };
+		19C5A92C2EED36DA00226660 /* PlantCareModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C5A92B2EED36DA00226660 /* PlantCareModalViewController.swift */; };
+		19C5A9322EED37E800226660 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C5A9312EED37E800226660 /* Notification.swift */; };
+		19D3C6EF2ED80B81005882D9 /* GardenSpaceCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C6EE2ED80B81005882D9 /* GardenSpaceCellCollectionViewCell.swift */; };
+		19D3C6F12ED80CC7005882D9 /* GardenSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C6F02ED80CC7005882D9 /* GardenSpace.swift */; };
+		19D3C6F32ED81888005882D9 /* commentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C6F22ED81888005882D9 /* commentViewController.swift */; };
+		19D3C6F72ED83FB3005882D9 /* GardenScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C6F62ED83FB3005882D9 /* GardenScoreViewController.swift */; };
+		19D3C6FA2ED86952005882D9 /* Search_2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C6F92ED86952005882D9 /* Search_2CollectionViewCell.swift */; };
+		19D3C6FC2ED8695A005882D9 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C6FB2ED8695A005882D9 /* SearchCollectionViewCell.swift */; };
+		19D3C6FE2ED86963005882D9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C6FD2ED86963005882D9 /* SearchViewController.swift */; };
+		19D3C7002ED8696B005882D9 /* PlantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C6FF2ED8696B005882D9 /* PlantData.swift */; };
+		19D3C7022ED86E0A005882D9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D3C7012ED86E0A005882D9 /* WelcomeViewController.swift */; };
+		19E190742EE93B8500D14471 /* LabelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E190732EE93B8500D14471 /* LabelMapper.swift */; };
+		19E190762EE93BB000D14471 /* PlantIdentifierLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E190752EE93BB000D14471 /* PlantIdentifierLocal.swift */; };
+		19E190782EE93BCC00D14471 /* IdentificationResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E190772EE93BCC00D14471 /* IdentificationResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1914999F2EEFEDE9003FD7F9 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		191499A12EEFEE10003FD7F9 /* CommunityViewController 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommunityViewController 2.swift"; sourceTree = "<group>"; };
+		191499A32EEFEE56003FD7F9 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		191499A52EEFEE5C003FD7F9 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		191499A72EEFEE62003FD7F9 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		191499A92EEFEE7D003FD7F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		191499AB2EEFEE85003FD7F9 /* SearchPeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPeopleViewController.swift; sourceTree = "<group>"; };
+		191499AD2EEFEEA5003FD7F9 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		191499AF2EEFEEAB003FD7F9 /* CommunityDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityDataStore.swift; sourceTree = "<group>"; };
+		191499B32EEFEEEC003FD7F9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		191499B52EEFEF08003FD7F9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		191499B72EEFEF6F003FD7F9 /* ChatBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleCell.swift; sourceTree = "<group>"; };
+		191499B92EEFEF7C003FD7F9 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		191499BB2EEFEF83003FD7F9 /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
+		191499BD2EEFEF8D003FD7F9 /* PeopleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PeopleTableViewCell.xib; sourceTree = "<group>"; };
+		191499BF2EEFEF9C003FD7F9 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
+		191499C12EEFEFA5003FD7F9 /* ProfileGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGridCell.swift; sourceTree = "<group>"; };
 		194481222ED4124F00279E4D /* PlantApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		194481292ED4124F00279E4D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1944812C2ED4124F00279E4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1944813D2ED4365400279E4D /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		1944813F2ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantColeectionViewCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		196555662EE68CD300727033 /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
+		196555792EE6B0AE00727033 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		196555AD2EE7F44600727033 /* SearchSuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionsViewController.swift; sourceTree = "<group>"; };
 		19A073B42ED6C9FD001A4F68 /* InterestTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestTag.swift; sourceTree = "<group>"; };
-		19A073B62ED6CA07001A4F68 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		19A073B82ED6CA0E001A4F68 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		19A073BA2ED6CA1A001A4F68 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
-		19A073BE2ED6CA9E001A4F68 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 		19A073C02ED6CADE001A4F68 /* Screens.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Screens.storyboard; sourceTree = "<group>"; };
+		19A073C52ED722D5001A4F68 /* MyGardenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGardenViewController.swift; sourceTree = "<group>"; };
+		19B890242EEAB42B00352C5C /* MyImageClassifier_2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyImageClassifier_2.mlmodel; sourceTree = "<group>"; };
+		19B8902A2EEAC3CB00352C5C /* PlantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailViewController.swift; sourceTree = "<group>"; };
+		19B8902C2EEAC41F00352C5C /* PlantModel 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlantModel 2.swift"; sourceTree = "<group>"; };
+		19C5A8E52EEBF2DB00226660 /* LiveCameraClassifierViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCameraClassifierViewController.swift; sourceTree = "<group>"; };
+		19C5A8E72EEBF6AE00226660 /* PlantStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStore.swift; sourceTree = "<group>"; };
+		19C5A92B2EED36DA00226660 /* PlantCareModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCareModalViewController.swift; sourceTree = "<group>"; };
+		19C5A9312EED37E800226660 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		19D3C6EE2ED80B81005882D9 /* GardenSpaceCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenSpaceCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		19D3C6F02ED80CC7005882D9 /* GardenSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenSpace.swift; sourceTree = "<group>"; };
+		19D3C6F22ED81888005882D9 /* commentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentViewController.swift; sourceTree = "<group>"; };
+		19D3C6F62ED83FB3005882D9 /* GardenScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenScoreViewController.swift; sourceTree = "<group>"; };
+		19D3C6F82ED86944005882D9 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		19D3C6F92ED86952005882D9 /* Search_2CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_2CollectionViewCell.swift; sourceTree = "<group>"; };
+		19D3C6FB2ED8695A005882D9 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		19D3C6FD2ED86963005882D9 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		19D3C6FF2ED8696B005882D9 /* PlantData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantData.swift; sourceTree = "<group>"; };
+		19D3C7012ED86E0A005882D9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		19E190732EE93B8500D14471 /* LabelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelMapper.swift; sourceTree = "<group>"; };
+		19E190752EE93BB000D14471 /* PlantIdentifierLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantIdentifierLocal.swift; sourceTree = "<group>"; };
+		19E190772EE93BCC00D14471 /* IdentificationResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentificationResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -44,6 +117,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		191499C32EEFFBDD003FD7F9 /* Extensions */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		194481242ED4124F00279E4D /* PlantApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -68,6 +146,7 @@
 		194481192ED4124F00279E4D = {
 			isa = PBXGroup;
 			children = (
+				191499C32EEFFBDD003FD7F9 /* Extensions */,
 				1944813C2ED423A100279E4D /* Controllers */,
 				1944813B2ED4239700279E4D /* Views */,
 				1944813A2ED4238900279E4D /* Models */,
@@ -88,10 +167,16 @@
 		1944813A2ED4238900279E4D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				19C5A8E72EEBF6AE00226660 /* PlantStore.swift */,
+				19B8902C2EEAC41F00352C5C /* PlantModel 2.swift */,
+				19B890242EEAB42B00352C5C /* MyImageClassifier_2.mlmodel */,
+				191499AD2EEFEEA5003FD7F9 /* Comment.swift */,
 				19A073B42ED6C9FD001A4F68 /* InterestTag.swift */,
-				19A073B62ED6CA07001A4F68 /* Post.swift */,
-				19A073B82ED6CA0E001A4F68 /* User.swift */,
+				191499AF2EEFEEAB003FD7F9 /* CommunityDataStore.swift */,
+				191499B52EEFEF08003FD7F9 /* User.swift */,
+				191499B32EEFEEEC003FD7F9 /* Post.swift */,
 				1944813D2ED4365400279E4D /* Plant.swift */,
+				19D3C6FF2ED8696B005882D9 /* PlantData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -100,8 +185,19 @@
 			isa = PBXGroup;
 			children = (
 				1944812B2ED4124F00279E4D /* Main.storyboard */,
+				19E190752EE93BB000D14471 /* PlantIdentifierLocal.swift */,
+				19E190732EE93B8500D14471 /* LabelMapper.swift */,
+				19D3C6F92ED86952005882D9 /* Search_2CollectionViewCell.swift */,
 				1944813F2ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift */,
-				19A073BE2ED6CA9E001A4F68 /* PostsTableViewCell.swift */,
+				19D3C6FB2ED8695A005882D9 /* SearchCollectionViewCell.swift */,
+				19D3C6EE2ED80B81005882D9 /* GardenSpaceCellCollectionViewCell.swift */,
+				196555662EE68CD300727033 /* SearchHeaderView.swift */,
+				191499B92EEFEF7C003FD7F9 /* CircularProgressView.swift */,
+				191499BF2EEFEF9C003FD7F9 /* PostsTableViewCell.swift */,
+				191499BB2EEFEF83003FD7F9 /* PeopleTableViewCell.swift */,
+				191499C12EEFEFA5003FD7F9 /* ProfileGridCell.swift */,
+				191499BD2EEFEF8D003FD7F9 /* PeopleTableViewCell.xib */,
+				191499B72EEFEF6F003FD7F9 /* ChatBubbleCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,8 +205,27 @@
 		1944813C2ED423A100279E4D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				19C5A8E52EEBF2DB00226660 /* LiveCameraClassifierViewController.swift */,
+				19B8902A2EEAC3CB00352C5C /* PlantDetailViewController.swift */,
+				19E190772EE93BCC00D14471 /* IdentificationResultViewController.swift */,
+				196555AD2EE7F44600727033 /* SearchSuggestionsViewController.swift */,
 				194481292ED4124F00279E4D /* HomeViewController.swift */,
-				19A073BA2ED6CA1A001A4F68 /* CommunityViewController.swift */,
+				1914999F2EEFEDE9003FD7F9 /* ChatViewController.swift */,
+				191499A12EEFEE10003FD7F9 /* CommunityViewController 2.swift */,
+				191499A92EEFEE7D003FD7F9 /* ProfileViewController.swift */,
+				19A073C52ED722D5001A4F68 /* MyGardenViewController.swift */,
+				19D3C6F02ED80CC7005882D9 /* GardenSpace.swift */,
+				19D3C6F22ED81888005882D9 /* commentViewController.swift */,
+				19D3C6F62ED83FB3005882D9 /* GardenScoreViewController.swift */,
+				191499A32EEFEE56003FD7F9 /* EditProfileViewController.swift */,
+				19D3C6FD2ED86963005882D9 /* SearchViewController.swift */,
+				19D3C7012ED86E0A005882D9 /* WelcomeViewController.swift */,
+				191499AB2EEFEE85003FD7F9 /* SearchPeopleViewController.swift */,
+				196555792EE6B0AE00727033 /* SplashViewController.swift */,
+				191499A52EEFEE5C003FD7F9 /* NewPostViewController.swift */,
+				191499A72EEFEE62003FD7F9 /* PeopleViewController.swift */,
+				19C5A92B2EED36DA00226660 /* PlantCareModalViewController.swift */,
+				19C5A9312EED37E800226660 /* Notification.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -119,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				19A073C02ED6CADE001A4F68 /* Screens.storyboard */,
+				19D3C6F82ED86944005882D9 /* Search.storyboard */,
 			);
 			path = fake;
 			sourceTree = "<group>";
@@ -139,6 +255,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				191499C32EEFFBDD003FD7F9 /* Extensions */,
 				194481242ED4124F00279E4D /* PlantApp */,
 			);
 			name = PlantApp;
@@ -187,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				191499BE2EEFEF8D003FD7F9 /* PeopleTableViewCell.xib in Resources */,
 				19A073842ED5815B001A4F68 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,14 +316,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19E190782EE93BCC00D14471 /* IdentificationResultViewController.swift in Sources */,
+				19B8902D2EEAC41F00352C5C /* PlantModel 2.swift in Sources */,
+				196555AE2EE7F44600727033 /* SearchSuggestionsViewController.swift in Sources */,
+				191499A02EEFEDE9003FD7F9 /* ChatViewController.swift in Sources */,
 				194481402ED436D700279E4D /* PlantColeectionViewCellCollectionViewCell.swift in Sources */,
+				191499BA2EEFEF7C003FD7F9 /* CircularProgressView.swift in Sources */,
+				191499A82EEFEE62003FD7F9 /* PeopleViewController.swift in Sources */,
+				19D3C7022ED86E0A005882D9 /* WelcomeViewController.swift in Sources */,
 				1944812A2ED4124F00279E4D /* HomeViewController.swift in Sources */,
-				19A073BB2ED6CA1A001A4F68 /* CommunityViewController.swift in Sources */,
+				191499AE2EEFEEA5003FD7F9 /* Comment.swift in Sources */,
+				19D3C6FA2ED86952005882D9 /* Search_2CollectionViewCell.swift in Sources */,
+				191499A42EEFEE56003FD7F9 /* EditProfileViewController.swift in Sources */,
+				191499AC2EEFEE85003FD7F9 /* SearchPeopleViewController.swift in Sources */,
+				19D3C6EF2ED80B81005882D9 /* GardenSpaceCellCollectionViewCell.swift in Sources */,
+				19A073C62ED722D5001A4F68 /* MyGardenViewController.swift in Sources */,
+				19E190762EE93BB000D14471 /* PlantIdentifierLocal.swift in Sources */,
 				19A073B52ED6C9FD001A4F68 /* InterestTag.swift in Sources */,
+				19D3C6F72ED83FB3005882D9 /* GardenScoreViewController.swift in Sources */,
+				191499BC2EEFEF83003FD7F9 /* PeopleTableViewCell.swift in Sources */,
+				191499A22EEFEE10003FD7F9 /* CommunityViewController 2.swift in Sources */,
+				191499B62EEFEF08003FD7F9 /* User.swift in Sources */,
+				191499AA2EEFEE7D003FD7F9 /* ProfileViewController.swift in Sources */,
 				1944813E2ED4365400279E4D /* Plant.swift in Sources */,
-				19A073B92ED6CA0E001A4F68 /* User.swift in Sources */,
-				19A073BF2ED6CA9E001A4F68 /* PostsTableViewCell.swift in Sources */,
-				19A073B72ED6CA07001A4F68 /* Post.swift in Sources */,
+				19B890252EEAB42B00352C5C /* MyImageClassifier_2.mlmodel in Sources */,
+				19D3C6FC2ED8695A005882D9 /* SearchCollectionViewCell.swift in Sources */,
+				196555672EE68CD300727033 /* SearchHeaderView.swift in Sources */,
+				19D3C6FE2ED86963005882D9 /* SearchViewController.swift in Sources */,
+				19C5A8E62EEBF2DB00226660 /* LiveCameraClassifierViewController.swift in Sources */,
+				19D3C6F12ED80CC7005882D9 /* GardenSpace.swift in Sources */,
+				19E190742EE93B8500D14471 /* LabelMapper.swift in Sources */,
+				19C5A8E82EEBF6AE00226660 /* PlantStore.swift in Sources */,
+				191499B42EEFEEEC003FD7F9 /* Post.swift in Sources */,
+				19D3C6F32ED81888005882D9 /* commentViewController.swift in Sources */,
+				19C5A92C2EED36DA00226660 /* PlantCareModalViewController.swift in Sources */,
+				19B8902B2EEAC3CB00352C5C /* PlantDetailViewController.swift in Sources */,
+				191499B82EEFEF6F003FD7F9 /* ChatBubbleCell.swift in Sources */,
+				19C5A9322EED37E800226660 /* Notification.swift in Sources */,
+				19D3C7002ED8696B005882D9 /* PlantData.swift in Sources */,
+				191499B02EEFEEAB003FD7F9 /* CommunityDataStore.swift in Sources */,
+				191499C02EEFEF9C003FD7F9 /* PostsTableViewCell.swift in Sources */,
+				191499C22EEFEFA5003FD7F9 /* ProfileGridCell.swift in Sources */,
+				1965557A2EE6B0AE00727033 /* SplashViewController.swift in Sources */,
+				191499A62EEFEE5C003FD7F9 /* NewPostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,21 +381,25 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlantApp/PlantApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 638HMB96TT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlantApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "we need photo library access to choose images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = learning.PlantApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.learning.PlantApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -259,21 +416,25 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlantApp/PlantApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 638HMB96TT;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlantApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "we need photo library access to choose images";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = learning.PlantApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.learning.PlantApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
