@@ -83,14 +83,29 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
               navigationController?.pushViewController(vc, animated: true)
       }
     
-    // Cell size
-       func collectionView(_ collectionView: UICollectionView,
-                           layout collectionViewLayout: UICollectionViewLayout,
-                           sizeForItemAt indexPath: IndexPath) -> CGSize {
-           
-           let width = collectionView.frame.width - 40
-           return CGSize(width: width / 2, height: 140)
-       }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let padding: CGFloat = 16 * 3 // left + right + middle
+        let availableWidth = collectionView.frame.width - padding
+        let width = availableWidth / 2
+
+        return CGSize(width: width, height: 120)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 16
+    }
        
 
 }

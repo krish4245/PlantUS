@@ -11,7 +11,7 @@ class PlantCareModalViewController: UIViewController {
 
     var plant: Plant!
 
-    @IBOutlet weak var ScrollView: UIScrollView!
+//    @IBOutlet weak var ScrollView: UIScrollView!
     
     @IBOutlet weak var plantNameLabel: UILabel!
     
@@ -54,14 +54,12 @@ class PlantCareModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         plantNameLabel.text = plant.name
-        if let sheet = sheetPresentationController {
-              sheet.detents = [.medium(), .large()]
-              sheet.prefersGrabberVisible = true
-              sheet.preferredCornerRadius = 24
-          }
-
-          ScrollView.contentInset.top = 24
-          ScrollView.verticalScrollIndicatorInsets.top = 24
+        //        if let sheet = sheetPresentationController {
+        //              sheet.detents = [.medium(), .large()]
+        //              sheet.prefersGrabberVisible = true
+        //              sheet.preferredCornerRadius = 24
+        //          }
+        
     }
      
    

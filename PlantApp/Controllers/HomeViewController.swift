@@ -22,12 +22,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var totalPlantsCardView: UIView?
     @IBOutlet weak var spacesCardView: UIView?
 
-    @IBAction func addButtonTapped(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-           if let searchVC = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController {
-               navigationController?.pushViewController(searchVC, animated: true)
-           }
-    }
+
     
 //    @IBAction func plantTapped(_ sender: UIButton) {
 //        selectedPlant = plants[sender.tag]
@@ -218,7 +213,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     // Make the profile button a no-op
     @objc private func profileTapped() {
         // instantiate from same storyboard; fails silently if not found
-        if let profileVC = storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") {
+        if let profileVC = storyboard?.instantiateViewController(withIdentifier: "userProfileViewController") {
             profileVC.modalPresentationStyle = .pageSheet
             present(profileVC, animated: true)
         } else {

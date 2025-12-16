@@ -26,6 +26,8 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
         
         // Do any additional setup after loading the view.
         setupImageTapGesture()
+        
+        setupImagePlaceholder()
 
     }
     
@@ -35,6 +37,16 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
            let tap = UITapGestureRecognizer(target: self, action: #selector(showImagePickerOptions))
            plantImageView.addGestureRecognizer(tap)
        }
+    
+    func setupImagePlaceholder() {
+        plantImageView.layer.cornerRadius = 16
+        plantImageView.backgroundColor = .systemGray6
+
+        
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: .light)
+        plantImageView.image = UIImage(systemName: "camera.fill", withConfiguration: config)
+        plantImageView.tintColor = .systemGray3
+    }
     
     
     // MARK: - Show Action Sheet

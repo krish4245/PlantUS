@@ -115,7 +115,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
                 messageButton.backgroundColor = UIColor.systemGreen
                 messageButton.alpha = 1.0
             } else {
-                // CASE: STRANGER (Blue Add Button)
                 addFriendButton.isHidden = false
                 addFriendButton.setTitle("Add Friend", for: .normal)
                 addFriendButton.backgroundColor = UIColor.systemGreen

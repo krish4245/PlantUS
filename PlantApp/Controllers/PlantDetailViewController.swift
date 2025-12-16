@@ -12,7 +12,7 @@ class PlantDetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var benefitLabel: UILabel!
 //    @IBOutlet weak var confidenceLabel: UILabel!
-    @IBOutlet weak var closeButton: UIButton!
+//    @IBOutlet weak var closeButton: UIButton!
 
     private var model: PlantModel?
 //    private var confidence: Double?//    @IBAction func addPlantTapped(_ sender: Any) {
@@ -43,8 +43,8 @@ class PlantDetailViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(onPlantAdded(_:)), name: .plantAdded, object: nil)
 
         // wire close in a safe way (don't add duplicate targets)
-        closeButton.removeTarget(nil, action: nil, for: .allEvents)
-        closeButton.addTarget(self, action: #selector(onClose), for: .touchUpInside)
+//        closeButton.removeTarget(nil, action: nil, for: .allEvents)
+//        closeButton.addTarget(self, action: #selector(onClose), for: .touchUpInside)
 
         // run entrance animation setup (safe-guard if labels are nil)
         setupEntranceInitialState()
@@ -144,8 +144,7 @@ class PlantDetailViewController: UIViewController {
         } else if let imgName = m.imageURL, let img = UIImage(named: imgName) {
             plantImageView.image = img
         } else {
-            plantImageView.image = UIImage(systemName: "leaf.circle.fill")
-            plantImageView.tintColor = .systemGreen
+           print("Use default image")
         }
 
         // small content animation after populating
