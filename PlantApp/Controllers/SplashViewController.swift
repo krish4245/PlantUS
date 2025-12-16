@@ -6,7 +6,7 @@ final class SplashViewController: UIViewController {
     @IBOutlet weak var logoLabel: UILabel?
 
     // ========== Config ==========
-    private let fullText: String = "Plant"              // text to type
+    private let fullText: String = "PlantIT☘️"              // text to type
     private let typingInterval: TimeInterval = 0.18     // seconds per character
     private let pauseAfterTyping: TimeInterval = 0.20
     private let loadingDuration: TimeInterval = 1.0     // how long the circular loader runs
