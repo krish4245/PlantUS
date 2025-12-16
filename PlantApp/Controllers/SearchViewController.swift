@@ -2,8 +2,6 @@
 //  SearchViewController.swift
 //  garden_app
 //
-//
-//
 
 import UIKit
 
@@ -17,10 +15,6 @@ class SearchViewController: UIViewController,
         // Present the scan/upload menu anchored to the header's menu button if available.
         presentMenuOptions(sourceView: header.menuButton)
     }
-
-    
-  
-    
 
     // MARK: - IBOutlets
     @IBOutlet weak var collectionView: UICollectionView?
@@ -50,7 +44,7 @@ class SearchViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        collectionView?.keyboardDismissMode = .onDrag
         guard let cv = collectionView else {
             safePrint("⚠️ collectionView outlet is NOT connected (collectionView == nil). Connect it in Interface Builder.")
             return
