@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var plantsCollectionView: UICollectionView!
     @IBOutlet weak var careTypeSegmentedControl: UISegmentedControl!
     
-   @IBOutlet weak var emptyStateView: UIView!
+    @IBOutlet weak var emptyStateView: UIView!
 
     @IBOutlet weak var statusCardView: UIView!   // the new one
     

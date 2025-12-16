@@ -15,23 +15,22 @@ class PlantDetailViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
 
     private var model: PlantModel?
-//    private var confidence: Double?
-    @IBAction func addPlantTapped(_ sender: Any) {
-        // Optional: include plant name in userInfo if you want to show it in the toast
-        let plantName = model?.name ?? "Plant"
-        NotificationCenter.default.post(name: .plantAdded, object: nil, userInfo: ["name": plantName])
-
-        // Close the screen: pop if pushed, otherwise dismiss
-        if let nav = navigationController, nav.viewControllers.firstIndex(of: self) != nil, nav.viewControllers.count > 1 {
-            // pop back to previous (SearchViewController)
-            navigationController?.popViewController(animated: true)
-        } else if presentingViewController != nil {
-            dismiss(animated: true, completion: nil)
-        } else {
-            // fallback
-            navigationController?.popViewController(animated: true)
-        }
-    }
+//    private var confidence: Double?//    @IBAction func addPlantTapped(_ sender: Any) {
+//        // Optional: include plant name in userInfo if you want to show it in the toast
+//        let plantName = model?.name ?? "Plant"
+//        NotificationCenter.default.post(name: .plantAdded, object: nil, userInfo: ["name": plantName])
+//
+//        // Close the screen: pop if pushed, otherwise dismiss
+//        if let nav = navigationController, nav.viewControllers.firstIndex(of: self) != nil, nav.viewControllers.count > 1 {
+//            // pop back to previous (SearchViewController)
+//            navigationController?.popViewController(animated: true)
+//        } else if presentingViewController != nil {
+//            dismiss(animated: true, completion: nil)
+//        } else {
+//            // fallback
+//            navigationController?.popViewController(animated: true)
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,16 +82,16 @@ class PlantDetailViewController: UIViewController {
         ])
 
         // Add to window so it appears above the tab bar/navigation
-        guard let window = view.window ?? UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
-        window.addSubview(container)
-        container.translatesAutoresizingMaskIntoConstraints = false
-
-        let bottomInset = window.safeAreaInsets.bottom + 60
-        NSLayoutConstraint.activate([
-            container.centerXAnchor.constraint(equalTo: window.centerXAnchor),
-            container.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: -bottomInset),
-            container.widthAnchor.constraint(lessThanOrEqualToConstant: 340)
-        ])
+//        guard let window = view.window ?? UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+//        window.addSubview(container)
+//        container.translatesAutoresizingMaskIntoConstraints = false
+//
+//        let bottomInset = window.safeAreaInsets.bottom + 60
+//        NSLayoutConstraint.activate([
+//            container.centerXAnchor.constraint(equalTo: window.centerXAnchor),
+//            container.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: -bottomInset),
+//            container.widthAnchor.constraint(lessThanOrEqualToConstant: 340)
+//        ])
 
         // Animate in
         UIView.animate(withDuration: 0.22) {
