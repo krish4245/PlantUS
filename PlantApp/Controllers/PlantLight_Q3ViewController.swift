@@ -9,8 +9,8 @@ import UIKit
 
 class PlantLight_Q3ViewController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
     
-    var answers: AddPlantAnswerModel!
-
+//    var answers: AddPlantAnswerModel!
+    var session : PlantQuestionSession!
     
     
     @IBOutlet weak var PlantLightCollectionView: UICollectionView!
@@ -50,7 +50,8 @@ class PlantLight_Q3ViewController: UIViewController,UICollectionViewDelegateFlow
         
         // 2️⃣ Store selected light requirement into answers
           let selectedLight = buttonData[selectedIndex!.row].light
-          answers.lightRequirement = selectedLight
+//          answers.lightRequirement = selectedLight
+        session.plantLight = selectedLight
 
           print("Saved Light Requirement:", selectedLight)
         
@@ -62,7 +63,8 @@ class PlantLight_Q3ViewController: UIViewController,UICollectionViewDelegateFlow
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toNextScreen" {
             if let nextVC = segue.destination as? Plant_Q4ViewController {
-                nextVC.answers = self.answers
+//                nextVC.answers = self.answers
+                nextVC.session = self.session
             }
         }
     }

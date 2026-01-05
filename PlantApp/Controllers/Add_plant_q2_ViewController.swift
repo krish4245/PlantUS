@@ -16,8 +16,8 @@ class Add_plant_q2_ViewController: UIViewController {
     
     
   
-    
-    var answers: AddPlantAnswerModel!
+    var session: PlantQuestionSession!
+//    var answers: AddPlantAnswerModel!
 
     
     var quantity = 1   // default value
@@ -31,9 +31,10 @@ class Add_plant_q2_ViewController: UIViewController {
     
     @IBAction func nextButtonTapped(_ sender: Any) {
         // 1️⃣ Save the quantity into answers model
-           answers.plantNumber = quantity
+//           answers.plantNumber = quantity
+        session.plantCount = quantity
         
-        print("Saved plant quantity:", answers.plantNumber)
+        print("Saved plant quantity:", session.plantCount)
        
 //         If selected → continue to next screen
             performSegue(withIdentifier: "toNextScreen", sender: self)
@@ -65,7 +66,8 @@ class Add_plant_q2_ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toNextScreen" {
             if let nextVC = segue.destination as? PlantLight_Q3ViewController {
-                nextVC.answers = self.answers
+//                nextVC.answers = self.answers
+                nextVC.session = self.session
             }
         }
     }

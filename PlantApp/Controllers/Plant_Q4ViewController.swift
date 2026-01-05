@@ -9,7 +9,8 @@ import UIKit
 
 class Plant_Q4ViewController: UIViewController,UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
 
-    var answers: AddPlantAnswerModel!
+//    var answers: AddPlantAnswerModel!
+    var session : PlantQuestionSession!
     
     @IBOutlet weak var nextButton: UIBarButtonItem!
     @IBOutlet weak var optionsCollectionView: UICollectionView!
@@ -38,7 +39,9 @@ class Plant_Q4ViewController: UIViewController,UICollectionViewDelegateFlowLayou
           let selectedRepotting = buttonData[selectedIndex!.row].title
 
           // 3️⃣ Save into answers model
-          answers.repotting = selectedRepotting
+//          answers.repotting = selectedRepotting
+        session.repottingAnswer = selectedRepotting
+        
 
           print("Saved repotting option:", selectedRepotting)
         
@@ -50,7 +53,8 @@ class Plant_Q4ViewController: UIViewController,UICollectionViewDelegateFlowLayou
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toNextScreen" {
             if let nextVC = segue.destination as? Plant_Q5ViewController {
-                nextVC.answers = self.answers
+//                nextVC.answers = self.answers
+                nextVC.session = self.session
             }
         }
     }

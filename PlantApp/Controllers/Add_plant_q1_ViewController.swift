@@ -11,14 +11,17 @@ class Add_plant_q1_ViewController: UIViewController,UICollectionViewDataSource,U
     
     
     let siteStore = SiteStore.shared
-
+    
+    var plantId: String?
+    var session: PlantQuestionSession!
+    
     @IBOutlet weak var siteOptionsCollectionView: UICollectionView!
     
     @IBOutlet weak var nextButton: UIBarButtonItem!
     var buttondata = dataStore.getQues1button()
     var selectedIndex: IndexPath?
     var selectedSite: String?
-    var answers = AddPlantAnswerModel()
+//    var answers = AddPlantAnswerModel()
    
 
     
@@ -38,46 +41,30 @@ class Add_plant_q1_ViewController: UIViewController,UICollectionViewDataSource,U
         // Do any additional setup after loading the view.
         siteOptionsCollectionView.dataSource = self
         siteOptionsCollectionView.delegate = self
+       
         registerCell()
+        if session == nil, let plantId = plantId {
+                    session = PlantQuestionSession(plantId: plantId)
+                }
+
+            print("Received plantID:", plantId ?? "nil")
     }
     
     
     @IBAction func nextButtonTapped(_ sender: UIBarButtonItem) {
         // 1️⃣ Make sure user selected a site
-        if selectedIndex == nil {
+        guard let selectedIndex = selectedIndex else {
                showSelectionAlert()
                return
            }
 //
-//           // 2️⃣ Get selected site name
-//           guard let siteName = selectedSite else { return }
-//
-//           // 3️⃣ Get selected icon
-//           let selectedIcon = buttondata[selectedIndex!.row].image
-//
-//           // 4️⃣ Choose a color (temporary)
-//           let siteColor = UIColor.systemGreen
-
-//           // 5️⃣ Check if site already exists
-//           if !siteStore.sites.contains(where: { $0.name.lowercased() == siteName.lowercased() }) {
-//
-//               // 6️⃣ Create new site
-//               siteStore.addSite(
-//                   name: siteName,
-//                   color: siteColor,
-//                   icon: selectedIcon
-//               )
-//
-//               print("🌱 New site added:", siteName)
-//
-//           } else {
-//               print("⚠️ Site already exists — not creating again:", siteName)
-//           }
-        // 7️⃣ Debug
-//        print("Saved site:", siteName)
         
-        answers.selectedSite = selectedSite        // <-- THIS stays same variable
-        answers.selectedIcon = buttondata[selectedIndex!.row].image
+        let selectedSite = buttondata[selectedIndex.row].site
+        let selectedIcon = buttondata[selectedIndex.row].image
+        
+        
+        session.siteName = selectedSite
+        session.siteIcon = selectedIcon   // optional image mapping
         
         // 8️⃣ Go to next screen
             performSegue(withIdentifier: "toNextScreen", sender: self)
@@ -87,7 +74,8 @@ class Add_plant_q1_ViewController: UIViewController,UICollectionViewDataSource,U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toNextScreen" {
             if let nextVC = segue.destination as? Add_plant_q2_ViewController {
-                nextVC.answers = self.answers   // Passing the entire model
+//                nextVC.answers = self.answers   // Passing the entire model
+                nextVC.session = self.session
             }
         }
     }

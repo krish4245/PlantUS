@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
                                 UICollectionViewDataSource,
@@ -15,22 +16,26 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var site: MyGardenSite!
+    var site: MyGardenSite! // passed from myGarden
     let plantStore =  PlantStore.shared
-    var sitePlants: [Plant_2] = []
+   
+    private var plants: [UserPlant] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = site.name
         collectionView.delegate = self
-              collectionView.dataSource = self
+        collectionView.dataSource = self
         
         registerCell()
-              loadData()
+        loadPlants()
 
-      
     }
+    override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+          loadPlants()
+      }
     
     func registerCell() {
         collectionView.register(
@@ -39,14 +44,14 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
         )
     }
 
-    func loadData() {
-            sitePlants = plantStore.plants(for: site.id)
-            collectionView.reloadData()
-        }
+    private func loadPlants() {
+        plants = PlantStore.shared.plants(for: site.id)
+        collectionView.reloadData()
+    }
     
     func collectionView(_ collectionView: UICollectionView,
                            numberOfItemsInSection section: Int) -> Int {
-           return sitePlants.count
+           return plants.count
        }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -57,22 +62,14 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
              for: indexPath
          ) as! siteDetailCollectionViewCell
          
-         let plant = sitePlants[indexPath.item]
-
-         // 🔥 Set UI
-         if let data = plant.imageData {
-             cell.plantImageView.image = UIImage(data: data)
-         }
-
-         cell.plantNameLabel.text = plant.name
-//         cell.healthLabel.text = "Healthy"              // placeholder
-//         cell.lastWateredLabel.text = "yesterday"        // placeholder
-
-         cell.layer.cornerRadius = 20
-         cell.layer.masksToBounds = true
-         
-         return cell
+         let userPlant = plants[indexPath.item]
+        
+        cell.configure(with: userPlant)
+              return cell
      }
+    
+    
+ 
     
     // MARK: Cell Layout
 
@@ -83,6 +80,18 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
         let width = (collectionView.frame.width - 40) / 2
         return CGSize(width: width, height: 220)
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                          layout collectionViewLayout: UICollectionViewLayout,
+                          minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+          16
+      }
+
+      func collectionView(_ collectionView: UICollectionView,
+                          layout collectionViewLayout: UICollectionViewLayout,
+                          minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+          16
+      }
 }
     
 

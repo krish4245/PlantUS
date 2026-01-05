@@ -9,12 +9,15 @@ import UIKit
 
 class Plant_Q5ViewController: UIViewController,UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    var answers: AddPlantAnswerModel!
+    
+    var session : PlantQuestionSession!
+//    var answers: AddPlantAnswerModel!
     
     @IBOutlet weak var nextButton: UIBarButtonItem!
     @IBOutlet weak var optionsCollectionView: UICollectionView!
     var buttonData = dataStore.getWateringOptions()
     var selectedIndex: IndexPath?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,8 @@ class Plant_Q5ViewController: UIViewController,UICollectionViewDelegateFlowLayou
         }
         // 2️⃣ Store selected watering option in the answers model
           let selectedWatering = buttonData[selectedIndex!.row].title
-          answers.watering = selectedWatering
+//          answers.watering = selectedWatering
+        session.wateringAnswer = selectedWatering
         
 //         If selected → continue to next screen
             performSegue(withIdentifier: "toNextScreen", sender: self)
@@ -42,7 +46,8 @@ class Plant_Q5ViewController: UIViewController,UICollectionViewDelegateFlowLayou
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toNextScreen" {
             if let nextVC = segue.destination as? CameraOptionViewController {
-                nextVC.answers = self.answers
+//                nextVC.answers = self.answers
+                nextVC.session = self.session
             }
         }
     }

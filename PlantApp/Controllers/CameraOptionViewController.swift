@@ -11,7 +11,9 @@ import PhotosUI
 
 class CameraOptionViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextViewDelegate,PHPickerViewControllerDelegate{
     
-    var answers: AddPlantAnswerModel!
+    
+    var session: PlantQuestionSession!
+//    var answers: AddPlantAnswerModel!
     let siteStore = SiteStore.shared
     //    let plantStore = PlantStore(siteStore: SiteStore())
     
@@ -110,16 +112,25 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
     // MARK: - Update UI + Save to answers
      func updateSelectedImage(_ image: UIImage) {
          plantImageView.image = image                                          // ⭐ Show preview
-         answers.plantImageData = image.jpegData(compressionQuality: 0.8)      // ⭐ Save image
-         print("📸 Image saved in answers")
+         session.imageData = image.jpegData(compressionQuality: 0.8)      // ⭐ Save image
+         print("📸 Image saved in session")
      }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        guard let siteName = answers.selectedSite else { return }
-        guard let icon = answers.selectedIcon else { return }
+//        guard let siteName = answers.selectedSite else { return }
+        guard
+            let siteName = session.siteName,
+            let siteIcon = session.siteIcon
+        else {
+            print("❌ Missing site info in session")
+            return
+        }
+//        guard let icon = session.customImageName else { return  }
+//        guard let icon = answers.selectedIcon else { return }
         let siteColor = UIColor.systemGreen   // can change later
+        let plantCountToAdd = session.plantCount ?? 1
         
-        let plantCountToAdd = answers.plantNumber ?? 1
+        
        
         print("➡️ Adding \(plantCountToAdd) plants to: \(siteName)")
         
@@ -130,7 +141,7 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
             siteStore.addSite(
                 name: siteName,
                 color: siteColor,
-                icon: icon
+                icon: siteIcon
             )
             
             print("🌱 New site saved:", siteName)
@@ -145,18 +156,27 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
         // 4️⃣ Now get the saved site (to get its ID)
         guard let savedSite = siteStore.sites.first(where: { $0.name == siteName }) else { return }
         
-        let plant = Plant_2(
-            name: answers.plantName ?? "Unnamed Plant",
-            siteID: savedSite.id,                 // 🔥 link plant → site
-            imageData: answers.plantImageData,
-            lightRequirement: answers.lightRequirement,
-            watering: answers.watering,
-            repotting: answers.repotting,
-            quantity: answers.plantNumber ?? 1
+       
+        
+        let userPlant = UserPlant(
+            plantId: session.plantId,                //link to plantModel
+                  siteName: siteName,
+                  siteID: savedSite.id,                    // correct siteID
+                  imageData: session.imageData,
+                  lightRequirement: session.plantLight,
+                  watering: session.wateringAnswer,
+                  repotting: session.repottingAnswer,
+                  quantity: plantCountToAdd,
+                  isAddedToGarden: true,
+                  wateringDone: false,
+                  trimmingDone: false,
+                  fertilizingDone: false,
+                  createdAt: Date()
+                
         )
         
-        PlantStore.shared.addPlant(plant)
-        print("🌿 Plant saved:", plant.name)
+        PlantStore.shared.addPlant(userPlant)
+        print("🌿 Plant saved:", session.plantId)
   
         //        // 6️⃣ Save plant
         //          plantStore.addPlant(plant)

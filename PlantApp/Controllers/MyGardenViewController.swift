@@ -17,7 +17,7 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
            super.viewDidLoad()
         title = "My Garden"
         
-        PlantStore.shared.generateDummyPlants(for: siteStore.sites)
+//        PlantStore.shared.generateDummyPlants(for: siteStore.sites)
         
         myGardenCollectionView.delegate = self
         myGardenCollectionView.dataSource = self
@@ -74,10 +74,11 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
           
           let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-              let vc = storyboard.instantiateViewController(
-                  withIdentifier: "BedroomViewController"
-              ) as! BedroomViewController
-              
+          let vc = storyboard.instantiateViewController(
+                 withIdentifier: "SiteDetailViewController"
+             ) as! SiteDetailViewController
+
+
               vc.site = selectedSite
               
               navigationController?.pushViewController(vc, animated: true)
