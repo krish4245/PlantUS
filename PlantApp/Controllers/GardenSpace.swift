@@ -4,10 +4,10 @@
 //
 //  Created by SDC-USER on 27/11/25.
 //
-
-import Foundation
-
-struct GardenSpace {
-    let name: String
-    let imageName: String
-}
+//
+//import Foundation
+//
+//struct GardenSpace {
+//    let name: String
+//    let imageName: String
+//}

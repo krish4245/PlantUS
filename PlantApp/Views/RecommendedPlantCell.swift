@@ -21,6 +21,15 @@ class RecommendedPlantCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        backgroundColor = .clear
+          contentView.backgroundColor = .systemBackground
+
+          contentView.layer.cornerRadius = 16
+          contentView.layer.masksToBounds = true
+
+          //  subtle border
+          contentView.layer.borderWidth = 1
+          contentView.layer.borderColor = UIColor.separator.cgColor
         
     }
     

@@ -24,6 +24,8 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         title = site.name
         collectionView.delegate = self
         collectionView.dataSource = self

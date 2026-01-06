@@ -106,6 +106,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         updateHomeUI()
 
         NotificationCenter.default.addObserver(
@@ -236,6 +238,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate {
         plantsCollectionView.reloadData()
     }
 }
+
+
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,

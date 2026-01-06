@@ -64,7 +64,7 @@ class PlantDetailViewController: UIViewController {
             destinationVC.plantId = plantId
         }
     }
-
+// modal after search plant if any plant is tapped
     
 
     

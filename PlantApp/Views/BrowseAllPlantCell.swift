@@ -22,8 +22,21 @@ final class BrowseAllPlantCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        contentView.layer.cornerRadius = 12
-        plantImageView.layer.cornerRadius = 10
+        backgroundColor = .clear
+          contentView.backgroundColor = .systemBackground
+
+          contentView.layer.cornerRadius = 16
+          contentView.layer.masksToBounds = true
+
+        contentView.layer.borderWidth = 0.5
+          contentView.layer.borderColor = UIColor.separator.cgColor
+
+          plantImageView.layer.cornerRadius = 10
+          plantImageView.clipsToBounds = true
+//        contentView.layer.cornerRadius = 12
+//        plantImageView.layer.cornerRadius = 10
+//        contentView.layer.borderWidth = 1
+//        contentView.layer.borderColor = UIColor.gray.cgColor
               
     }
     
