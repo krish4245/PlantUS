@@ -15,7 +15,7 @@
 //    var repotting: String? = nil
 //    var plantName: String? = nil
 //
-//    var plantImageData: Data? = nil   // ⭐ ADDED for storing image
+//    var plantImageData: Data? = nil   // ADDED for storing image
 //}
 
 

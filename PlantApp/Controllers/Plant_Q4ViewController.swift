@@ -32,7 +32,7 @@ class Plant_Q4ViewController: UIViewController,UICollectionViewDelegateFlowLayou
     @IBAction func nextButtonTapped(_ sender: UIBarButtonItem) {
         if selectedIndex == nil {
             showSelectionAlert()
-            return          // ⛔ STOP NAVIGATION
+            return          // STOP NAVIGATION
         }
         
         // 2️⃣ Get the selected repotting option

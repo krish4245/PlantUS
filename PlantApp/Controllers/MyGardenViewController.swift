@@ -15,7 +15,7 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
     
     override func viewDidLoad() {
            super.viewDidLoad()
-        title = "My Garden"
+       
         
 //        PlantStore.shared.generateDummyPlants(for: siteStore.sites)
         

@@ -20,7 +20,11 @@ class RecommendedPlantCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
+    
         // Initialization code
+        applyCardStyle()
         backgroundColor = .clear
           contentView.backgroundColor = .systemBackground
 
@@ -28,11 +32,28 @@ class RecommendedPlantCell: UICollectionViewCell {
           contentView.layer.masksToBounds = true
 
           //  subtle border
-          contentView.layer.borderWidth = 1
-          contentView.layer.borderColor = UIColor.separator.cgColor
+        contentView.layer.borderWidth = 0.5
+          contentView.layer.borderColor = UIColor.systemGray6.cgColor
+        
+        
+        contentView.layer.masksToBounds = false
+        
         
     }
     
+    
+    func applyCardStyle() {
+        layer.cornerRadius = 16
+        backgroundColor = .systemBackground
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.08
+        layer.shadowRadius = 12
+        layer.shadowOffset = CGSize(width: 0, height: 6)
+        
+        layer.masksToBounds = false
+    }
+        
     func configure(with plant: PlantModel_Ved) {
            nameLabel.text = plant.name
            tagLabel.text = plant.tagline

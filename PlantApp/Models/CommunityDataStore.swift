@@ -18,7 +18,7 @@ class CommunityDataStore {
     // MARK: - API
     
     // This function MUST be named 'fetchAllPosts' to match your Controller
-    // MARK: - Fast Fetching (No Lag) 🚀
+    // MARK: - Fast Fetching (No Lag) 
         
         func fetchAllPosts(completion: @escaping ([Post]) -> Void) {
             // Return immediately

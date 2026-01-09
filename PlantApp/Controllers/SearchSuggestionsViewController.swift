@@ -15,13 +15,16 @@ final class SearchSuggestionsViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    
     var didSelectSuggestion: ((String) -> Void)?
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "suggestionCell")
         tableView.tableFooterView = UIView()
     }
+    
 
     // MARK: - Table
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

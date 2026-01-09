@@ -466,6 +466,7 @@ this plant?</string>
                                 <buttonConfiguration key="configuration" style="filled" title="Save"/>
                                 <connections>
                                     <action selector="saveButtonTapped:" destination="fIg-u3-lFd" eventType="touchUpInside" id="ziL-kD-fJL"/>
+                                    <segue destination="YZF-IA-Jke" kind="show" identifier="showPlantAddedSuccess" id="F2g-O1-WdG"/>
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="z2r-tt-UgD">
@@ -534,8 +535,105 @@ this plant?</string>
             </objects>
             <point key="canvasLocation" x="2466" y="753"/>
         </scene>
+        <!--Plant Added Success View Controller-->
+        <scene sceneID="OZk-r6-b8S">
+            <objects>
+                <viewController id="YZF-IA-Jke" customClass="PlantAddedSuccessViewController" customModule="PlantApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OFi-E0-cTp">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cYx-u0-b43">
+                                <rect key="frame" x="0.0" y="172" width="393" height="612"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDk-hw-Pvg">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="175.66666666666666"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="t2A-An-WUx">
+                                        <rect key="frame" x="166.66666666666666" y="192.33333333333334" width="60" height="58.666666666666657"/>
+                                        <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="8ih-fz-Y1N"/>
+                                            <constraint firstAttribute="width" constant="60" id="ipk-Wu-Ucl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iT-lQ-qq8">
+                                        <rect key="frame" x="93.000000000000014" y="267.66666666666669" width="207.33333333333337" height="40.666666666666686"/>
+                                        <string key="text">Spider Plant added to your
+garden</string>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIX-Bo-6he">
+                                        <rect key="frame" x="0.0" y="324.33333333333331" width="393" height="175.66666666666669"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BpD-vx-pqi">
+                                        <rect key="frame" x="21.666666666666657" y="516" width="350" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="350" id="jxX-7w-HNq"/>
+                                            <constraint firstAttribute="height" constant="40" id="q5Y-ZE-cnj"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Go to My Garden">
+                                            <color key="baseBackgroundColor" red="0.4165039062" green="0.8081054688" blue="0.2396240234" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="kCD-bR-Eb6" kind="show" id="JRX-8b-VMa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOc-GN-1RM">
+                                        <rect key="frame" x="21.666666666666657" y="572" width="350" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="350" id="bhk-va-CA6"/>
+                                            <constraint firstAttribute="height" constant="40" id="kLv-Cm-FY5"/>
+                                        </constraints>
+                                        <directionalEdgeInsets key="directionalLayoutMargins" top="30" leading="30" bottom="8" trailing="8"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="gray" title="Continue Exploring">
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="baseBackgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="doneButtonTapped:" destination="YZF-IA-Jke" eventType="touchUpInside" id="rLL-49-SxC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DIX-Bo-6he" firstAttribute="height" secondItem="kDk-hw-Pvg" secondAttribute="height" id="Gvc-XI-u5Y"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jQI-SH-tx9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jQI-SH-tx9" firstAttribute="trailing" secondItem="cYx-u0-b43" secondAttribute="trailing" id="cBa-aR-ZCj"/>
+                            <constraint firstItem="cYx-u0-b43" firstAttribute="leading" secondItem="OFi-E0-cTp" secondAttribute="leading" id="cDU-9C-hhO"/>
+                            <constraint firstItem="jQI-SH-tx9" firstAttribute="bottom" secondItem="cYx-u0-b43" secondAttribute="bottom" id="mXQ-qF-BgF"/>
+                            <constraint firstItem="cYx-u0-b43" firstAttribute="top" secondItem="jQI-SH-tx9" secondAttribute="top" id="oJj-nx-tk9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="kcA-Sa-hm7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zML-IZ-fAX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8938" y="92"/>
+        </scene>
+        <!--MyGardenViewController-->
+        <scene sceneID="rhx-a1-lks">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="MyGardenViewController" id="kCD-bR-Eb6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Oca-ch-v9t"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Llg-MI-DDm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9564" y="121"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="minus" catalog="system" width="128" height="26"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">

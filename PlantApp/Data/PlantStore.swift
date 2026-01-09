@@ -30,7 +30,17 @@ class PlantStore: ObservableObject {
     // MARK: Add a new plant
     func addPlant(_ plant: UserPlant) {
         plants.append(plant)
+//        var current = plants
+//        current.append(plant)
+//        plants = current
     }
+    var totalPlants: Int {
+            plants.count
+        }
+    var totalSpaces: Int {
+        Set(plants.map { $0.siteID }).count
+    }
+
 
     // MARK: Get plants for a specific site
     func plants(for siteID: UUID) -> [UserPlant] {

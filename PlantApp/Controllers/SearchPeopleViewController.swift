@@ -24,7 +24,7 @@ class SearchPeopleViewController: UIViewController, UITableViewDelegate, UITable
         // 1. Setup UI
         setupSearchBar()
         setupTableView()
-        setupKeyboardDismiss() // 👈 Added this function
+        setupKeyboardDismiss() // Added this function
         
         loadData()
     }
@@ -37,7 +37,7 @@ class SearchPeopleViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    // MARK: - Keyboard Dismiss Logic ⌨️
+    // MARK: - Keyboard Dismiss Logic 
     func setupKeyboardDismiss() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         // This ensures the tap doesn't block table view clicks
@@ -54,7 +54,7 @@ class SearchPeopleViewController: UIViewController, UITableViewDelegate, UITable
         let searchBar = UISearchBar()
         searchBar.placeholder = "Search"
         searchBar.searchBarStyle = .minimal
-        searchBar.delegate = self // 👈 Important: Connect Delegate
+        searchBar.delegate = self // Important: Connect Delegate
         
         let wrapperView = UIView()
         wrapperView.frame = CGRect(x: 0, y: 0, width: view.frame.width * 0.75, height: 44)
@@ -71,7 +71,7 @@ class SearchPeopleViewController: UIViewController, UITableViewDelegate, UITable
         navigationItem.titleView = wrapperView
     }
     
-    // MARK: - Search Logic 🔍
+    // MARK: - Search Logic
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {

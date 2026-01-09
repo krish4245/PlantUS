@@ -21,6 +21,7 @@ final class BrowseAllPlantCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        applyCardStyle()
         // Initialization code
         backgroundColor = .clear
           contentView.backgroundColor = .systemBackground
@@ -33,12 +34,22 @@ final class BrowseAllPlantCell: UICollectionViewCell {
 
           plantImageView.layer.cornerRadius = 10
           plantImageView.clipsToBounds = true
-//        contentView.layer.cornerRadius = 12
-//        plantImageView.layer.cornerRadius = 10
-//        contentView.layer.borderWidth = 1
-//        contentView.layer.borderColor = UIColor.gray.cgColor
+
+        contentView.layer.masksToBounds = false
               
     }
+    func applyCardStyle() {
+        layer.cornerRadius = 16
+        backgroundColor = .systemBackground
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.08
+        layer.shadowRadius = 12
+        layer.shadowOffset = CGSize(width: 0, height: 6)
+        
+        layer.masksToBounds = false
+    }
+    
     
     func configure(with plant: PlantModel_Ved) {
          plantID = plant.id

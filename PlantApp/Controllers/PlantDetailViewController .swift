@@ -10,6 +10,7 @@ import UIKit
 
 class PlantDetailViewController: UIViewController {
     
+    @IBOutlet weak var benefitsCardView: UIStackView!
     @IBOutlet weak var plantImageView: UIImageView!
     
     @IBOutlet weak var planTitleLabel: UILabel!
@@ -28,12 +29,24 @@ class PlantDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        styleBenefitsCard()
         // Do any additional setup after loading the view.
         
         fetchPlant()
         setupUI()
         print("Received plant ID:", plantId!)
+    }
+    
+    func styleBenefitsCard() {
+        benefitsCardView.backgroundColor = .systemBackground
+        benefitsCardView.layer.cornerRadius = 16
+
+        benefitsCardView.layer.shadowColor = UIColor.black.cgColor
+        benefitsCardView.layer.shadowOpacity = 0.08
+        benefitsCardView.layer.shadowRadius = 12
+        benefitsCardView.layer.shadowOffset = CGSize(width: 0, height: 10)
+
+        benefitsCardView.layer.masksToBounds = false
     }
     
     private func fetchPlant() {

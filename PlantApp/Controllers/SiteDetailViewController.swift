@@ -79,9 +79,16 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let width = (collectionView.frame.width - 40) / 2
-        return CGSize(width: width, height: 220)
+        let itemsPerRow: CGFloat = 2
+        let spacing: CGFloat = 16
+
+        let totalSpacing = spacing * (itemsPerRow + 1)
+        let availableWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width
+        let itemWidth = (availableWidth - totalSpacing) / itemsPerRow
+
+        return CGSize(width: floor(itemWidth), height: 220)
     }
+
     
     func collectionView(_ collectionView: UICollectionView,
                           layout collectionViewLayout: UICollectionViewLayout,

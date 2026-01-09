@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24128" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24063"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,22 +17,24 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bh-Lq-UjH">
-                        <rect key="frame" x="54" y="163" width="42" height="21"/>
+                        <rect key="frame" x="54" y="95" width="42" height="89"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ahu-aq-WZC">
-                        <rect key="frame" x="16" y="9" width="118" height="128"/>
+                        <rect key="frame" x="16" y="9" width="118" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="49S-rT-uCN"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="4Bh-Lq-UjH" firstAttribute="top" secondItem="ahu-aq-WZC" secondAttribute="bottom" constant="26" id="1Fa-pi-4Dl"/>
-                <constraint firstAttribute="trailing" secondItem="ahu-aq-WZC" secondAttribute="trailing" constant="16" id="MRB-YW-SrV"/>
                 <constraint firstItem="4Bh-Lq-UjH" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="PCG-sf-a4B"/>
-                <constraint firstAttribute="bottom" secondItem="ahu-aq-WZC" secondAttribute="bottom" constant="63" id="hos-u0-YLz"/>
+                <constraint firstItem="ahu-aq-WZC" firstAttribute="centerX" secondItem="4Bh-Lq-UjH" secondAttribute="centerX" id="Yt4-if-daR"/>
                 <constraint firstAttribute="bottom" secondItem="4Bh-Lq-UjH" secondAttribute="bottom" constant="16" id="lHx-Ru-2jD"/>
                 <constraint firstItem="ahu-aq-WZC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="9" id="wDV-UQ-YhJ"/>
                 <constraint firstItem="ahu-aq-WZC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="wQg-BQ-YaB"/>

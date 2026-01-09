@@ -32,7 +32,7 @@ class Plant_Q5ViewController: UIViewController,UICollectionViewDelegateFlowLayou
     @IBAction func nextButtonTapped(_ sender: Any) {
         if selectedIndex == nil {
             showSelectionAlert()
-            return          // ⛔ STOP NAVIGATION
+            return          // STOP NAVIGATION
         }
         // 2️⃣ Store selected watering option in the answers model
           let selectedWatering = buttonData[selectedIndex!.row].title

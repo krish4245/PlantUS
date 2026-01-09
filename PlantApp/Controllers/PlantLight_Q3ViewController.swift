@@ -45,7 +45,7 @@ class PlantLight_Q3ViewController: UIViewController,UICollectionViewDelegateFlow
         // Check if user selected something
         if selectedIndex == nil {
             showSelectionAlert()
-            return          // ⛔ STOP NAVIGATION
+            return          //  STOP NAVIGATION
         }
         
         // 2️⃣ Store selected light requirement into answers

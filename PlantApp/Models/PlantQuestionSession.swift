@@ -8,7 +8,7 @@ import Foundation
 
 struct PlantQuestionSession {
 
-    // 🔑 injected once from PlantDetailViewController
+    //  injected once from PlantDetailViewController
     let plantId: String
 
     // 🔹 direct mappings (user choices)

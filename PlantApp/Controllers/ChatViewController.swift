@@ -136,7 +136,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // MARK: - Sending Logic 🚀
+    // MARK: - Sending Logic 
 
         // This function runs when the user hits "Return" or "Send" on the keyboard
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {

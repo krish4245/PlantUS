@@ -11,7 +11,8 @@ import PhotosUI
 
 class CameraOptionViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextViewDelegate,PHPickerViewControllerDelegate{
     
-    
+    var selectedPlant: PlantModel_Ved!
+
     var session: PlantQuestionSession!
 //    var answers: AddPlantAnswerModel!
     let siteStore = SiteStore.shared
@@ -117,6 +118,7 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
      }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
+//        performSegue(withIdentifier: "showPlantAddedSuccess", sender: nil)
 //        guard let siteName = answers.selectedSite else { return }
         guard
             let siteName = session.siteName,
@@ -181,10 +183,10 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
         //        // 6️⃣ Save plant
         //          plantStore.addPlant(plant)
         //
-        //          print("🌿 Plant saved:", plant.name)
+        //          print(" Plant saved:", plant.name)
         //    }
         
-        navigationController?.popToRootViewController(animated: true)
+//        navigationController?.popToRootViewController(animated: true)
 
         
         

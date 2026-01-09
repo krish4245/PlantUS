@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
    
     
 
@@ -27,14 +27,84 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         // Do any additional setup after loading the view.
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.collectionViewLayout = createLayout()
-        
+        setupMoreButton()
         
         registerCells()
     }
+    
+    private func setupMoreButton() {
+        let moreButton = UIBarButtonItem(
+            image: UIImage(systemName: "ellipsis"),
+            style: .plain,
+            target: self,
+            action: #selector(moreTapped)
+        )
+        navigationItem.rightBarButtonItem = moreButton
+    }
+    
+    @objc private func moreTapped() {
+        let actionSheet = UIAlertController(
+            title: "Add Plant",
+            message: nil,
+            preferredStyle: .actionSheet
+        )
+
+        let scanAction = UIAlertAction(title: "Scan Plant", style: .default) { _ in
+            self.openCamera()
+        }
+
+        let galleryAction = UIAlertAction(title: "Upload from Gallery", style: .default) { _ in
+            self.openGallery()
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+
+        actionSheet.addAction(scanAction)
+        actionSheet.addAction(galleryAction)
+        actionSheet.addAction(cancelAction)
+
+        // iPad safety
+        if let popover = actionSheet.popoverPresentationController {
+            popover.barButtonItem = navigationItem.rightBarButtonItem
+        }
+
+        present(actionSheet, animated: true)
+    }
+    private func openCamera() {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("Camera not available")
+            return
+        }
+
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    private func openGallery() {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
+        picker.dismiss(animated: true)
+
+        if let image = info[.originalImage] as? UIImage {
+            // TODO: pass image to ML / plant detection
+            print("Image selected")
+        }
+    }
+
     
     func registerCells(){
         
@@ -148,8 +218,8 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
         )
 
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(180),
-            heightDimension: .absolute(220)
+            widthDimension: .absolute(170),
+            heightDimension: .absolute(210)
         )
 
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -161,6 +231,16 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
 
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
+        
+        section.interGroupSpacing = 12   // ✅ ADD THIS
+           section.contentInsets = NSDirectionalEdgeInsets(
+               top: 8,
+               leading: 16,
+               bottom: 24,
+               trailing: 16
+           )
+        
+        
         
         section.boundarySupplementaryItems = [header]
 
@@ -199,6 +279,14 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
 
        let section = NSCollectionLayoutSection(group: group)
         
+        
+        section.interGroupSpacing = 12   // ✅ ADD THIS
+           section.contentInsets = NSDirectionalEdgeInsets(
+               top: 8,
+               leading: 16,
+               bottom: 16,
+               trailing: 16
+           )
         section.boundarySupplementaryItems = [header]
         
         return section
