@@ -16,6 +16,8 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var totalPlantsCardView: UIView?
     @IBOutlet weak var spacesCardView: UIView?
 
+    @IBOutlet weak var userSiteCount: UILabel!
+    @IBOutlet weak var userPlantCount: UILabel!
     // MARK: - Data
 
     private let careTypes: [CareType] = [.watering, .trimming, .repotting, .fertilizing]
@@ -41,15 +43,22 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        careTypeCollectionView.dataSource = self
+        careTypeCollectionView.delegate = self
+        
+        
         applyCareFilter(index: selectedCareIndex)
         setupCollectionViews()
         applyCareFilter(index: selectedCareIndex)
         updateHomeUI()
         styleCards()
-        careTypeCollectionView.dataSource = self
-        careTypeCollectionView.delegate = self
         
         
+        updateUserStats()
+
 
 //        navigationItem.title = "Home"
 //        navigationController?.navigationBar.prefersLargeTitles = true
@@ -69,6 +78,12 @@ final class HomeViewController: UIViewController {
             object: nil
         )
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateUserStats()
+    }
+
 
     // MARK: - Setup
 
@@ -89,6 +104,19 @@ final class HomeViewController: UIViewController {
 
         view.layer.masksToBounds = false
     }
+    
+    private func updateUserStats() {
+        let allUserPlants = PlantStore.shared.plants   // all UserPlant entries
+
+        // ✅ Total plants including quantity
+        let totalPlants = allUserPlants.reduce(0) { $0 + $1.quantity }
+        userPlantCount.text = "\(totalPlants)"
+
+        // ✅ Unique sites which contain plant quantity > 0
+        let activeSiteIDs = Set(allUserPlants.filter { $0.quantity > 0 }.map { $0.siteID })
+        userSiteCount.text = "\(activeSiteIDs.count)"
+    }
+
 
     
     

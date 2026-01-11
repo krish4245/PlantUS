@@ -124,7 +124,7 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
             let siteName = session.siteName,
             let siteIcon = session.siteIcon
         else {
-            print("❌ Missing site info in session")
+            print("Missing site info in session")
             return
         }
 //        guard let icon = session.customImageName else { return  }
@@ -134,22 +134,22 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
         
         
        
-        print("➡️ Adding \(plantCountToAdd) plants to: \(siteName)")
+        print("Adding \(plantCountToAdd) plants to: \(siteName)")
         
         // If site does NOT exist → create it
         if !siteStore.sites.contains(where: { $0.name.lowercased() == siteName.lowercased() }) {
             
-            // 3️⃣ Create the new site
+            // Create new site
             siteStore.addSite(
                 name: siteName,
                 color: siteColor,
                 icon: siteIcon
             )
             
-            print("🌱 New site saved:", siteName)
+            print("New site saved:", siteName)
             
         } else {
-            print("⚠️ Site already exists, not creating again")
+            print(" Site already exists, not creating again")
             
         }
         
@@ -188,7 +188,6 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
         
 //        navigationController?.popToRootViewController(animated: true)
 
-        
         
     }
 }

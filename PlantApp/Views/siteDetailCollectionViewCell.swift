@@ -13,16 +13,31 @@ class siteDetailCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var plantNameLabel: UILabel!
     
+    static let identifier = "plantCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        layer.cornerRadius = 20
+        
+        contentView.layer.cornerRadius = 16
+        layer.cornerRadius = 16
+        contentView.layer.masksToBounds = true
+        
+        layer.borderWidth = 0.8
+        layer.borderColor = UIColor.systemGray5.cgColor
+        
+        layer.shadowColor = UIColor.black.cgColor
+               layer.shadowOpacity = 0.08
+               layer.shadowOffset = CGSize(width: 0, height: 2)
+               layer.shadowRadius = 6
+               layer.masksToBounds = false
         // Initialization code
     }
     
-    func configure(with userPlant: UserPlant) {
+  public  func configure(with userPlant: UserPlant) {
         let plantModel = PlantDataSource.shared.plant(for: userPlant.plantId)
-        plantNameLabel.text = plantModel?.name ?? "Unknown Plant"
+      plantNameLabel.text = "\(plantModel?.name ?? "Unknown Plant") x\(userPlant.quantity)"
+
         
         if let data = userPlant.imageData {
                     plantImageView.image = UIImage(data: data)
@@ -31,5 +46,9 @@ class siteDetailCollectionViewCell: UICollectionViewCell {
                 } else {
                     plantImageView.image = UIImage(systemName: "leaf")
                 }
+    }
+    
+    static func nib() -> UINib {
+        return UINib(nibName: "siteDetailCollectionViewCell", bundle: nil)
     }
 }

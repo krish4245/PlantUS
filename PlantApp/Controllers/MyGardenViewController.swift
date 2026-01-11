@@ -21,8 +21,10 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
         
         myGardenCollectionView.delegate = self
         myGardenCollectionView.dataSource = self
+
              
         registerCell() // func to register the xib cell
+        configureGridLayout()
           
        }
     override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +60,11 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
            cell.backgroundColor = site.cardColor.color
            
        
-        cell.plantCountLabel.text = "\(site.plantCount)"
+        // ✅ Live count from PlantStore
+          let plantsInSite = PlantStore.shared.plants(for: site.id)
+          let totalCount = plantsInSite.reduce(0) { $0 + $1.quantity }
+          cell.plantCountLabel.text = "\(totalCount)"
+
 
            
            return cell
@@ -84,29 +90,62 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
               navigationController?.pushViewController(vc, animated: true)
       }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
+    
+    private func configureGridLayout() {
+        let layout = UICollectionViewFlowLayout()
 
-        let padding: CGFloat = 16 * 3 // left + right + middle
-        let availableWidth = collectionView.frame.width - padding
-        let width = availableWidth / 2
+        let spacing: CGFloat = 16
+        let columns: CGFloat = 2
 
-        return CGSize(width: width, height: 120)
+        // padding from left & right
+        let horizontalPadding: CGFloat = 16
+
+        let totalSpacing = (columns - 1) * spacing + (horizontalPadding * 2)
+        let itemWidth = floor((myGardenCollectionView.bounds.width - totalSpacing) / columns)
+
+        layout.itemSize = CGSize(width: itemWidth, height: 100)
+        layout.minimumInteritemSpacing = spacing
+        layout.minimumLineSpacing = spacing
+        layout.sectionInset = UIEdgeInsets(top: 0, left: horizontalPadding, bottom: 0, right: horizontalPadding)
+
+        myGardenCollectionView.collectionViewLayout = layout
     }
+
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        configureGridLayout()
     }
+
     
     
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
-    }
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        let itemsPerRow: CGFloat = 2
+//           let interItemSpacing: CGFloat = 16  // spacing between 2 cards
+//        let _: CGFloat = 16 * 2 // because contentInset adds padding
+//
+//           let totalSpacing = interItemSpacing * (itemsPerRow - 1) // only middle spacing
+//
+//        let width = floor((collectionView.bounds.width - totalSpacing) / itemsPerRow)
+//           return CGSize(width: floor(width), height: 120)
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 16
+//    }
+//    
+//    
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 16
+//    }
        
 
 }

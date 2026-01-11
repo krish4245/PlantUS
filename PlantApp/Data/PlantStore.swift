@@ -29,10 +29,28 @@ class PlantStore: ObservableObject {
 
     // MARK: Add a new plant
     func addPlant(_ plant: UserPlant) {
-        plants.append(plant)
-//        var current = plants
-//        current.append(plant)
-//        plants = current
+        
+        print("➡️ ADD REQUEST: plantId=\(plant.plantId), siteID=\(plant.siteID)")
+
+        if let index = plants.firstIndex(where: { $0.plantId == plant.plantId && $0.siteID == plant.siteID }) {
+            
+            let oldQty = plants[index].quantity
+              // Increase quantity instead of adding duplicate cell
+            plants[index].quantity += plant.quantity
+            print("✅ UPDATED: qty \(oldQty) -> \(plants[index].quantity)")
+
+
+              // Optional: update image if new one is provided
+              if plant.imageData != nil {
+                  plants[index].imageData = plant.imageData
+              }
+
+          } else {
+              // First time plant added in this site
+              plants.append(plant)
+              print("🆕 NEW ENTRY CREATED: qty=\(plant.quantity)")
+          }
+        
     }
     var totalPlants: Int {
             plants.count
@@ -54,14 +72,14 @@ class PlantStore: ObservableObject {
         }
     }
 
-    // MARK: Load
-    private func loadPlants() {
-        if let data = UserDefaults.standard.data(forKey: key),
-           let decoded = try? JSONDecoder().decode([UserPlant].self, from: data) {
-            plants = decoded
+        // MARK: Load
+        private func loadPlants() {
+            if let data = UserDefaults.standard.data(forKey: key),
+               let decoded = try? JSONDecoder().decode([UserPlant].self, from: data) {
+                plants = decoded
+            }
         }
     }
-}
 
 extension PlantDataSource {
 
@@ -75,5 +93,20 @@ extension PlantStore {
     func hasUserAddedPlant(plantId: String) -> Bool {
         return plants.contains { $0.plantId == plantId }
     }
+    
+    func removeOnePlant(plantId: String, siteID: UUID) {
+           if let index = plants.firstIndex(where: { $0.plantId == plantId && $0.siteID == siteID }) {
+
+               if plants[index].quantity > 1 {
+                   plants[index].quantity -= 1
+               } else {
+                   plants.remove(at: index)
+               }
+           }
+       }
+    
+    func removeAllPlants(plantId: String, siteID: UUID) {
+          plants.removeAll { $0.plantId == plantId && $0.siteID == siteID }
+      }
 }
 

@@ -14,7 +14,7 @@ struct UserPlant: Identifiable, Codable {
     var lightRequirement: String?
     let watering: String?
     let repotting: String?
-    var quantity: Int? // number of plants added
+    var quantity: Int = 1 // number of plants added
     
     
     // Garden-only (mutable, user specific)

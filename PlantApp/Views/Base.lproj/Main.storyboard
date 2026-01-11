@@ -1434,22 +1434,21 @@
                 <tapGestureRecognizer id="C28-DT-l8e">
                     <connections>
                         <action selector="monsteraCardTapped:" destination="6uU-G4-EMK" id="7LA-2G-xls"/>
-                        <segue destination="WEQ-w6-Gy3" kind="show" id="2D2-AB-vZy"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="6175" y="-942"/>
         </scene>
-        <!--Monstera-->
+        <!--User Plant Detail-->
         <scene sceneID="lBO-0e-rVM">
             <objects>
-                <viewController title="Monstera" id="WEQ-w6-Gy3" customClass="MonsteraDetailViewController" customModule="PlantApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserPlantDetail" title="Monstera" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WEQ-w6-Gy3" userLabel="User Plant Detail" customClass="UserPlantDetailViewController" customModule="PlantApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2B0-MS-Wct">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dvl-JX-g3w">
-                                <rect key="frame" x="0.0" y="0.0" width="1460" height="793"/>
+                                <rect key="frame" x="0.0" y="0.0" width="1460" height="852"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zgx-4g-3TZ">
                                         <rect key="frame" x="-14" y="-168" width="1460" height="1272"/>
@@ -1964,10 +1963,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="BuW-Sa-WAq"/>
+                    <connections>
+                        <outlet property="plantImageView" destination="jWa-BF-gkA" id="YT5-RX-Ult"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOs-ke-RfV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6175" y="-1658"/>
+            <point key="canvasLocation" x="4379" y="-2213"/>
         </scene>
         <!--Watering Consistency-->
         <scene sceneID="ZRT-ze-Cra">
@@ -2984,6 +2986,8 @@
                         <outlet property="spacesCardView" destination="PZ2-kp-oNR" id="aFv-ui-1Qn"/>
                         <outlet property="statusCardView" destination="TFd-No-gr0" id="YvA-L2-2Es"/>
                         <outlet property="totalPlantsCardView" destination="a8K-th-iRM" id="8c0-Ac-vqz"/>
+                        <outlet property="userPlantCount" destination="Wcc-e7-DVP" id="FA1-K0-5X4"/>
+                        <outlet property="userSiteCount" destination="BJ5-M9-hAc" id="09g-E7-G5c"/>
                         <segue destination="NBQ-XT-wUi" kind="presentation" id="Xs4-7o-X6f"/>
                     </connections>
                 </viewController>
@@ -3248,7 +3252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6LD-xw-YLL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4381" y="-1225"/>
+            <point key="canvasLocation" x="4378" y="-638"/>
         </scene>
         <!--Site Detail View Controller-->
         <scene sceneID="jfn-0F-WHL">
@@ -3259,7 +3263,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IbR-Z6-60X">
-                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <rect key="frame" x="16" y="126" width="361" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="caS-OX-Acw">
                                     <size key="itemSize" width="128" height="128"/>
@@ -3268,11 +3272,11 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="apW-eH-bn4">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="apW-eH-bn4" customClass="siteDetailCollectionViewCell" customModule="PlantApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="f3l-XK-k2h">
-                                            <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
@@ -3283,9 +3287,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="zrk-HH-uBJ" firstAttribute="bottom" secondItem="IbR-Z6-60X" secondAttribute="bottom" id="0no-pk-Byk"/>
-                            <constraint firstItem="IbR-Z6-60X" firstAttribute="leading" secondItem="zrk-HH-uBJ" secondAttribute="leading" id="H2Q-oq-dS0"/>
-                            <constraint firstItem="IbR-Z6-60X" firstAttribute="top" secondItem="zrk-HH-uBJ" secondAttribute="top" id="rSN-rh-hg7"/>
-                            <constraint firstItem="zrk-HH-uBJ" firstAttribute="trailing" secondItem="IbR-Z6-60X" secondAttribute="trailing" id="z9H-7L-Szk"/>
+                            <constraint firstItem="IbR-Z6-60X" firstAttribute="leading" secondItem="zrk-HH-uBJ" secondAttribute="leading" constant="16" id="H2Q-oq-dS0"/>
+                            <constraint firstItem="IbR-Z6-60X" firstAttribute="top" secondItem="zrk-HH-uBJ" secondAttribute="top" constant="8" id="rSN-rh-hg7"/>
+                            <constraint firstItem="zrk-HH-uBJ" firstAttribute="trailing" secondItem="IbR-Z6-60X" secondAttribute="trailing" constant="16" id="z9H-7L-Szk"/>
                         </constraints>
                     </view>
                     <connections>
@@ -3294,7 +3298,81 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bO-Xd-PoJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5232" y="-1248"/>
+            <point key="canvasLocation" x="4379" y="-1349"/>
+        </scene>
+        <!--PlantActionSheetViewController-->
+        <scene sceneID="QqV-CF-K67">
+            <objects>
+                <viewController storyboardIdentifier="PlantActionSheetVC" title="PlantActionSheetViewController" id="QeV-7k-jLI" customClass="PlantActionSheetViewController" customModule="PlantApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="waW-cb-edf">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDn-O2-oHR">
+                                <rect key="frame" x="16" y="315" width="361" height="35"/>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Remove One"/>
+                                <connections>
+                                    <action selector="removeOneTapped:" destination="QeV-7k-jLI" eventType="touchUpInside" id="DRe-cW-Cnj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGV-HL-0cb">
+                                <rect key="frame" x="16" y="362" width="361" height="35"/>
+                                <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Remove All"/>
+                                <connections>
+                                    <action selector="removeAllTapped:" destination="QeV-7k-jLI" eventType="touchUpInside" id="uM1-Te-ru1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDa-BD-Erz">
+                                <rect key="frame" x="16" y="268" width="361" height="35"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Visualize  in AR View"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PlantName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKf-Ay-vOW">
+                                <rect key="frame" x="16" y="168" width="361" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TB8-g5-pjq">
+                                <rect key="frame" x="16" y="214" width="361" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EJS-co-l4I"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EJS-co-l4I" firstAttribute="trailing" secondItem="TB8-g5-pjq" secondAttribute="trailing" constant="16" id="0Mc-ID-lQV"/>
+                            <constraint firstItem="CKf-Ay-vOW" firstAttribute="leading" secondItem="EJS-co-l4I" secondAttribute="leading" constant="16" id="1An-Xc-MBL"/>
+                            <constraint firstItem="XDn-O2-oHR" firstAttribute="leading" secondItem="EJS-co-l4I" secondAttribute="leading" constant="16" id="H7m-zv-7Pr"/>
+                            <constraint firstItem="TB8-g5-pjq" firstAttribute="leading" secondItem="EJS-co-l4I" secondAttribute="leading" constant="16" id="PEe-7V-Jkc"/>
+                            <constraint firstItem="UGV-HL-0cb" firstAttribute="leading" secondItem="EJS-co-l4I" secondAttribute="leading" constant="16" id="RsR-70-NAU"/>
+                            <constraint firstItem="EJS-co-l4I" firstAttribute="trailing" secondItem="XDn-O2-oHR" secondAttribute="trailing" constant="16" id="WSA-Yf-QhH"/>
+                            <constraint firstItem="TB8-g5-pjq" firstAttribute="top" secondItem="CKf-Ay-vOW" secondAttribute="bottom" constant="10" id="XEr-Ja-RNV"/>
+                            <constraint firstItem="EJS-co-l4I" firstAttribute="trailing" secondItem="UGV-HL-0cb" secondAttribute="trailing" constant="16" id="Ynu-aR-FVo"/>
+                            <constraint firstItem="EJS-co-l4I" firstAttribute="trailing" secondItem="VDa-BD-Erz" secondAttribute="trailing" constant="16" id="ajx-Dk-Spn"/>
+                            <constraint firstItem="VDa-BD-Erz" firstAttribute="top" secondItem="EJS-co-l4I" secondAttribute="top" constant="150" id="ch8-mD-o41"/>
+                            <constraint firstItem="XDn-O2-oHR" firstAttribute="top" secondItem="VDa-BD-Erz" secondAttribute="bottom" constant="12" id="mto-4n-tFk"/>
+                            <constraint firstItem="VDa-BD-Erz" firstAttribute="leading" secondItem="EJS-co-l4I" secondAttribute="leading" constant="16" id="qOI-9W-d1d"/>
+                            <constraint firstItem="EJS-co-l4I" firstAttribute="trailing" secondItem="CKf-Ay-vOW" secondAttribute="trailing" constant="16" id="ubi-GK-CFa"/>
+                            <constraint firstItem="CKf-Ay-vOW" firstAttribute="top" secondItem="EJS-co-l4I" secondAttribute="top" constant="50" id="xMq-mz-Lmx"/>
+                            <constraint firstItem="UGV-HL-0cb" firstAttribute="top" secondItem="XDn-O2-oHR" secondAttribute="bottom" constant="12" id="yCk-k0-hll"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="quantityLabel" destination="TB8-g5-pjq" id="hMh-F0-1u6"/>
+                        <outlet property="removeOneButton" destination="XDn-O2-oHR" id="3CF-XH-Olh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cv3-aX-cBi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5271" y="-1349"/>
         </scene>
         <!--Garden score-->
         <scene sceneID="Lc2-bw-xi8">

@@ -5,16 +5,17 @@
 //  Created by SDC-USER on 13/12/25.
 //
 
-//import UIKit
-//
-//class MonsteraDetailViewController: UIViewController {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        
-//
-//    }
+import UIKit
+
+class UserPlantDetailViewController: UIViewController {
+
+    @IBOutlet weak var plantImageView: UIImageView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        
+
+    }
     
 
     /*
@@ -27,4 +28,4 @@
     }
     */
 
-//}
+}

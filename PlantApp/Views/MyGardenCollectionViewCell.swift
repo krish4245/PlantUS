@@ -23,14 +23,10 @@ class MyGardenCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.isUserInteractionEnabled = true
         
-        contentView.isUserInteractionEnabled = false
-        
-        
-           
         layer.cornerRadius = 16
-               clipsToBounds = true
+        layer.masksToBounds = true
+               
     }
 
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 class DataStore {
-    var PlantSiteOptions = [PlantSiteOption(image: "bed.double.circle.fill", site: "Bedroom"),
+    var PlantSiteOptions = [PlantSiteOption(image: "bed.double.fill", site: "Bedroom"),
                        PlantSiteOption(image: "sofa.fill", site: "Living Room"),
                        PlantSiteOption(image: "shower.fill", site: "Bathroom"),
                        PlantSiteOption(image: "fireplace.fill", site: "Hall"),

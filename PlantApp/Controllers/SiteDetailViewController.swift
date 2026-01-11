@@ -24,6 +24,10 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let layout = UICollectionViewFlowLayout()
+        
+        collectionView.collectionViewLayout = layout
+        
         
         
         title = site.name
@@ -40,14 +44,15 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
       }
     
     func registerCell() {
-        collectionView.register(
-            UINib(nibName: "siteDetailCollectionViewCell", bundle: nil),
-            forCellWithReuseIdentifier: "PlantCell"
-        )
+        collectionView.register(siteDetailCollectionViewCell.nib(), forCellWithReuseIdentifier: siteDetailCollectionViewCell.identifier )
     }
 
     private func loadPlants() {
         plants = PlantStore.shared.plants(for: site.id)
+        print("📍 SiteDetailVC loadPlants() -> total=\(plants.count)")
+          for p in plants {
+              print("   • \(p.plantId) qty=\(p.quantity)")
+          }
         collectionView.reloadData()
     }
     
@@ -60,7 +65,7 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
                          cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
          
          let cell = collectionView.dequeueReusableCell(
-             withReuseIdentifier: "PlantCell",
+            withReuseIdentifier: siteDetailCollectionViewCell.identifier,
              for: indexPath
          ) as! siteDetailCollectionViewCell
          
@@ -69,6 +74,28 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
         cell.configure(with: userPlant)
               return cell
      }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+        
+        let selectedPlant = plants[indexPath.item]
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let sheetVC = storyboard.instantiateViewController(withIdentifier: "PlantActionSheetVC") as! PlantActionSheetViewController
+
+          sheetVC.userPlant = selectedPlant
+        sheetVC.onUpdate = { [weak self] in
+               self?.loadPlants()
+           }
+            
+        if let sheet = sheetVC.sheetPresentationController {
+               sheet.detents = [.medium()]
+               sheet.prefersGrabberVisible = true
+           }
+
+           present(sheetVC, animated: true)
+    }
     
     
  
@@ -103,6 +130,7 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
       }
 }
     
+
 
     /*
     // MARK: - Navigation

@@ -9,9 +9,7 @@ import UIKit
 
 class PlantAddedSuccessViewController: UIViewController {
 
-    @IBAction func doneButtonTapped(_ sender: UIButton) {
-            navigationController?.popToRootViewController(animated: true)
-        }
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +17,27 @@ class PlantAddedSuccessViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func exploreButtonTapped(_ sender: UIButton) {
+            navigationController?.popToRootViewController(animated: true)
+        }
+    
+    
+    @IBAction func gardenButtonTapped(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
+            guard let tabBar = storyboard.instantiateInitialViewController() as? UITabBarController else {
+                return
+            }
+
+            tabBar.selectedIndex = 1  //my garden tab
+
+            tabBar.modalPresentationStyle = .fullScreen
+            present(tabBar, animated: true)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

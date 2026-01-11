@@ -41,8 +41,8 @@
                                 <rect key="frame" x="36" y="714" width="321" height="4"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1 of 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWj-nE-f9t">
-                                <rect key="frame" x="148" y="738" width="97" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 1 of 6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWj-nE-f9t">
+                                <rect key="frame" x="16" y="738" width="361" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                             <constraint firstItem="b8I-9j-53j" firstAttribute="leading" secondItem="2is-qK-u5l" secondAttribute="leading" constant="16" id="17K-Nl-LwP"/>
                             <constraint firstItem="b8I-9j-53j" firstAttribute="top" secondItem="2is-qK-u5l" secondAttribute="top" id="98I-Zl-PTa"/>
                             <constraint firstItem="2is-qK-u5l" firstAttribute="trailing" secondItem="b8I-9j-53j" secondAttribute="trailing" constant="16" id="9iL-0G-o1j"/>
-                            <constraint firstItem="FWj-nE-f9t" firstAttribute="leading" secondItem="2is-qK-u5l" secondAttribute="leading" constant="148" id="9jL-xB-sb3"/>
+                            <constraint firstItem="FWj-nE-f9t" firstAttribute="leading" secondItem="2is-qK-u5l" secondAttribute="leading" constant="16" id="9jL-xB-sb3"/>
                             <constraint firstItem="UMW-Fi-fuC" firstAttribute="trailing" secondItem="2is-qK-u5l" secondAttribute="trailing" id="Hub-kA-FMA"/>
                             <constraint firstItem="UMW-Fi-fuC" firstAttribute="top" secondItem="b8I-9j-53j" secondAttribute="bottom" constant="50" id="JrV-yE-qbN"/>
                             <constraint firstItem="FWj-nE-f9t" firstAttribute="top" secondItem="GVg-7U-w3B" secondAttribute="bottom" constant="20" id="Le7-Rs-txw"/>
@@ -68,7 +68,7 @@
                             <constraint firstItem="GVg-7U-w3B" firstAttribute="top" secondItem="UMW-Fi-fuC" secondAttribute="bottom" constant="30" id="VCK-xp-2cc"/>
                             <constraint firstItem="GVg-7U-w3B" firstAttribute="leading" secondItem="2is-qK-u5l" secondAttribute="leading" constant="36" id="Z6V-Zz-naT"/>
                             <constraint firstItem="2is-qK-u5l" firstAttribute="bottom" secondItem="UMW-Fi-fuC" secondAttribute="bottom" constant="100" id="aIG-Ci-t2g"/>
-                            <constraint firstItem="2is-qK-u5l" firstAttribute="trailing" secondItem="FWj-nE-f9t" secondAttribute="trailing" constant="148" id="emP-lE-kni"/>
+                            <constraint firstItem="2is-qK-u5l" firstAttribute="trailing" secondItem="FWj-nE-f9t" secondAttribute="trailing" constant="16" id="emP-lE-kni"/>
                             <constraint firstItem="UMW-Fi-fuC" firstAttribute="leading" secondItem="2is-qK-u5l" secondAttribute="leading" id="hqN-Cv-xo8"/>
                         </constraints>
                     </view>
@@ -150,8 +150,8 @@
                                 <rect key="frame" x="36" y="714" width="321" height="4"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2 of 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V07-7I-D35">
-                                <rect key="frame" x="148" y="738" width="97" height="20.333333333333371"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 2 of 6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V07-7I-D35">
+                                <rect key="frame" x="16" y="738" width="361" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -166,10 +166,10 @@
                             <constraint firstItem="sc6-GM-bZO" firstAttribute="bottom" secondItem="OPb-RZ-Bw9" secondAttribute="bottom" constant="340.67000000000002" id="9xd-f6-5Uv"/>
                             <constraint firstItem="QA7-cL-y0s" firstAttribute="top" secondItem="sc6-GM-bZO" secondAttribute="top" id="KjT-w6-He8"/>
                             <constraint firstItem="sc6-GM-bZO" firstAttribute="trailing" secondItem="OPb-RZ-Bw9" secondAttribute="trailing" constant="78" id="N8e-5u-1X5"/>
-                            <constraint firstItem="V07-7I-D35" firstAttribute="leading" secondItem="sc6-GM-bZO" secondAttribute="leading" constant="148" id="UZj-na-AL3"/>
+                            <constraint firstItem="V07-7I-D35" firstAttribute="leading" secondItem="sc6-GM-bZO" secondAttribute="leading" constant="16" id="UZj-na-AL3"/>
                             <constraint firstItem="RkB-R4-h2V" firstAttribute="top" secondItem="OPb-RZ-Bw9" secondAttribute="bottom" constant="270.67000000000002" id="ZV0-xi-dFj"/>
                             <constraint firstItem="sc6-GM-bZO" firstAttribute="trailing" secondItem="QA7-cL-y0s" secondAttribute="trailing" constant="16" id="bln-Hl-3Eh"/>
-                            <constraint firstItem="sc6-GM-bZO" firstAttribute="trailing" secondItem="V07-7I-D35" secondAttribute="trailing" constant="148" id="eEV-HY-iya"/>
+                            <constraint firstItem="sc6-GM-bZO" firstAttribute="trailing" secondItem="V07-7I-D35" secondAttribute="trailing" constant="16" id="eEV-HY-iya"/>
                             <constraint firstItem="QA7-cL-y0s" firstAttribute="leading" secondItem="sc6-GM-bZO" secondAttribute="leading" constant="16" id="guc-Bg-z25"/>
                             <constraint firstItem="sc6-GM-bZO" firstAttribute="trailing" secondItem="RkB-R4-h2V" secondAttribute="trailing" constant="36" id="qBw-xw-An6"/>
                         </constraints>
@@ -233,8 +233,8 @@ site get?</string>
                                 <rect key="frame" x="36" y="714" width="321" height="4"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 3 of 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VB-Wy-Zks">
-                                <rect key="frame" x="154" y="738" width="85" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 3 of 6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9VB-Wy-Zks">
+                                <rect key="frame" x="16" y="738" width="361" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -243,14 +243,14 @@ site get?</string>
                         <viewLayoutGuide key="safeArea" id="Ybk-SP-pug"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ybk-SP-pug" firstAttribute="trailing" secondItem="9VB-Wy-Zks" secondAttribute="trailing" constant="154" id="1u6-Cz-CvX"/>
+                            <constraint firstItem="Ybk-SP-pug" firstAttribute="trailing" secondItem="9VB-Wy-Zks" secondAttribute="trailing" constant="16" id="1u6-Cz-CvX"/>
                             <constraint firstItem="4jh-Vf-jRn" firstAttribute="top" secondItem="Ybk-SP-pug" secondAttribute="top" id="2md-eB-bhO"/>
                             <constraint firstItem="lXy-UL-Jhb" firstAttribute="top" secondItem="6Vw-DJ-rcz" secondAttribute="bottom" constant="30" id="A5U-B1-brB"/>
                             <constraint firstItem="9VB-Wy-Zks" firstAttribute="top" secondItem="lXy-UL-Jhb" secondAttribute="bottom" constant="20" id="AG8-L8-R5c"/>
                             <constraint firstItem="4jh-Vf-jRn" firstAttribute="leading" secondItem="Ybk-SP-pug" secondAttribute="leading" constant="16" id="D13-eb-0kJ"/>
                             <constraint firstItem="Ybk-SP-pug" firstAttribute="bottom" secondItem="6Vw-DJ-rcz" secondAttribute="bottom" constant="100" id="HsO-CG-JoX"/>
                             <constraint firstItem="lXy-UL-Jhb" firstAttribute="leading" secondItem="Ybk-SP-pug" secondAttribute="leading" constant="36" id="T05-TR-4q1"/>
-                            <constraint firstItem="9VB-Wy-Zks" firstAttribute="leading" secondItem="Ybk-SP-pug" secondAttribute="leading" constant="154" id="bg2-8d-fav"/>
+                            <constraint firstItem="9VB-Wy-Zks" firstAttribute="leading" secondItem="Ybk-SP-pug" secondAttribute="leading" constant="16" id="bg2-8d-fav"/>
                             <constraint firstItem="6Vw-DJ-rcz" firstAttribute="top" secondItem="4jh-Vf-jRn" secondAttribute="bottom" constant="40" id="feN-xf-pR4"/>
                             <constraint firstItem="Ybk-SP-pug" firstAttribute="trailing" secondItem="lXy-UL-Jhb" secondAttribute="trailing" constant="36" id="gPL-Sk-BL2"/>
                             <constraint firstItem="Ybk-SP-pug" firstAttribute="trailing" secondItem="6Vw-DJ-rcz" secondAttribute="trailing" constant="16" id="lMp-I5-EU1"/>
@@ -315,8 +315,8 @@ repotted?</string>
                                 <rect key="frame" x="36" y="714" width="321" height="4"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 4 of 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1l4-Qh-RcC">
-                                <rect key="frame" x="154" y="738" width="85" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 4 of 6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1l4-Qh-RcC">
+                                <rect key="frame" x="16" y="738" width="361" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -331,11 +331,11 @@ repotted?</string>
                             <constraint firstItem="qsH-oO-uNC" firstAttribute="top" secondItem="hOA-Pp-gBB" secondAttribute="top" id="KiE-1W-WHe"/>
                             <constraint firstItem="qsH-oO-uNC" firstAttribute="leading" secondItem="hOA-Pp-gBB" secondAttribute="leading" constant="16" id="P15-rr-k6E"/>
                             <constraint firstItem="Bgb-mm-fC5" firstAttribute="top" secondItem="qsH-oO-uNC" secondAttribute="bottom" constant="40" id="VWB-Yf-r1p"/>
-                            <constraint firstItem="1l4-Qh-RcC" firstAttribute="leading" secondItem="hOA-Pp-gBB" secondAttribute="leading" constant="154" id="XuF-ZD-eLT"/>
+                            <constraint firstItem="1l4-Qh-RcC" firstAttribute="leading" secondItem="hOA-Pp-gBB" secondAttribute="leading" constant="16" id="XuF-ZD-eLT"/>
                             <constraint firstItem="hOA-Pp-gBB" firstAttribute="trailing" secondItem="Bgb-mm-fC5" secondAttribute="trailing" constant="16" id="Z3i-79-s8n"/>
                             <constraint firstItem="hOA-Pp-gBB" firstAttribute="trailing" secondItem="qsH-oO-uNC" secondAttribute="trailing" constant="16" id="ZhG-A2-GwK"/>
                             <constraint firstItem="hOA-Pp-gBB" firstAttribute="trailing" secondItem="9tZ-P0-FF4" secondAttribute="trailing" constant="36" id="iyx-XT-7wA"/>
-                            <constraint firstItem="hOA-Pp-gBB" firstAttribute="trailing" secondItem="1l4-Qh-RcC" secondAttribute="trailing" constant="154" id="wEB-zR-EYK"/>
+                            <constraint firstItem="hOA-Pp-gBB" firstAttribute="trailing" secondItem="1l4-Qh-RcC" secondAttribute="trailing" constant="16" id="wEB-zR-EYK"/>
                             <constraint firstItem="Bgb-mm-fC5" firstAttribute="leading" secondItem="hOA-Pp-gBB" secondAttribute="leading" constant="16" id="xsP-km-vK0"/>
                             <constraint firstItem="9tZ-P0-FF4" firstAttribute="leading" secondItem="hOA-Pp-gBB" secondAttribute="leading" constant="36" id="yDK-bV-WwN"/>
                         </constraints>
@@ -399,8 +399,8 @@ this plant?</string>
                                 <rect key="frame" x="36" y="714" width="321" height="4"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 5 of 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uQ-9m-UYj">
-                                <rect key="frame" x="154" y="738" width="85" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 5 of 6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uQ-9m-UYj">
+                                <rect key="frame" x="16" y="738" width="361" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -409,7 +409,7 @@ this plant?</string>
                         <viewLayoutGuide key="safeArea" id="G5P-qp-7Zw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6uQ-9m-UYj" firstAttribute="leading" secondItem="G5P-qp-7Zw" secondAttribute="leading" constant="154" id="A6P-Yv-kKK"/>
+                            <constraint firstItem="6uQ-9m-UYj" firstAttribute="leading" secondItem="G5P-qp-7Zw" secondAttribute="leading" constant="16" id="A6P-Yv-kKK"/>
                             <constraint firstItem="rZ1-EZ-lRg" firstAttribute="top" secondItem="1Mg-CX-QXH" secondAttribute="bottom" constant="40" id="Ahe-cW-klO"/>
                             <constraint firstItem="abd-fy-M7K" firstAttribute="top" secondItem="rZ1-EZ-lRg" secondAttribute="bottom" constant="30" id="D2L-yR-mjk"/>
                             <constraint firstItem="abd-fy-M7K" firstAttribute="leading" secondItem="G5P-qp-7Zw" secondAttribute="leading" constant="36" id="DyU-XD-pUf"/>
@@ -419,7 +419,7 @@ this plant?</string>
                             <constraint firstItem="1Mg-CX-QXH" firstAttribute="leading" secondItem="G5P-qp-7Zw" secondAttribute="leading" constant="16" id="Jgc-Bk-LmT"/>
                             <constraint firstItem="G5P-qp-7Zw" firstAttribute="trailing" secondItem="rZ1-EZ-lRg" secondAttribute="trailing" constant="16" id="Oq8-rw-vjc"/>
                             <constraint firstItem="G5P-qp-7Zw" firstAttribute="bottom" secondItem="rZ1-EZ-lRg" secondAttribute="bottom" constant="100" id="dqR-2M-wgb"/>
-                            <constraint firstItem="G5P-qp-7Zw" firstAttribute="trailing" secondItem="6uQ-9m-UYj" secondAttribute="trailing" constant="154" id="j0k-B1-p1x"/>
+                            <constraint firstItem="G5P-qp-7Zw" firstAttribute="trailing" secondItem="6uQ-9m-UYj" secondAttribute="trailing" constant="16" id="j0k-B1-p1x"/>
                             <constraint firstItem="G5P-qp-7Zw" firstAttribute="trailing" secondItem="abd-fy-M7K" secondAttribute="trailing" constant="36" id="jmt-CJ-9NU"/>
                             <constraint firstItem="G5P-qp-7Zw" firstAttribute="trailing" secondItem="1Mg-CX-QXH" secondAttribute="trailing" constant="16" id="wqn-fX-s3p"/>
                         </constraints>
@@ -466,15 +466,15 @@ this plant?</string>
                                 <buttonConfiguration key="configuration" style="filled" title="Save"/>
                                 <connections>
                                     <action selector="saveButtonTapped:" destination="fIg-u3-lFd" eventType="touchUpInside" id="ziL-kD-fJL"/>
-                                    <segue destination="YZF-IA-Jke" kind="show" identifier="showPlantAddedSuccess" id="F2g-O1-WdG"/>
+                                    <segue destination="YZF-IA-Jke" kind="show" id="QWH-3c-Cl6"/>
                                 </connections>
                             </button>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="z2r-tt-UgD">
                                 <rect key="frame" x="36" y="710" width="321" height="4"/>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                             </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 6 of 6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUd-G8-MNx">
-                                <rect key="frame" x="154" y="734" width="85" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step 6 of 6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUd-G8-MNx">
+                                <rect key="frame" x="16" y="734" width="361" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -488,7 +488,7 @@ this plant?</string>
                         <viewLayoutGuide key="safeArea" id="Ks1-hk-fTQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ks1-hk-fTQ" firstAttribute="trailing" secondItem="NUd-G8-MNx" secondAttribute="trailing" constant="154" id="37d-v5-3PU"/>
+                            <constraint firstItem="Ks1-hk-fTQ" firstAttribute="trailing" secondItem="NUd-G8-MNx" secondAttribute="trailing" constant="16" id="37d-v5-3PU"/>
                             <constraint firstItem="Ks1-hk-fTQ" firstAttribute="bottom" secondItem="ALD-1M-Ys0" secondAttribute="bottom" constant="325" id="97W-yZ-coB"/>
                             <constraint firstItem="Ks1-hk-fTQ" firstAttribute="bottom" secondItem="z2r-tt-UgD" secondAttribute="bottom" constant="70" id="AGF-0m-TXi"/>
                             <constraint firstItem="ayA-JU-sFp" firstAttribute="leading" secondItem="Ks1-hk-fTQ" secondAttribute="leading" constant="49" id="DG5-rA-cpC"/>
@@ -503,7 +503,7 @@ this plant?</string>
                             <constraint firstItem="4MI-CG-Roa" firstAttribute="leading" secondItem="Ks1-hk-fTQ" secondAttribute="leading" constant="16" id="okd-dR-dRw"/>
                             <constraint firstItem="ALD-1M-Ys0" firstAttribute="leading" secondItem="Ks1-hk-fTQ" secondAttribute="leading" id="pNn-5Q-GJZ"/>
                             <constraint firstItem="Ks1-hk-fTQ" firstAttribute="trailing" secondItem="ayA-JU-sFp" secondAttribute="trailing" constant="49" id="q1d-Nu-aob"/>
-                            <constraint firstItem="NUd-G8-MNx" firstAttribute="leading" secondItem="Ks1-hk-fTQ" secondAttribute="leading" constant="154" id="shG-37-7O2"/>
+                            <constraint firstItem="NUd-G8-MNx" firstAttribute="leading" secondItem="Ks1-hk-fTQ" secondAttribute="leading" constant="16" id="shG-37-7O2"/>
                             <constraint firstItem="4MI-CG-Roa" firstAttribute="top" secondItem="Ks1-hk-fTQ" secondAttribute="top" id="v7k-jS-4Dl"/>
                         </constraints>
                     </view>
@@ -581,7 +581,7 @@ garden</string>
                                             <color key="baseBackgroundColor" red="0.4165039062" green="0.8081054688" blue="0.2396240234" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="kCD-bR-Eb6" kind="show" id="JRX-8b-VMa"/>
+                                            <action selector="gardenButtonTapped:" destination="YZF-IA-Jke" eventType="touchUpInside" id="LmG-hb-Mu0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kOc-GN-1RM">
@@ -597,7 +597,7 @@ garden</string>
                                             <color key="baseBackgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="doneButtonTapped:" destination="YZF-IA-Jke" eventType="touchUpInside" id="rLL-49-SxC"/>
+                                            <action selector="exploreButtonTapped:" destination="YZF-IA-Jke" eventType="touchUpInside" id="zqq-kc-0Wp"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -620,16 +620,6 @@ garden</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zML-IZ-fAX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8938" y="92"/>
-        </scene>
-        <!--MyGardenViewController-->
-        <scene sceneID="rhx-a1-lks">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="MyGardenViewController" id="kCD-bR-Eb6" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Oca-ch-v9t"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Llg-MI-DDm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="9564" y="121"/>
         </scene>
     </scenes>
     <resources>
