@@ -44,7 +44,7 @@ class PlantDetailViewController: UIViewController {
         benefitsCardView.layer.shadowColor = UIColor.black.cgColor
         benefitsCardView.layer.shadowOpacity = 0.08
         benefitsCardView.layer.shadowRadius = 12
-        benefitsCardView.layer.shadowOffset = CGSize(width: 0, height: 10)
+        benefitsCardView.layer.shadowOffset = CGSize(width: 0, height: 30)
 
         benefitsCardView.layer.masksToBounds = false
     }

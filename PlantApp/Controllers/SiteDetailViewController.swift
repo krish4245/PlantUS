@@ -107,7 +107,7 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let itemsPerRow: CGFloat = 2
-        let spacing: CGFloat = 16
+        let spacing: CGFloat = 8
 
         let totalSpacing = spacing * (itemsPerRow + 1)
         let availableWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width

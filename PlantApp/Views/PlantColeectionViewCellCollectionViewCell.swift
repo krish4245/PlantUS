@@ -21,6 +21,9 @@ class PlantCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        applyCardStyle()
+        
         cardView.layer.cornerRadius = 16
         cardView.layer.masksToBounds = true
         plantImageView.contentMode = .scaleAspectFill
@@ -35,6 +38,18 @@ class PlantCollectionViewCell: UICollectionViewCell {
         plantImageView.image = nil
         nameLabel.text = nil
         subtitleLabel.text = nil
+    }
+    
+    func applyCardStyle() {
+        layer.cornerRadius = 16
+        backgroundColor = .systemBackground
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.08
+        layer.shadowRadius = 12
+        layer.shadowOffset = CGSize(width: 0, height: 6)
+        
+        layer.masksToBounds = false
     }
 
     func configure(with plant: Plant) {

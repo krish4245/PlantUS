@@ -18,21 +18,34 @@ class siteDetailCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
-        contentView.layer.cornerRadius = 16
-        layer.cornerRadius = 16
-        contentView.layer.masksToBounds = true
-        
-        layer.borderWidth = 0.8
-        layer.borderColor = UIColor.systemGray5.cgColor
-        
-        layer.shadowColor = UIColor.black.cgColor
-               layer.shadowOpacity = 0.08
-               layer.shadowOffset = CGSize(width: 0, height: 2)
-               layer.shadowRadius = 6
-               layer.masksToBounds = false
+        applyCardStyle()
+//        contentView.layer.cornerRadius = 16
+//        layer.cornerRadius = 16
+//        contentView.layer.masksToBounds = true
+//        
+//        layer.borderWidth = 0.8
+//        layer.borderColor = UIColor.systemGray5.cgColor
+//        
+//        layer.shadowColor = UIColor.black.cgColor
+//               layer.shadowOpacity = 0.08
+//               layer.shadowOffset = CGSize(width: 0, height: 2)
+//               layer.shadowRadius = 6
+//               layer.masksToBounds = false
         // Initialization code
     }
+    
+    func applyCardStyle() {
+        layer.cornerRadius = 16
+        backgroundColor = .systemBackground
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.08
+        layer.shadowRadius = 12
+        layer.shadowOffset = CGSize(width: 0, height: 6)
+        
+        layer.masksToBounds = false
+    }
+    
     
   public  func configure(with userPlant: UserPlant) {
         let plantModel = PlantDataSource.shared.plant(for: userPlant.plantId)

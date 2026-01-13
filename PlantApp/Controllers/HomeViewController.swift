@@ -2,6 +2,8 @@ import UIKit
 
 final class HomeViewController: UIViewController {
 
+    @IBOutlet weak var greetingLabel: UILabel!
+    
     // MARK: - Outlets
     @IBOutlet weak var scrollView: UIScrollView!
 
@@ -44,7 +46,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        updateGreeting()
         
         careTypeCollectionView.dataSource = self
         careTypeCollectionView.delegate = self
@@ -86,6 +88,23 @@ final class HomeViewController: UIViewController {
 
 
     // MARK: - Setup
+    private func updateGreeting() {
+        let hour = Calendar.current.component(.hour, from: Date())
+
+        let greeting: String
+        switch hour {
+        case 5..<12:
+            greeting = "Good Morning"
+        case 12..<17:
+            greeting = "Good Afternoon"
+        case 17..<21:
+            greeting = "Good Evening"
+        default:
+            greeting = "Hello"
+        }
+
+        greetingLabel.text = greeting
+    }
 
     
     func stylePlantCard(_ view: UIView) {
@@ -190,6 +209,12 @@ extension HomeViewController: UICollectionViewDataSource {
             return visiblePlants.count
         }
     }
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 12   // try 12–16
+    }
+
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

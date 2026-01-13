@@ -50,9 +50,7 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
     
     @objc private func moreTapped() {
         let actionSheet = UIAlertController(
-            title: "Add Plant",
-            message: nil,
-            preferredStyle: .actionSheet
+           
         )
 
         let scanAction = UIAlertAction(title: "Scan Plant", style: .default) { _ in
@@ -93,17 +91,47 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
         picker.delegate = self
         present(picker, animated: true)
     }
+    
     func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
     ) {
-        picker.dismiss(animated: true)
 
-        if let image = info[.originalImage] as? UIImage {
-            // TODO: pass image to ML / plant detection
-            print("Image selected")
+        guard let image = info[.originalImage] as? UIImage else {
+            picker.dismiss(animated: true)
+            return
+        }
+
+        // ✅ dismiss FIRST, then navigate
+        picker.dismiss(animated: true) {
+            self.goToScanResult(image: image)
         }
     }
+    
+    private func goToScanResult(image: UIImage) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let vc = storyboard.instantiateViewController(
+            withIdentifier: "ScanResult"
+        ) as! ScanResult
+
+        vc.capturedImage = image
+        vc.plantName = "Unknown Plant" // temporary
+
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+//    func imagePickerController(
+//        _ picker: UIImagePickerController,
+//        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+//    ) {
+//        picker.dismiss(animated: true)
+//
+//        if let image = info[.originalImage] as? UIImage {
+//            // TODO: pass image to ML / plant detection
+//            print("Image selected")
+//        }
+//    }
 
     
     func registerCells(){
