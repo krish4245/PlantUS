@@ -168,10 +168,17 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
                     // 3. Catch the User object sent from messageTapped
                     if let userToPass = sender as? User {
                         chatVC.user = userToPass // <--- Handing over the data!
+                        
                     }
+                }
+            } else if segue.identifier == "ShowPostFromProfile" {
+                if let destinationVC = segue.destination as? profilePostsViewerController,
+                   let postToSend = sender as? Post {
+                    destinationVC.post = postToSend
                 }
             }
         }
+        
 
     func setupTabs(forCurrentUser: Bool) {
         postsSegmentedControl.removeAllSegments()
@@ -245,6 +252,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             present(editVC, animated: true)
         }
     }
+    
 
     // MARK: - CollectionView Grid
     func collectionView(
@@ -292,4 +300,16 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     ) -> CGFloat {
         return 1
     }
+    
+    // Detect the tap
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 1. Find which post was tapped
+        // Make sure 'userPosts' matches the variable name of your array!
+        let selectedPost = userPosts[indexPath.item]
+        
+        // 2. Travel to the next screen
+        performSegue(withIdentifier: "ShowPostFromProfile", sender: selectedPost)
+    }
+    
+    
 }

@@ -11,7 +11,7 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     
     // MARK: - Outlets
     @IBOutlet weak var postsTableView: UITableView!
-    @IBOutlet weak var filterSegmentedControl: UISegmentedControl!
+    //@IBOutlet weak var filterSegmentedControl: UISegmentedControl!
     
     // MARK: - Data
     // We use the new Post model we created
@@ -20,8 +20,18 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+     
         setupTable()
         loadData()
+        
+        postsTableView.delaysContentTouches = false
+            
+            // 2. Ensure buttons get priority over scrolling
+            for case let scrollView as UIScrollView in postsTableView.subviews {
+                scrollView.delaysContentTouches = false
+            }
+        
+        postsTableView.allowsSelection = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: NSNotification.Name("NewPostAdded"), object: nil)
     }
@@ -65,47 +75,26 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         
         let post = posts[indexPath.row]
         
-        // --- CONFIGURE CELL ---
-        // We configure it manually here since your cell's 'configure' method
-        // likely expects the OLD Post struct and might break.
-        
-        // 1. Text Data
-        cell.usernameLabel?.text = post.author?.username
-        cell.captionLabel?.text = post.caption
-        cell.timeLabel?.text = "2h ago" // We will fix the Date logic later
-        
-        cell.onAvatarTapped = { [weak self] in
-            self?.performSegue(withIdentifier: "ShowUserProfile", sender: post.author)
+        cell.configure(with: post)
+    
+        cell.onLikeTapped = { [weak self] (newIsLiked, newCount) in
+            guard let self = self else { return }
+            
+            
+            self.posts[indexPath.row].isLiked = newIsLiked
+            self.posts[indexPath.row].likesCount = newCount
+            
+            
+            CommunityDataStore.shared.updateLikeStatus(forPostId: post.id, isLiked: newIsLiked, newCount: newCount)
+            // 3. Animation: Add a little bounce effect
+            //self.animateLikeButton(cell.likeButton)
+            //print("Like toggled for post: \(post.id). New State: \(newState)")
         }
-        
-        // 2. Images (Using the helper extension we made)
-        cell.postImageView?.configureImage(with: post.postImageString)
-        
-        // Safety check: author might be nil in some rare cases
-        if let author = post.author {
-            cell.avatarImageView?.configureImage(with: author.profileImageString)
-        } else {
-            cell.avatarImageView?.image = UIImage(systemName: "person.circle")
-        }
-        
-        cell.updateLikeUI(isLiked: post.isLiked)
-        
-        cell.onLikeTapped = { [weak self] in
-                    guard let self = self else { return }
-                    
-                   
-                    self.posts[indexPath.row].isLiked.toggle()
-                    
-                   
-                    let newState = self.posts[indexPath.row].isLiked
-                    cell.updateLikeUI(isLiked: newState)
-                    
-            CommunityDataStore.shared.updateLikeStatus(forPostId: post.id, isLiked: newState)
-                    // 3. Animation: Add a little bounce effect
-                    //self.animateLikeButton(cell.likeButton)
-                    //print("Like toggled for post: \(post.id). New State: \(newState)")
-                    
+        cell.onAvatarTapped = { [weak self] in if let author = post.author {
+                        self?.performSegue(withIdentifier: "ShowUserProfile", sender: author)
                 }
+            }
+                
         return cell
     }
     

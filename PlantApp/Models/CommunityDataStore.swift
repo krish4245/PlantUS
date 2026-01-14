@@ -55,16 +55,17 @@ class CommunityDataStore {
         self.users = [vedant, shubham]
         
         // Posts
-        let p1 = Post(id: "p1", userId: "u1", postImageString: "plant_vedant", caption: "New leaf alert! 🌿", timestamp: Date(), author: vedant)
-        let p2 = Post(id: "p2", userId: "u2", postImageString: "plant_shubham", caption: "Watering day 💧", timestamp: Date(), author: shubham)
+        let p1 = Post(id: "p1", userId: "u1", postImageString: "plant_vedant", likesCount: 5, caption: "New leaf alert! 🌿", timestamp: Date(), author: vedant)
+        let p2 = Post(id: "p2", userId: "u2", postImageString: "plant_shubham", likesCount: 3, caption: "Watering day 💧", timestamp: Date(), author: shubham)
         
         self.posts = [p1, p2]
     }
     
-    func updateLikeStatus(forPostId postId: String, isLiked: Bool) {
+    func updateLikeStatus(forPostId postId: String, isLiked: Bool, newCount: Int) {
         // 1. Find the post in the main list
         if let index = posts.firstIndex(where: { $0.id == postId }) {
             posts[index].isLiked = isLiked
+            posts[index].likesCount = newCount
         }
     }
     
@@ -89,7 +90,8 @@ class CommunityDataStore {
             let newPost = Post(
                 id: UUID().uuidString,
                 userId: currentUser.id,
-                postImageString: imageID, // We store the ID, not the image itself
+                postImageString: imageID,
+                likesCount: 0,
                 caption: caption,
                 timestamp: Date(),
                 author: currentUser

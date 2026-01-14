@@ -11,6 +11,7 @@ struct Post: Codable {
     let id: String
     let userId: String
     let postImageString: String
+    var likesCount: Int
     let caption: String
     let timestamp: Date
     

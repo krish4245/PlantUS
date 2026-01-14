@@ -1,16 +1,10 @@
-//
-//  postsTableViewCell.swift
-//  garden_app
-//
-//  Created by SDC-USER on 25/11/25.
-//
 
-//
-//  PostsTableViewCell.swift
-//  garden_app
-//
-//  Created by SDC-USER on 25/11/25.
-//
+//postsTableViewCell.swift
+//garden_app
+
+//Created by SDC-USER on 25/11/25.
+
+
 
 import UIKit
 
@@ -19,104 +13,98 @@ class PostsTableViewCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var postImageView: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel! // Renamed from nameLabel to match Model
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var captionUsernameLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!     // Added this because Controller needs it
-    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var timeLabel: UILabel!
     
-    // Buttons (Actions)
+    // Buttons
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likesCountLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
-    @IBOutlet weak var shareButton: UIButton!
     
+    var currentPost: Post?
+    
+    // Closures for button taps
     var onAvatarTapped: (() -> Void)?
-    var onLikeTapped: (() -> Void)?
+    var onLikeTapped: ((Bool, Int) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        likeButton.addTarget(self, action: #selector(likeButtonTapped(_:)), for: .touchUpInside)
         selectionStyle = .none
+       
         
-        // Card Styling
-        if let card = cardView {
-            card.layer.cornerRadius = 10
-            card.layer.masksToBounds = false
-            card.layer.shadowColor = UIColor.black.cgColor
-            card.layer.shadowOpacity = 0.08
-            card.layer.shadowRadius = 8
-            card.layer.shadowOffset = CGSize(width: 0, height: 4)
-        }
-        
-        // Avatar Styling
         if let avatar = avatarImageView {
-            avatar.layer.cornerRadius = 10
-            avatar.clipsToBounds = true
-            
-            // 2. ENABLE INTERACTION
-        avatar.isUserInteractionEnabled = true
-                        
-                        // 3. ADD GESTURE RECOGNIZER
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarTapped))
-        avatar.addGestureRecognizer(tapGesture)
+
+            avatar.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer(target: self, action: #selector(avatarTapped))
+            tap.cancelsTouchesInView = false
+            avatar.addGestureRecognizer(tap)
         }
         
-        // Image Styling
-        if let postImg = postImageView {
-            postImg.contentMode = .scaleAspectFill
-            postImg.clipsToBounds = true
-            postImg.layer.cornerRadius = 10 // Matches card corner radius
-            // If you want top corners only to be rounded, you need masked corners,
-            // but for now, full rounded looks clean inside the card.
-        }
     }
-    
     @objc func avatarTapped() {
-            onAvatarTapped?()
+        onAvatarTapped?()
     }
     
-    @IBAction func likeButtonTapped(_ sender: UIButton) {
-            // Trigger the closure so the Controller knows to update data
-            onLikeTapped?()
-        }
+    @IBAction func likeButtonTapped(_ sender: Any) {
     
-    // MARK: - Configuration
+    
+        guard var post = currentPost else { return }
+        
+        if post.isLiked {
+                    post.isLiked = false
+                    post.likesCount = max(0, post.likesCount - 1)
+                } else {
+                    post.isLiked = true
+                    post.likesCount += 1
+                }
+                
+                self.currentPost = post
+                
+                updateLikeUI(isLiked: post.isLiked, count: post.likesCount)
+                //update comntroller
+        
+                onLikeTapped?(post.isLiked, post.likesCount)
+    }
+
     func configure(with post: Post) {
-        // 1. Text Data
-        // We use safe unwrapping (?) because author might be nil in rare cases
-        usernameLabel.text = post.author?.username ?? "Unknown"
+        
+        self.currentPost = post
+        
+        usernameLabel.text = post.author?.username
+        captionUsernameLabel.text = post.author?.username
         captionLabel.text = post.caption
+        timeLabel.text = "2h ago" // Replace with real date logic later
         
-        // 2. Images (Using your new Helper Extension)
+        // Load Images
         postImageView.configureImage(with: post.postImageString)
-        
-        updateLikeUI(isLiked: post.isLiked)
-        
         if let author = post.author {
             avatarImageView.configureImage(with: author.profileImageString)
         } else {
-            // Fallback if no author found
             avatarImageView.image = UIImage(systemName: "person.circle.fill")
         }
         
-        // 3. Time (Static for now, but ready for data)
-        // You can add logic here like: timeLabel.text = post.timeAgo
-        if let timeLbl = timeLabel {
-            timeLbl.text = "2h ago"
-        }
+        updateLikeUI(isLiked: post.isLiked, count: post.likesCount)
     }
     
-    func updateLikeUI(isLiked: Bool) {
-            let imageName = isLiked ? "heart.fill" : "heart"
-            let color = isLiked ? UIColor.systemRed : UIColor.label // Red vs Black/White
-            
-            // Set image and color
-            let config = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium)
-            let image = UIImage(systemName: imageName, withConfiguration: config)
-            
-            likeButton.setImage(image, for: .normal)
+    func updateLikeUI(isLiked: Bool, count : Int) {
+        print("DEBUG: Liked? \(isLiked) Count: \(count)") // Check your console!
+        let imageName = isLiked ? "heart.fill" : "heart"
+        let color = isLiked ? UIColor.systemRed : UIColor.label
+        let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .medium)
+        let image = UIImage(systemName: imageName, withConfiguration: config)
+        likeButton.setImage(image, for: .normal)
+        likeButton.setImage(image, for: .highlighted)
         likeButton.tintColor = color
-        }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        
+        if count == 0 {
+                     likesCountLabel.text = "0 likes"
+                } else if count == 1 {
+                     likesCountLabel.text = "1 like"
+                } else {
+                     likesCountLabel.text = "\(count) likes"
+                }
     }
 }
