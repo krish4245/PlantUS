@@ -10,14 +10,15 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
 
     
     @IBOutlet weak var myGardenCollectionView: UICollectionView!
+    
+    @IBOutlet weak var emptyLabel: UILabel!
     let siteStore = SiteStore.shared
 
     
     override func viewDidLoad() {
            super.viewDidLoad()
        
-        
-//        PlantStore.shared.generateDummyPlants(for: siteStore.sites)
+
         
         myGardenCollectionView.delegate = self
         myGardenCollectionView.dataSource = self
@@ -25,13 +26,17 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
              
         registerCell() // func to register the xib cell
         configureGridLayout()
+        
+        updateEmptyState()
           
        }
     override func viewWillAppear(_ animated: Bool) {
          super.viewWillAppear(animated)
          
-         // ⭐ Reload data every time this screen appears
+         //  Reload data every time this screen appears
          myGardenCollectionView.reloadData()
+        
+        updateEmptyState()
      }
    
     func registerCell(){
@@ -60,7 +65,7 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
            cell.backgroundColor = site.cardColor.color
            
        
-        // ✅ Live count from PlantStore
+        // Live count from PlantStore
           let plantsInSite = PlantStore.shared.plants(for: site.id)
           let totalCount = plantsInSite.reduce(0) { $0 + $1.quantity }
           cell.plantCountLabel.text = "\(totalCount)"
@@ -116,6 +121,13 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         configureGridLayout()
+    }
+
+    private func updateEmptyState() {
+        let isEmpty = siteStore.sites.isEmpty
+        
+        emptyLabel.isHidden = !isEmpty
+        myGardenCollectionView.isHidden = isEmpty
     }
 
     

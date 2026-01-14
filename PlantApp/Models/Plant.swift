@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-enum CareType: Int {
-    case watering = 0
-    case trimming = 1
-    case repotting = 2
-    case fertilizing = 3
+enum CareType:   String , Codable {
+    case watering
+    case trimming
+    case repotting
+    case fertilizing 
 }
 
 struct Plant {

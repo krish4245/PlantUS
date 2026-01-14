@@ -12,7 +12,10 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var emptyStateView: UIView!
 
     @IBOutlet weak var card1: UIView!
-    
+    @IBOutlet weak var gardenStatusContainerView: UIView!
+    @IBOutlet weak var wateringContainerView: UIView!
+    @IBOutlet weak var careStreakContainerView: UIView!
+
     @IBOutlet weak var card2: UIView!
     @IBOutlet weak var statusCardView: UIView!
     @IBOutlet weak var totalPlantsCardView: UIView?
@@ -218,7 +221,7 @@ extension HomeViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        styleCards()
+       
         if collectionView == careTypeCollectionView {
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "CareTypeCell",

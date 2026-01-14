@@ -24,7 +24,8 @@ final class PlantDataSource {
                 water: "Once every 10–14 days",
                 soil: "Well-draining soil",
                 imageName: "snake_plant",
-              
+                careTasks: [CareType.watering, CareType.fertilizing]
+
                 
                 
             ),
@@ -39,7 +40,7 @@ final class PlantDataSource {
                 water: "Weekly",
                 soil: "Loose potting mix",
                 imageName: "money_plant",
-               
+                careTasks: [CareType.watering, CareType.fertilizing]
                 
             ),
             
@@ -53,7 +54,7 @@ final class PlantDataSource {
                 water: "When soil is dry",
                 soil: "Moist but well-drained",
                 imageName: "spider_plant",
-               
+                careTasks: [CareType.watering, CareType.fertilizing]
                 
             ),
             
@@ -67,7 +68,7 @@ final class PlantDataSource {
                 water: "Every 2–3 weeks",
                 soil: "Cactus soil",
                 imageName: "sunny",
-                
+                careTasks: [CareType.watering, CareType.fertilizing]
                 
             )
         ]

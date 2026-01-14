@@ -15,7 +15,7 @@ class WateringConsistencyViewController: UIViewController {
     @IBOutlet weak var blueView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         currentStreak.layer.cornerRadius = 20
         currentStreak.layer.masksToBounds = true
         

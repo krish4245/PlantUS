@@ -22,6 +22,7 @@ class PlantDetailViewController: UIViewController {
     
     @IBOutlet weak var waterButton: UIButton!
     
+    @IBOutlet weak var BenifitsCardView: UIStackView!
     
     var plantId: String!   // RECEIVED FROM PREVIOUS SCREEN
       private var plant: PlantModel_Ved?
@@ -29,25 +30,25 @@ class PlantDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        styleBenefitsCard()
+//        styleBenefitsCard()
         // Do any additional setup after loading the view.
-        
+        styleCard(benefitsCardView)
         fetchPlant()
         setupUI()
         print("Received plant ID:", plantId!)
     }
     
-    func styleBenefitsCard() {
-        benefitsCardView.backgroundColor = .systemBackground
-        benefitsCardView.layer.cornerRadius = 16
+    private func styleCard(_ view: UIView) {
+        view.backgroundColor = .systemBackground
+        view.layer.cornerRadius = 20
+        view.layer.masksToBounds = false
 
-        benefitsCardView.layer.shadowColor = UIColor.black.cgColor
-        benefitsCardView.layer.shadowOpacity = 0.08
-        benefitsCardView.layer.shadowRadius = 12
-        benefitsCardView.layer.shadowOffset = CGSize(width: 0, height: 30)
-
-        benefitsCardView.layer.masksToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.06
+        view.layer.shadowRadius = 18
+        view.layer.shadowOffset = CGSize(width: 0, height: 10)
     }
+
     
     private func fetchPlant() {
           plant = PlantDataSource.shared.allPlants.first {

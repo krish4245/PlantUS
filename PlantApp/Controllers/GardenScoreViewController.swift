@@ -8,19 +8,27 @@
 import UIKit
 
 class GardenScoreViewController: UIViewController {
+    @IBOutlet weak var scoreHighlightView: UIView!
 
-    @IBOutlet weak var healthyIconBackgroundView: UIView!
-    @IBOutlet weak var metricCard1View: UIView!
+//    @IBOutlet weak var healthyIconBackgroundView: UIView!
+//    @IBOutlet weak var metricCard1View: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        metricCard1View.layer.cornerRadius = 16
-           metricCard1View.layer.masksToBounds = true
+        styleGreenBox()
+        scoreHighlightView.layer.cornerRadius = 16
+           scoreHighlightView.layer.masksToBounds = true
 
-           healthyIconBackgroundView.layer.cornerRadius = 20   // half of 40
-           healthyIconBackgroundView.layer.masksToBounds = true
+           scoreHighlightView.layer.cornerRadius = 20   // half of 40
+           scoreHighlightView.layer.masksToBounds = true
         // Do any additional setup after loading the view.
     }
     
+    private func styleGreenBox() {
+        scoreHighlightView.backgroundColor = UIColor(red: 0.90, green: 0.97, blue: 0.90, alpha: 1.0) // soft green
+        scoreHighlightView.layer.cornerRadius = 18
+        scoreHighlightView.layer.masksToBounds = true
+    }
+
 
     /*
     // MARK: - Navigation
