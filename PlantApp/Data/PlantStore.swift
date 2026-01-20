@@ -79,6 +79,24 @@ class PlantStore: ObservableObject {
                 plants = decoded
             }
         }
+    
+    
+    func markTaskDone(userPlantID: UUID, careType: CareType) {
+           guard let index = plants.firstIndex(where: { $0.id == userPlantID }) else { return }
+
+           switch careType {
+           case .watering:
+               plants[index].wateringDone = true
+           case .trimming:
+               plants[index].pruningDone = true
+           case .fertilizing:
+               plants[index].fertilizingDone = true
+           case .repotting:
+               plants[index].repottingDone = true
+           }
+       }
+    
+    
     }
 
 extension PlantDataSource {

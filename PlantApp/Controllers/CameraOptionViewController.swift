@@ -7,6 +7,7 @@
 
 import UIKit
 import PhotosUI
+import Foundation
 
 
 class CameraOptionViewController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextViewDelegate,PHPickerViewControllerDelegate{
@@ -161,6 +162,7 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
        
         
         let userPlant = UserPlant(
+            id: UUID(),
             plantId: session.plantId,                //link to plantModel
                   siteName: siteName,
                   siteID: savedSite.id,                    // correct siteID
@@ -171,8 +173,10 @@ class CameraOptionViewController: UIViewController,UIImagePickerControllerDelega
                   quantity: plantCountToAdd,
                   isAddedToGarden: true,
                   wateringDone: false,
-                  trimmingDone: false,
+                  pruningDone: false,
                   fertilizingDone: false,
+                  repottingDone: false,
+            
                   createdAt: Date()
                 
         )

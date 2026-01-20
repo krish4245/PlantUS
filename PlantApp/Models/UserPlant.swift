@@ -5,8 +5,8 @@
 //  Created by SDC-USER on 12/12/25.
 //
 import Foundation
-struct UserPlant: Identifiable, Codable {
-    let id: UUID = UUID() 
+struct UserPlant: Codable, Identifiable {
+    let id : UUID
     let plantId: String
     var siteName: String
     let  siteID: UUID
@@ -20,8 +20,9 @@ struct UserPlant: Identifiable, Codable {
     // Garden-only (mutable, user specific)
     var isAddedToGarden: Bool
     var wateringDone: Bool
-    var trimmingDone: Bool
+    var pruningDone: Bool
     var fertilizingDone: Bool
+    var repottingDone: Bool
     
     //date created at
     let createdAt: Date

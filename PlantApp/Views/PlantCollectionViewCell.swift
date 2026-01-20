@@ -26,8 +26,6 @@ class PlantCollectionViewCell: UICollectionViewCell {
         
         cardView.layer.cornerRadius = 16
         cardView.layer.masksToBounds = true
-        plantImageView.contentMode = .scaleAspectFill
-        plantImageView.clipsToBounds = true
         plantImageView.layer.cornerRadius = 12
     }
 
@@ -80,4 +78,25 @@ class PlantCollectionViewCell: UICollectionViewCell {
             plantImageView.image = nil
         }
     }
+    
+    func configure(with plantModel: PlantModel_Ved, userPlant: UserPlant, careType: CareType) {
+        nameLabel.text = plantModel.name
+        
+        
+        switch careType {
+              case .watering:
+                  subtitleLabel.text = "Water Today"
+              case .trimming:
+                  subtitleLabel.text = "Prune Today"
+              case .fertilizing:
+                  subtitleLabel.text = "Fertilize Today"
+              case .repotting:
+                  subtitleLabel.text = "Repot Soon"
+              }
+        
+        plantImageView.image = UIImage(named: plantModel.imageName)
+
+        }
+    
+        
 }

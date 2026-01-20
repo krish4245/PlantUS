@@ -14,7 +14,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet weak var card1: UIView!
     @IBOutlet weak var gardenStatusContainerView: UIView!
     @IBOutlet weak var wateringContainerView: UIView!
-    @IBOutlet weak var careStreakContainerView: UIView!
+  
 
     @IBOutlet weak var card2: UIView!
     @IBOutlet weak var statusCardView: UIView!
@@ -27,22 +27,25 @@ final class HomeViewController: UIViewController {
 
     private let careTypes: [CareType] = [.watering, .trimming, .repotting, .fertilizing]
     private var selectedCareIndex: Int = 0
+    
+    private var visibleUserPlants: [UserPlant] = []
+    private var selectedUserPlant: UserPlant?
 
-    private var plants: [Plant] = [
-        Plant(name: "Monstera", subtitle: "Water Today", imageName: "Monsters", careType: .watering,
-              wateringDone: false, sunlightDone: false, fertilizingDone: false),
-        Plant(name: "Lil Sprout", subtitle: "Water Today", imageName: "lil_sprout", careType: .watering,
-              wateringDone: false, sunlightDone: false, fertilizingDone: false),
-        Plant(name: "Sunny S.", subtitle: "Water Today", imageName: "sunnys", careType: .watering,
-              wateringDone: false, sunlightDone: false, fertilizingDone: false),
-        Plant(name: "Fern Friend", subtitle: "Trim Today", imageName: "Monsters", careType: .trimming,
-              wateringDone: false, sunlightDone: false, fertilizingDone: false),
-        Plant(name: "Cactus Buddy", subtitle: "Trim Today", imageName: "indoor-plants-studio", careType: .trimming,
-              wateringDone: false, sunlightDone: false, fertilizingDone: false)
-    ]
+//    private var plants: [Plant] = [
+//        Plant(name: "Monstera", subtitle: "Water Today", imageName: "Monsters", careType: .watering,
+//              wateringDone: false, sunlightDone: false, fertilizingDone: false),
+//        Plant(name: "Lil Sprout", subtitle: "Water Today", imageName: "lil_sprout", careType: .watering,
+//              wateringDone: false, sunlightDone: false, fertilizingDone: false),
+//        Plant(name: "Sunny S.", subtitle: "Water Today", imageName: "sunnys", careType: .watering,
+//              wateringDone: false, sunlightDone: false, fertilizingDone: false),
+//        Plant(name: "Fern Friend", subtitle: "Trim Today", imageName: "Monsters", careType: .trimming,
+//              wateringDone: false, sunlightDone: false, fertilizingDone: false),
+//        Plant(name: "Cactus Buddy", subtitle: "Trim Today", imageName: "indoor-plants-studio", careType: .trimming,
+//              wateringDone: false, sunlightDone: false, fertilizingDone: false)
+//    ]
 
-    private var visiblePlants: [Plant] = []
-    private var selectedPlant: Plant?
+//    private var visiblePlants: [Plant] = []
+//    private var selectedPlant: Plant?
 
     // MARK: - Lifecycle
 
@@ -50,12 +53,6 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         updateGreeting()
-        
-        careTypeCollectionView.dataSource = self
-        careTypeCollectionView.delegate = self
-        
-        
-        applyCareFilter(index: selectedCareIndex)
         setupCollectionViews()
         applyCareFilter(index: selectedCareIndex)
         updateHomeUI()
@@ -87,10 +84,12 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUserStats()
+        applyCareFilter(index: selectedCareIndex)
     }
 
 
-    // MARK: - Setup
+    // MARK: - Greeting
+    
     private func updateGreeting() {
         let hour = Calendar.current.component(.hour, from: Date())
 
@@ -151,28 +150,53 @@ final class HomeViewController: UIViewController {
     }
 
     private func applyCareFilter(index: Int) {
-        let type = careTypes[index]
-        visiblePlants = plants.filter { $0.careType == type }
+        let selectedType = careTypes[index]
+        
+        let allUserPlants = PlantStore.shared.plants
+//        visiblePlants = plants.filter { $0.careType == type }
+        
+        visibleUserPlants = allUserPlants.filter { userPlant in
+            userPlant.isAddedToGarden == true  && userPlant.quantity > 0 && isPendingTask(for: userPlant, careType: selectedType)
+        }
 
         updateHomeUI()
         careTypeCollectionView.reloadData()
         plantsCollectionView.reloadData()
     }
+    
+    
+    private func isPendingTask(for plant: UserPlant, careType: CareType) -> Bool {
+        switch careType {
+        case .watering:
+            return plant.wateringDone == false
+        case .trimming:
+                   return plant.pruningDone == false
+        case .fertilizing:
+                   return plant.fertilizingDone == false
+        case .repotting:
+                   return plant.repottingDone == false
+        }
+    }
+    
+    private func getPlantModel ( for userPlant: UserPlant) -> PlantModel_Ved? {
+        return PlantDataSource.shared.allPlants.first { $0.id == userPlant.plantId}
+    }
+    
     @objc private func handlePlantCareCompleted(notification: Notification) {
-        guard let plantID = notification.object as? String else { return }
-
-        plants.removeAll { $0.id == plantID }
+//        guard let plantID = notification.object as? String else { return }
+//
+//        plants.removeAll { $0.id == plantID }
         applyCareFilter(index: selectedCareIndex)
     }
 
 
     private func updateHomeUI() {
-        let hasPlants = !visiblePlants.isEmpty
+        let hasPlants = !visibleUserPlants.isEmpty
         plantsCollectionView.isHidden = !hasPlants
         emptyStateView.isHidden = hasPlants
     }
 
-    // MARK: - Notifications
+  
 
 
     // MARK: - UI Styling
@@ -197,6 +221,26 @@ final class HomeViewController: UIViewController {
         statusCardView.layer.shadowRadius = 10
         statusCardView.layer.shadowOffset = CGSize(width: 0, height: 4)
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showPlantCareModal" {
+
+            guard let vc = segue.destination as? PlantCareModalViewController else { return }
+            guard let userPlant = selectedUserPlant else { return }
+            guard let plantModel = getPlantModel(for: userPlant) else { return }
+
+            vc.userPlant = userPlant
+            vc.plantModel = plantModel
+
+//            // ✅ Modal sheet style settings
+            vc.modalPresentationStyle = .pageSheet
+//            if let sheet = vc.sheetPresentationController {
+//                sheet.detents = [.medium(), .large()]
+//                sheet.prefersGrabberVisible = true
+//            }
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -209,7 +253,7 @@ extension HomeViewController: UICollectionViewDataSource {
         if collectionView == careTypeCollectionView {
             return careTypes.count
         } else {
-            return visiblePlants.count
+            return visibleUserPlants.count
         }
     }
     func collectionView(_ collectionView: UICollectionView,
@@ -241,9 +285,20 @@ extension HomeViewController: UICollectionViewDataSource {
                 withReuseIdentifier: "PlantCell",
                 for: indexPath
             ) as! PlantCollectionViewCell
+            
+            let userPlant = visibleUserPlants[indexPath.item]
+            let careType = careTypes[selectedCareIndex]
+            
+            if let plantModel = getPlantModel(for: userPlant) {
+                cell.configure(with: plantModel, userPlant: userPlant,careType: careType)
+            }else{
+                cell.nameLabel.text = "Unknown Plant"
+                cell.subtitleLabel.text = ""
+                   cell.plantImageView.image = UIImage(named: "placeholder")
+            }
 
-            let plant = visiblePlants[indexPath.item]
-            cell.configure(with: plant)
+//            let plant = visiblePlants[indexPath.item]
+//            cell.configure(with: plant)
             return cell
         }
     }
@@ -255,23 +310,16 @@ extension HomeViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
+        
+        
 
         if collectionView == careTypeCollectionView {
             selectedCareIndex = indexPath.item
             applyCareFilter(index: selectedCareIndex)
 
         } else {
-            selectedPlant = visiblePlants[indexPath.item]
-
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(
-                withIdentifier: "PlantCareModalViewController"
-            ) as! PlantCareModalViewController
-
-            vc.plant = selectedPlant
-           
-            vc.modalPresentationStyle = .pageSheet
-            present(vc, animated: true)
+            selectedUserPlant = visibleUserPlants[indexPath.item]
+               performSegue(withIdentifier: "showPlantCareModal", sender: self)
            
         }
     }
@@ -295,4 +343,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 140, height: 170)
         }
     }
+    
+
+
 }

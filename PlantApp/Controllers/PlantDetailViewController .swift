@@ -32,22 +32,12 @@ class PlantDetailViewController: UIViewController {
         super.viewDidLoad()
 //        styleBenefitsCard()
         // Do any additional setup after loading the view.
-        styleCard(benefitsCardView)
+    
         fetchPlant()
         setupUI()
         print("Received plant ID:", plantId!)
     }
-    
-    private func styleCard(_ view: UIView) {
-        view.backgroundColor = .systemBackground
-        view.layer.cornerRadius = 20
-        view.layer.masksToBounds = false
-
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.06
-        view.layer.shadowRadius = 18
-        view.layer.shadowOffset = CGSize(width: 0, height: 10)
-    }
+ 
 
     
     private func fetchPlant() {
