@@ -7,7 +7,7 @@ class CommunityDataStore {
     
     private var users: [User] = []
     private var posts: [Post] = []
-    private var comments: [String: [Comment]] = [:]
+    //private var comments: [String: [Comment]] = [:]
     
     var currentLoggedInUserID: String = "u2"
     
@@ -18,7 +18,27 @@ class CommunityDataStore {
     // MARK: - API
     
     // This function MUST be named 'fetchAllPosts' to match your Controller
-    // MARK: - Fast Fetching (No Lag) 
+    // MARK: - Fast Fetching (No Lag)
+    
+//        func getComments(forPostId postId: String) -> [Comment] {
+//            return comments[postId] ?? []
+//        }
+//        
+//        func addComment(postId: String, text: String, username: String) {
+//            let newComment = Comment(
+//                id: UUID().uuidString,
+//                username: username,
+//                text: text,
+//                time: "Just now"
+//            )
+//            
+//            // If list exists, append. If not, create new list.
+//            if comments[postId] != nil {
+//                comments[postId]?.append(newComment)
+//            } else {
+//                comments[postId] = [newComment]
+//            }
+//        }
         
         func fetchAllPosts(completion: @escaping ([Post]) -> Void) {
             // Return immediately

@@ -20,16 +20,16 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         setupTable()
         loadData()
         
         postsTableView.delaysContentTouches = false
-            
-            // 2. Ensure buttons get priority over scrolling
-            for case let scrollView as UIScrollView in postsTableView.subviews {
-                scrollView.delaysContentTouches = false
-            }
+        
+        // 2. Ensure buttons get priority over scrolling
+        for case let scrollView as UIScrollView in postsTableView.subviews {
+            scrollView.delaysContentTouches = false
+        }
         
         postsTableView.allowsSelection = false
         
@@ -76,10 +76,11 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         let post = posts[indexPath.row]
         
         cell.configure(with: post)
-    
+        
         cell.onLikeTapped = { [weak self] (newIsLiked, newCount) in
             guard let self = self else { return }
             
+            cell.commentButton.tag = indexPath.row
             
             self.posts[indexPath.row].isLiked = newIsLiked
             self.posts[indexPath.row].likesCount = newCount
@@ -91,41 +92,60 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
             //print("Like toggled for post: \(post.id). New State: \(newState)")
         }
         cell.onAvatarTapped = { [weak self] in if let author = post.author {
-                        self?.performSegue(withIdentifier: "ShowUserProfile", sender: author)
-                }
-            }
-                
-        return cell
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // This checks if the screen we are opening is the NewPostViewController
-        if let newPostVC = segue.destination as? NewPostViewController {
+            self?.performSegue(withIdentifier: "ShowUserProfile", sender: author)
+        }
+                        }
             
-            // We pass a "Callback" function.
-            // When NewPostViewController finishes uploading, it runs this code block.
-            newPostVC.onPostSuccess = { [weak self] in
-                // Reload the data instantly
-                self?.loadData()
-            }
+            return cell
         }
-        if segue.identifier == "ShowUserProfile"{
-            if let profileVC = segue.destination as? ProfileViewController {
+        
+        
+            override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            // This checks if the screen we are opening is the NewPostViewController
+            if let newPostVC = segue.destination as? NewPostViewController {
                 
-                // The 'sender' is the User object we passed in Step 3
-                if let selectedUser = sender as? User {
-                    profileVC.user = selectedUser
+                // We pass a "Callback" function.
+                // When NewPostViewController finishes uploading, it runs this code block.
+                newPostVC.onPostSuccess = { [weak self] in
+                    // Reload the data instantly
+                    self?.loadData()
                 }
-        
-        
-                // Optional: Scroll to the top so the user sees their new post
-                //                    if let count = self?.posts.count, count > 0 {
-                //                        self?.postsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-                //                    }
+            }
+            if segue.identifier == "ShowUserProfile"{
+                if let profileVC = segue.destination as? ProfileViewController {
+                    
+                    // The 'sender' is the User object we passed in Step 3
+                    if let selectedUser = sender as? User {
+                        profileVC.user = selectedUser
+                        print(selectedUser)
+                    }
+                }
+            }
+            
+            if segue.identifier == "ShowComments" {
+                if let destVC = segue.destination as? CommentsViewController {
+                    
+                    if let button = sender as? UIButton {
+                                    let rowIndex = button.tag // Read the "Stamp" we put in Step 1
+                                    
+                                    // Safety check: Ensure the index exists
+                                    if rowIndex >= 0 && rowIndex < posts.count {
+                                        destVC.post = posts[rowIndex]
+                                        print("✅ Data passed via Button Tag! Post: \(posts[rowIndex].caption)")
+                                    }
+                                }else if let cell = sender as? UITableViewCell,
+                                         let indexPath = postsTableView.indexPath(for: cell) {
+                                     destVC.post = posts[indexPath.row]
+                                 }else if let post = sender as? Post {
+                                     destVC.post = post
+                                 }
+//                    if let selectedPost = sender as? Post {
+//                        destVC.post = selectedPost
+//                        print(selectedPost)
+//                    }
+                    
+                }
             }
         }
     }
-    
-    
-}
+

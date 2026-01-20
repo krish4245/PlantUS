@@ -102,32 +102,33 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     // This moves the input bar up when keyboard opens
     func setupKeyboardObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if let constraint = inputBottomConstraint {
-                constraint.constant = -keyboardSize.height + view.safeAreaInsets.bottom
-            }
             
-            UIView.animate(withDuration: 0.1) {
-                self.view.layoutIfNeeded()
-            }
-            scrollToBottom()
-        }
-    }
+            
+            let bottomPadding = view.safeAreaInsets.bottom
+                        self.inputBottomConstraint.constant = -(keyboardSize.height - bottomPadding)
+                        
+                        UIView.animate(withDuration: 0.3) {
+                            self.view.layoutIfNeeded()
+                        }
+                        scrollToBottom()
+                    }
+                }
     
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        // Move back to zero
-//        if let constraint = inputBottomConstraint {
-//            constraint.constant = 0
-//        }
-//        
-//        UIView.animate(withDuration: 0.3) {
-//            self.view.layoutIfNeeded()
-//        }
-//    }
+  @objc func keyboardWillHide(notification: NSNotification) {
+       self.inputBottomConstraint.constant = 0
+    
+    UIView.animate(withDuration: 0.3) {
+        self.view.layoutIfNeeded()
+    }
+}
+    @objc func dismissKeyboard() {
+            view.endEditing(true)
+        }
     
     func scrollToBottom() {
         if !messages.isEmpty {
