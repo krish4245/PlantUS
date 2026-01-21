@@ -7,19 +7,26 @@
 
 import Foundation
 
+// 1. Simplified Comment
+struct Comment: Codable, Identifiable {
+    let id: UUID
+    let username: String
+    let text: String
+    let timeAgo: String
+}
+
+// 2. Post Structure
 struct Post: Codable {
     let id: String
     let userId: String
     let postImageString: String
+    var likesCount: Int
     let caption: String
     let timestamp: Date
     
-    // We link the actual User object manually when fetching
     var author: User?
     var isLiked: Bool = false
     
-    // (New) Comments for the Comment Page
-    // We store comment IDs here, or fetch them separately.
-    // For now, let's keep it simple and just count them.
-    var commentCount: Int = 0
+    // List of comments for this post
+    var comments: [Comment] = []
 }

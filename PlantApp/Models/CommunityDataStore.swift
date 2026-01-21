@@ -7,7 +7,7 @@ class CommunityDataStore {
     
     private var users: [User] = []
     private var posts: [Post] = []
-    private var comments: [String: [Comment]] = [:]
+    //private var comments: [String: [Comment]] = [:]
     
     var currentLoggedInUserID: String = "u2"
     
@@ -18,7 +18,27 @@ class CommunityDataStore {
     // MARK: - API
     
     // This function MUST be named 'fetchAllPosts' to match your Controller
-    // MARK: - Fast Fetching (No Lag) 
+    // MARK: - Fast Fetching (No Lag)
+    
+//        func getComments(forPostId postId: String) -> [Comment] {
+//            return comments[postId] ?? []
+//        }
+//        
+//        func addComment(postId: String, text: String, username: String) {
+//            let newComment = Comment(
+//                id: UUID().uuidString,
+//                username: username,
+//                text: text,
+//                time: "Just now"
+//            )
+//            
+//            // If list exists, append. If not, create new list.
+//            if comments[postId] != nil {
+//                comments[postId]?.append(newComment)
+//            } else {
+//                comments[postId] = [newComment]
+//            }
+//        }
         
         func fetchAllPosts(completion: @escaping ([Post]) -> Void) {
             // Return immediately
@@ -55,16 +75,17 @@ class CommunityDataStore {
         self.users = [vedant, shubham]
         
         // Posts
-        let p1 = Post(id: "p1", userId: "u1", postImageString: "plant_vedant", caption: "New leaf alert! 🌿", timestamp: Date(), author: vedant)
-        let p2 = Post(id: "p2", userId: "u2", postImageString: "plant_shubham", caption: "Watering day 💧", timestamp: Date(), author: shubham)
+        let p1 = Post(id: "p1", userId: "u1", postImageString: "plant_vedant", likesCount: 5, caption: "New leaf alert! 🌿", timestamp: Date(), author: vedant)
+        let p2 = Post(id: "p2", userId: "u2", postImageString: "plant_shubham", likesCount: 3, caption: "Watering day 💧", timestamp: Date(), author: shubham)
         
         self.posts = [p1, p2]
     }
     
-    func updateLikeStatus(forPostId postId: String, isLiked: Bool) {
+    func updateLikeStatus(forPostId postId: String, isLiked: Bool, newCount: Int) {
         // 1. Find the post in the main list
         if let index = posts.firstIndex(where: { $0.id == postId }) {
             posts[index].isLiked = isLiked
+            posts[index].likesCount = newCount
         }
     }
     
@@ -89,7 +110,8 @@ class CommunityDataStore {
             let newPost = Post(
                 id: UUID().uuidString,
                 userId: currentUser.id,
-                postImageString: imageID, // We store the ID, not the image itself
+                postImageString: imageID,
+                likesCount: 0,
                 caption: caption,
                 timestamp: Date(),
                 author: currentUser

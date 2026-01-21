@@ -11,7 +11,7 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     
     // MARK: - Outlets
     @IBOutlet weak var postsTableView: UITableView!
-    @IBOutlet weak var filterSegmentedControl: UISegmentedControl!
+    //@IBOutlet weak var filterSegmentedControl: UISegmentedControl!
     
     // MARK: - Data
     // We use the new Post model we created
@@ -20,8 +20,18 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupTable()
         loadData()
+        
+        postsTableView.delaysContentTouches = false
+        
+        // 2. Ensure buttons get priority over scrolling
+        for case let scrollView as UIScrollView in postsTableView.subviews {
+            scrollView.delaysContentTouches = false
+        }
+        
+        postsTableView.allowsSelection = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(viewWillAppear), name: NSNotification.Name("NewPostAdded"), object: nil)
     }
@@ -65,78 +75,77 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
         
         let post = posts[indexPath.row]
         
-        // --- CONFIGURE CELL ---
-        // We configure it manually here since your cell's 'configure' method
-        // likely expects the OLD Post struct and might break.
+        cell.configure(with: post)
         
-        // 1. Text Data
-        cell.usernameLabel?.text = post.author?.username
-        cell.captionLabel?.text = post.caption
-        cell.timeLabel?.text = "2h ago" // We will fix the Date logic later
-        
-        cell.onAvatarTapped = { [weak self] in
-            self?.performSegue(withIdentifier: "ShowUserProfile", sender: post.author)
-        }
-        
-        // 2. Images (Using the helper extension we made)
-        cell.postImageView?.configureImage(with: post.postImageString)
-        
-        // Safety check: author might be nil in some rare cases
-        if let author = post.author {
-            cell.avatarImageView?.configureImage(with: author.profileImageString)
-        } else {
-            cell.avatarImageView?.image = UIImage(systemName: "person.circle")
-        }
-        
-        cell.updateLikeUI(isLiked: post.isLiked)
-        
-        cell.onLikeTapped = { [weak self] in
-                    guard let self = self else { return }
-                    
-                   
-                    self.posts[indexPath.row].isLiked.toggle()
-                    
-                   
-                    let newState = self.posts[indexPath.row].isLiked
-                    cell.updateLikeUI(isLiked: newState)
-                    
-            CommunityDataStore.shared.updateLikeStatus(forPostId: post.id, isLiked: newState)
-                    // 3. Animation: Add a little bounce effect
-                    //self.animateLikeButton(cell.likeButton)
-                    //print("Like toggled for post: \(post.id). New State: \(newState)")
-                    
-                }
-        return cell
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // This checks if the screen we are opening is the NewPostViewController
-        if let newPostVC = segue.destination as? NewPostViewController {
+        cell.onLikeTapped = { [weak self] (newIsLiked, newCount) in
+            guard let self = self else { return }
             
-            // We pass a "Callback" function.
-            // When NewPostViewController finishes uploading, it runs this code block.
-            newPostVC.onPostSuccess = { [weak self] in
-                // Reload the data instantly
-                self?.loadData()
-            }
+            cell.commentButton.tag = indexPath.row
+            
+            self.posts[indexPath.row].isLiked = newIsLiked
+            self.posts[indexPath.row].likesCount = newCount
+            
+            
+            CommunityDataStore.shared.updateLikeStatus(forPostId: post.id, isLiked: newIsLiked, newCount: newCount)
+            // 3. Animation: Add a little bounce effect
+            //self.animateLikeButton(cell.likeButton)
+            //print("Like toggled for post: \(post.id). New State: \(newState)")
         }
-        if segue.identifier == "ShowUserProfile"{
-            if let profileVC = segue.destination as? ProfileViewController {
+        cell.onAvatarTapped = { [weak self] in if let author = post.author {
+            self?.performSegue(withIdentifier: "ShowUserProfile", sender: author)
+        }
+                        }
+            
+            return cell
+        }
+        
+        
+            override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            // This checks if the screen we are opening is the NewPostViewController
+            if let newPostVC = segue.destination as? NewPostViewController {
                 
-                // The 'sender' is the User object we passed in Step 3
-                if let selectedUser = sender as? User {
-                    profileVC.user = selectedUser
+                // We pass a "Callback" function.
+                // When NewPostViewController finishes uploading, it runs this code block.
+                newPostVC.onPostSuccess = { [weak self] in
+                    // Reload the data instantly
+                    self?.loadData()
                 }
-        
-        
-                // Optional: Scroll to the top so the user sees their new post
-                //                    if let count = self?.posts.count, count > 0 {
-                //                        self?.postsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-                //                    }
+            }
+            if segue.identifier == "ShowUserProfile"{
+                if let profileVC = segue.destination as? ProfileViewController {
+                    
+                    // The 'sender' is the User object we passed in Step 3
+                    if let selectedUser = sender as? User {
+                        profileVC.user = selectedUser
+                        print(selectedUser)
+                    }
+                }
+            }
+            
+            if segue.identifier == "ShowComments" {
+                if let destVC = segue.destination as? CommentsViewController {
+                    
+                    if let button = sender as? UIButton {
+                                    let rowIndex = button.tag // Read the "Stamp" we put in Step 1
+                                    
+                                    // Safety check: Ensure the index exists
+                                    if rowIndex >= 0 && rowIndex < posts.count {
+                                        destVC.post = posts[rowIndex]
+                                        print("✅ Data passed via Button Tag! Post: \(posts[rowIndex].caption)")
+                                    }
+                                }else if let cell = sender as? UITableViewCell,
+                                         let indexPath = postsTableView.indexPath(for: cell) {
+                                     destVC.post = posts[indexPath.row]
+                                 }else if let post = sender as? Post {
+                                     destVC.post = post
+                                 }
+//                    if let selectedPost = sender as? Post {
+//                        destVC.post = selectedPost
+//                        print(selectedPost)
+//                    }
+                    
+                }
             }
         }
     }
-    
-    
-}
+

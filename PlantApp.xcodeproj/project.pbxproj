@@ -146,7 +146,7 @@
 				CODE_SIGN_ENTITLEMENTS = PlantApp/PlantApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 638HMB96TT;
+				DEVELOPMENT_TEAM = QZ4U8TA4U3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PlantApp/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "we need photo library access to choose images";
