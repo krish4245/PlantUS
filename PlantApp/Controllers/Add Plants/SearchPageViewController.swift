@@ -123,17 +123,6 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
-//    func imagePickerController(
-//        _ picker: UIImagePickerController,
-//        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
-//    ) {
-//        picker.dismiss(animated: true)
-//
-//        if let image = info[.originalImage] as? UIImage {
-//            // TODO: pass image to ML / plant detection
-//            print("Image selected")
-//        }
-//    }
 
     
     func registerCells(){
@@ -310,7 +299,7 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
        let section = NSCollectionLayoutSection(group: group)
         
         
-        section.interGroupSpacing = 12   //  ADD THIS
+        section.interGroupSpacing = 12  
            section.contentInsets = NSDirectionalEdgeInsets(
                top: 8,
                leading: 16,

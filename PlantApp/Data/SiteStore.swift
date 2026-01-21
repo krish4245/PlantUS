@@ -25,7 +25,7 @@ class SiteStore: ObservableObject {
     }
     
     // MARK: Add site (called from questionnaire)
-    func addSite(name: String, color: UIColor,icon: String) {
+    func addSite(name: String, icon: String) {
         
         // check if site already exists → avoid duplicates
         if sites.contains(where: { $0.name == name }) {
@@ -35,7 +35,7 @@ class SiteStore: ObservableObject {
         let newSite = MyGardenSite(
             id: UUID(),
             name: name,
-            cardColor: UIColorCodable(color),
+//            cardColor: UIColorCodable(color),
             icon: icon,
             plantCount: 0 // start with 0 plants
         )
@@ -53,7 +53,7 @@ class SiteStore: ObservableObject {
           let newSite = MyGardenSite(
               id: UUID(),
               name: siteName,
-              cardColor: UIColorCodable(.systemGreen),
+//              cardColor: UIColorCodable(.systemGreen),
               icon: "leaf",
               plantCount: count
           )

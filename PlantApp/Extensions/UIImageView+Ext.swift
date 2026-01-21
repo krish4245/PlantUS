@@ -38,6 +38,6 @@ extension UIImageView {
         
         // 4. Fallback (If nothing works, show a gray square)
         self.image = UIImage(systemName: "photo")
-        self.backgroundColor = .systemGray6
+//        self.backgroundColor = .systemGray6
     }
 }

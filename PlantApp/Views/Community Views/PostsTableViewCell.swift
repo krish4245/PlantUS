@@ -80,11 +80,7 @@ class PostsTableViewCell: UITableViewCell {
         
         // Load Images
         postImageView.configureImage(with: post.postImageString)
-//        if let author = post.author {
-//            avatarImageView.configureImage(with: author.profileImageString)
-//        } else {
-//            avatarImageView.image = UIImage(systemName: "person.circle.fill")
-//        }
+
         
         updateLikeUI(isLiked: post.isLiked, count: post.likesCount)
     }
