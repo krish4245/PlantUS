@@ -13,7 +13,6 @@ class PlantCareModalViewController: UIViewController {
     var userPlant: UserPlant?
     var plantModel: PlantModel_Ved?
 
-//    @IBOutlet weak var ScrollView: UIScrollView!
     
     @IBOutlet weak var plantNameLabel: UILabel!
     
@@ -72,7 +71,7 @@ class PlantCareModalViewController: UIViewController {
             button.isEnabled = false
             button.alpha = 0.6
         } else {
-            //            button.setTitle(title, for: .normal)
+            //button.setTitle(title, for: .normal)
             button.isEnabled = true
             button.alpha = 1.0
         }

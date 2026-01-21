@@ -50,34 +50,39 @@ class PlantCollectionViewCell: UICollectionViewCell {
         layer.masksToBounds = false
     }
 
-    func configure(with plant: Plant) {
-        nameLabel.text = plant.name
-        subtitleLabel.text = plant.subtitle
-
-        if let localImage = UIImage(named: plant.imageName) {
-            plantImageView.image = localImage
-            return
-        } else {
-            // Debug aid: see which names fail
-            print("DEBUG: UIImage(named:) failed for asset '\(plant.imageName)'")
-            plantImageView.image = UIImage(named: plant.imageName)
-        }
-
-        if let url = URL(string: plant.imageName), url.scheme != nil {
-            plantImageView.image = nil
-            imageTask = URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
-                guard let self = self,
-                      let data = data,
-                      let image = UIImage(data: data) else { return }
-                DispatchQueue.main.async {
-                    self.plantImageView.image = image
-                }
-            }
-            imageTask?.resume()
-        } else {
-            plantImageView.image = nil
-        }
-    }
+//    func configure(with plant: Plant) {
+//        nameLabel.text = plant.name
+//        subtitleLabel.text = plant.subtitle
+//
+//        if let localImage = UIImage(named: plant.imageName) {
+//            plantImageView.image = localImage
+//            return
+//        } else {
+//            // Debug aid: see which names fail
+//            print("DEBUG: UIImage(named:) failed for asset '\(plant.imageName)'")
+//            plantImageView.image = UIImage(named: plant.imageName)
+//        }
+//
+//    //If plant.imageName is a valid URL (contains http:// or https://)
+//    // Downloads the image asynchronously
+//    // Sets it on the main thread when received
+//    //Stores the task in imageTask (likely for cancellation)
+//        
+//        if let url = URL(string: plant.imageName), url.scheme != nil {
+//            plantImageView.image = nil
+//            imageTask = URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
+//                guard let self = self,
+//                      let data = data,
+//                      let image = UIImage(data: data) else { return }
+//                DispatchQueue.main.async {
+//                    self.plantImageView.image = image
+//                }
+//            }
+//            imageTask?.resume()
+//        } else {
+//            plantImageView.image = nil
+//        }
+//    }
     
     func configure(with plantModel: PlantModel_Ved, userPlant: UserPlant, careType: CareType) {
         nameLabel.text = plantModel.name

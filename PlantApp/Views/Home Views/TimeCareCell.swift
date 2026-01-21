@@ -38,10 +38,10 @@ class TimeCareCell: UICollectionViewCell {
     override func layoutSubviews() {
            super.layoutSubviews()
 
-           // ✅ must update frame here
+           //  must update frame here
            gradientLayer.frame = contentView.bounds
 
-           // ✅ clean shadow path
+           //  clean shadow path
            layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
        }
     

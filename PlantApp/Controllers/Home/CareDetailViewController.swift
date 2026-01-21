@@ -36,7 +36,7 @@ final class CareDetailViewController: UIViewController {
 
         let allPlants = PlantDataSource.shared.plants
 
-        // ✅ Filtering based on careKind
+        //  Filtering based on careKind
         plantsToShow = allPlants.filter { $0.careTasks.contains(careKind) }
 
 
@@ -67,7 +67,7 @@ extension CareDetailViewController: UITableViewDelegate, UITableViewDataSource {
            doneButton.tag = indexPath.row
            doneButton.addTarget(self, action: #selector(doneButtonTapped(_:)), for: .touchUpInside)
 
-           // ✅ put button on right side
+           //  put button on right side
            cell.accessoryView = doneButton
         switch careKind {
             case .watering:
@@ -86,7 +86,7 @@ extension CareDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     @objc private func doneButtonTapped(_ sender: UIButton) {
 
-        // ✅ find the cell that contains this button
+        //  find the cell that contains this button
         guard let cell = sender.superview as? UIView else { return }
 
         var view: UIView? = sender
@@ -99,10 +99,10 @@ extension CareDetailViewController: UITableViewDelegate, UITableViewDataSource {
             let indexPath = tableView.indexPath(for: tableCell)
         else { return }
 
-        // ✅ Update your array first
+        //  Update your array first
         plantsToShow.remove(at: indexPath.row)
 
-        // ✅ Animate fade delete
+        //  Animate fade delete
         tableView.performBatchUpdates({
             tableView.deleteRows(at: [indexPath], with: .fade)
         }, completion: nil)
