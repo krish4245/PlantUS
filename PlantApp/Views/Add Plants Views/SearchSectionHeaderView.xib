@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="SearchSectionHeaderView" customModule="PlantApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMX-33-kfD">
+                    <rect key="frame" x="16" y="8" width="288" height="34"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstItem="eMX-33-kfD" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="16" id="7Uf-p9-gxx"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="eMX-33-kfD" secondAttribute="trailing" constant="16" id="iiW-e6-mPP"/>
+                <constraint firstItem="eMX-33-kfD" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="8" id="w5W-23-8dL"/>
+                <constraint firstAttribute="bottom" secondItem="eMX-33-kfD" secondAttribute="bottom" constant="8" id="xWK-H8-bLc"/>
+            </constraints>
+            <connections>
+                <outlet property="titleLabel" destination="eMX-33-kfD" id="npH-w2-tSN"/>
+            </connections>
+            <point key="canvasLocation" x="35" y="113"/>
+        </collectionReusableView>
+    </objects>
+</document>
