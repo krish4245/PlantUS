@@ -14,52 +14,44 @@ class profilePostsViewerController: UIViewController, UITableViewDelegate, UITab
     // The single post we want to show
     var post: Post?
     
-    // We create a temporary list containing just that ONE post
+    //a temporary list containing just that selected post
     var tableData: [Post] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 1. Setup the dummy data array
+        //setup the dummy data array
         if let post = post {
             tableData = [post] // The list has 1 item
         }
         
-        // 2. Setup Table View
         tableView.delegate = self
         tableView.dataSource = self
-        
-        // Remove empty lines at the bottom
         tableView.tableFooterView = UIView()
     }
     
-    // MARK: - Table View Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count // This will be 1
+        return tableData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // We reuse the EXACT same cell design you already built!
+        //used same tableview frim community posts
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostsTableViewCell else {
             return UITableViewCell()
         }
         
         let currentPost = tableData[indexPath.row]
         
-        // Reuse your existing configure function
+        //reused same config func from postsTableView
         cell.configure(with: currentPost)
-        
-        // Handle the Like Button inside the detail view
         cell.onLikeTapped = { [weak self] (newIsLiked, newCount) in
             guard let self = self else { return }
             
-            // Update the source of truth
+            //updating main datastore
             self.post?.isLiked = newIsLiked
             self.post?.likesCount = newCount
-            self.tableData[0] = self.post! // Update the local list
-            
-            // Update Database
+            self.tableData[0] = self.post! //updating local list
             CommunityDataStore.shared.updateLikeStatus(forPostId: currentPost.id, isLiked: newIsLiked, newCount: newCount)
         }
         

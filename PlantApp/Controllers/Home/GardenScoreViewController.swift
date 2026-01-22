@@ -16,9 +16,9 @@ class GardenScoreViewController: UIViewController {
         scoreHighlightView.layer.cornerRadius = 16
            scoreHighlightView.layer.masksToBounds = true
 
-           scoreHighlightView.layer.cornerRadius = 20   // half of 40
+           scoreHighlightView.layer.cornerRadius = 20
            scoreHighlightView.layer.masksToBounds = true
-        // Do any additional setup after loading the view.
+      
     }
     
     private func styleGreenBox() {
@@ -26,16 +26,4 @@ class GardenScoreViewController: UIViewController {
         scoreHighlightView.layer.cornerRadius = 18
         scoreHighlightView.layer.masksToBounds = true
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -12,7 +12,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
 
-    // MARK: - Outlets
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
@@ -24,7 +23,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var postsSegmentedControl: UISegmentedControl!
     @IBOutlet weak var collectionView: UICollectionView!
 
-    // MARK: - Data
     var user: User?
     var isCurrentUser: Bool = false
     private var userPosts: [Post] = []
@@ -35,14 +33,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         setupUI()
         checkIsCurrentUser()
         updateUI()
-
-        //        otherUserButtonsStack.isHidden = true
-        //        navigationItem.rightBarButtonItem = nil
-        //    }
-        //
-        //    override func viewWillAppear(_ animated: Bool) {
-        //        super.viewWillAppear(animated)
-        //        loadData()
     }
 
     func setupUI() {
@@ -50,13 +40,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         profileImageView.layer.borderWidth = 3
         profileImageView.layer.borderColor = UIColor.white.cgColor
 
-        // Grid Setup
         collectionView.delegate = self
         collectionView.dataSource = self
     }
 
     func checkIsCurrentUser() {
-        // 1. Fetch the "Logged In" user (Shubham/u2)
+        //Fetch the "Logged In" user (Shubham/u2)
             if let passedUser = self.user {
                 self.isCurrentUser = CommunityDataStore.shared.isCurrentUser(userID: passedUser.id)
             } else {
@@ -71,7 +60,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
 
         print(isCurrentUser, "Current USER")
         
-        // 1. Fill Text
+        //Fill Text
         nameLabel.text = user.name
         handleLabel.text = "@\(user.username)"
         statsLabel.text = user.searchSubtitle
@@ -79,17 +68,15 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
 
         navigationItem.rightBarButtonItem = menuButton
 
-        // 2. Toggle UI based on Identity
+        //Toggle UI based on Identity
         if isCurrentUser {
             otherUserButtonsStack.isHidden = true
-            //setupTabs(forCurrentUser: true)
-
+    
         } else {
             otherUserButtonsStack.isHidden = false
-            //setupTabs(forCurrentUser: false)
         }
 
-        // 3. Fetch Posts
+        //Fetch Posts
         CommunityDataStore.shared.fetchPosts(forUserId: user.id) {
             [weak self] posts in
             self?.userPosts = posts
@@ -99,14 +86,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         setupMenu()
     }
     
-    
-//    func updateButtonState() {
-//            guard let user = user else { return }
-//
-//                messageButton.isEnabled = true
-//                messageButton.backgroundColor = UIColor.systemGray4
-//                messageButton.alpha = 1.0
-//        }
+
         
         // MARK: - Actions
         
@@ -135,35 +115,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             }
         }
         
-
-//    func setupTabs(forCurrentUser: Bool) {
-//        postsSegmentedControl.removeAllSegments()
-//        postsSegmentedControl.insertSegment(
-//            withTitle: "Posts",
-//            at: 0,
-//            animated: false
-//        )
-//
-//        if forCurrentUser {
-//            postsSegmentedControl.insertSegment(
-//                withTitle: "Saved",
-//                at: 1,
-//                animated: false
-//            )
-//            postsSegmentedControl.isEnabled = true
-//        } else {
-//            // Others usually just see posts
-//            postsSegmentedControl.isEnabled = false
-//        }
-//        postsSegmentedControl.selectedSegmentIndex = 0
-//    }
-
-    // MARK: - Actions
-
-
     
     func setupMenu() {
-            // 1. Define Actions for "My Profile"
+            //Define Actions for "My Profile"
             let editAction = UIAction(title: "Edit Profile", image: UIImage(systemName: "pencil")) { [weak self] _ in
                 self?.openEditProfile()
             }
@@ -180,7 +134,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
                 print("Share tapped")
             }
             
-            // 3. Choose which menu to show
+            //Choose which menu to show
             var menuItems: [UIAction] = []
             
             if isCurrentUser {
@@ -195,9 +149,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         }
 
     func openEditProfile() {
-        // Standard code to open the Edit Screen
+        //open the Edit Screen
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        // Make sure you give your Edit VC this ID in Storyboard!
         if let editVC = storyboard.instantiateViewController(
             withIdentifier: "EditProfileViewController"
         ) as? EditProfileViewController {
@@ -207,7 +160,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     }
     
 
-    // MARK: - CollectionView Grid
+    // CollectionView
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
@@ -256,11 +209,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     
     // Detect the tap
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // 1. Find which post was tapped
-        // Make sure 'userPosts' matches the variable name of your array!
+        // find oout which post was tapped and return that post in the array
         let selectedPost = userPosts[indexPath.item]
-        
-        // 2. Travel to the next screen
         performSegue(withIdentifier: "ShowPostFromProfile", sender: selectedPost)
     }
     

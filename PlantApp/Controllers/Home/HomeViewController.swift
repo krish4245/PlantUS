@@ -122,8 +122,6 @@ final class HomeViewController: UIViewController {
     }
 
 
-    
-    
     private func setupCollectionViews() {
         careTypeCollectionView.dataSource = self
         careTypeCollectionView.delegate = self
@@ -166,9 +164,7 @@ final class HomeViewController: UIViewController {
     }
     
     @objc private func handlePlantCareCompleted(notification: Notification) {
-//        guard let plantID = notification.object as? String else { return }
-//
-//        plants.removeAll { $0.id == plantID }
+
         applyCareFilter(index: selectedCareIndex)
     }
 
@@ -239,7 +235,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 12   //  12–16
+        return 12   
     }
 
 
