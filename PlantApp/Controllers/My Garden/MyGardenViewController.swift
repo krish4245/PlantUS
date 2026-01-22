@@ -24,7 +24,7 @@ class MyGardenViewController: UIViewController,UICollectionViewDelegate, UIColle
         myGardenCollectionView.dataSource = self
 
              
-        registerCell() // func to register the xib cell
+        registerCell() 
         configureGridLayout()
         
         updateEmptyState()

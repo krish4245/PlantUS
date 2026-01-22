@@ -214,6 +214,15 @@ final class HomeViewController: UIViewController {
 
 //             Modal sheet style settings
             vc.modalPresentationStyle = .pageSheet
+            
+            if let sheet = vc.sheetPresentationController {
+                      sheet.detents = [
+                          .medium(),   // half screen
+                      ]
+                      sheet.prefersGrabberVisible = true
+                   
+                      sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+                  }
 
         }
     }

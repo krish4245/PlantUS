@@ -14,6 +14,7 @@ class PlantCareModalViewController: UIViewController {
     var plantModel: PlantModel_Ved?
 
     
+    @IBOutlet weak var siteNameLabel: UILabel!
     @IBOutlet weak var plantNameLabel: UILabel!
     
     @IBOutlet weak var wateringButton: UIButton!
@@ -24,8 +25,9 @@ class PlantCareModalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        plantNameLabel.text = plantModel?.name ?? "Plant"
+       
         refreshButtonStates()
+        setupUI()
         
     }
     
@@ -39,6 +41,10 @@ class PlantCareModalViewController: UIViewController {
         updateTask(.trimming, sender: sender)
     }
    
+    private func setupUI(){
+        plantNameLabel.text = plantModel?.name ?? "Plant"
+        siteNameLabel.text = userPlant?.siteName
+    }
     
     private func updateTask(_ careType: CareType, sender: UIButton) {
           guard let userPlantID = userPlant?.id else { return }

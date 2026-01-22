@@ -49,7 +49,7 @@ class siteDetailCollectionViewCell: UICollectionViewCell {
     
   public  func configure(with userPlant: UserPlant) {
         let plantModel = PlantDataSource.shared.plant(for: userPlant.plantId)
-      plantNameLabel.text = "\(plantModel?.name ?? "Unknown Plant") x\(userPlant.quantity)"
+      plantNameLabel.text = "\(plantModel?.name ?? "Unknown Plant") "
 
         
         if let data = userPlant.imageData {

@@ -50,7 +50,7 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
 
     private func loadPlants() {
         plants = PlantStore.shared.plants(for: site.id)
-        print("📍 SiteDetailVC loadPlants() -> total=\(plants.count)")
+        print("SiteDetailVC loadPlants() -> total=\(plants.count)")
           for p in plants {
               print("   • \(p.plantId) qty=\(p.quantity)")
           }
