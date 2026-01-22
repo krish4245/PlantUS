@@ -10,7 +10,7 @@ import UIKit
 class MyGardenCollectionViewCell: UICollectionViewCell {
     
     
-
+    
     
     
     @IBOutlet weak var siteNameLabel: UILabel!
@@ -26,7 +26,7 @@ class MyGardenCollectionViewCell: UICollectionViewCell {
         
         layer.cornerRadius = 16
         layer.masksToBounds = true
-               
+        
     }
-
+    
 }

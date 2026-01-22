@@ -14,13 +14,13 @@ import CoreML
 
 final class PlantIdentifierLocal {
     private let vnModel: VNCoreMLModel
-
+    
     
     init?(modelFileName: String = "MyImageClassifier_2") {
         // Look for a compiled model in the app bundle (.mlmodelc) or the .mlmodel
         
         guard let modelURL = Bundle.main.url(forResource: modelFileName, withExtension: "mlmodelc")
-            ?? Bundle.main.url(forResource: modelFileName, withExtension: "mlmodel") else {
+                ?? Bundle.main.url(forResource: modelFileName, withExtension: "mlmodel") else {
             print("PlantIdentifierLocal: model file \(modelFileName) not found in bundle")
             return nil
         }
@@ -32,14 +32,14 @@ final class PlantIdentifierLocal {
             return nil
         }
     }
-
+    
     /// Identify image. Returns array of (label, confidence) sorted by confidence descending.
     func identify(image: UIImage, completion: @escaping ([(label: String, confidence: Float)]) -> Void) {
         guard let cg = (image.cgImage ?? image.downsampled(maxSide: 1024)?.cgImage) else {
             completion([])
             return
         }
-
+        
         let request = VNCoreMLRequest(model: vnModel) { req, error in
             if let err = error {
                 print("VNCoreMLRequest error:", err)
@@ -54,7 +54,7 @@ final class PlantIdentifierLocal {
             DispatchQueue.main.async { completion(mapped) }
         }
         request.imageCropAndScaleOption = .centerCrop
-
+        
         let handler = VNImageRequestHandler(cgImage: cg, options: [:])
         DispatchQueue.global(qos: .userInitiated).async {
             do {

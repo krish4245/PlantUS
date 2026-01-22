@@ -12,14 +12,14 @@ extension UIImageView {
     
     // Call this function instead of setting .image directly
     func configureImage(with name: String) {
-            // 1. Check if it's a File stored in Documents (New Posts)
-            let filename = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(name)
-            if let savedImage = UIImage(contentsOfFile: filename.path) {
-                self.image = savedImage
-                self.contentMode = .scaleAspectFill
-                self.clipsToBounds = true
-                return
-            }
+        // 1. Check if it's a File stored in Documents (New Posts)
+        let filename = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(name)
+        if let savedImage = UIImage(contentsOfFile: filename.path) {
+            self.image = savedImage
+            self.contentMode = .scaleAspectFill
+            self.clipsToBounds = true
+            return
+        }
         
         // 2. Is it a System Symbol? (e.g. "person.circle")
         if let systemImage = UIImage(systemName: name) {
@@ -38,6 +38,6 @@ extension UIImageView {
         
         // 4. Fallback (If nothing works, show a gray square)
         self.image = UIImage(systemName: "photo")
-//        self.backgroundColor = .systemGray6
+        //        self.backgroundColor = .systemGray6
     }
 }

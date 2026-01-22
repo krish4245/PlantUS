@@ -15,7 +15,7 @@ protocol SearchHeaderViewDelegate: AnyObject {
 class SearchHeaderView: UICollectionReusableView {
     @IBOutlet weak var menuButton: UIButton!    // connect to 3-dots in storyboard
     weak var delegate: SearchHeaderViewDelegate?
-
+    
     @IBAction func menuButtonTapped(_ sender: UIButton) {
         delegate?.searchHeaderDidTapMenu(self)
     }

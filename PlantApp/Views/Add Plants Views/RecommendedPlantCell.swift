@@ -10,7 +10,7 @@ import UIKit
 class RecommendedPlantCell: UICollectionViewCell {
     
     static let identifier = "RecommendedPlantCell"
-
+    
     @IBOutlet weak var plantImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -22,18 +22,18 @@ class RecommendedPlantCell: UICollectionViewCell {
         super.awakeFromNib()
         
         
-    
+        
         // Initialization code
         applyCardStyle()
         backgroundColor = .clear
-          contentView.backgroundColor = .systemBackground
-
-          contentView.layer.cornerRadius = 16
-          contentView.layer.masksToBounds = true
-
-          //  subtle border
+        contentView.backgroundColor = .systemBackground
+        
+        contentView.layer.cornerRadius = 16
+        contentView.layer.masksToBounds = true
+        
+        //  subtle border
         contentView.layer.borderWidth = 0.5
-          contentView.layer.borderColor = UIColor.systemGray6.cgColor
+        contentView.layer.borderColor = UIColor.systemGray6.cgColor
         
         
         contentView.layer.masksToBounds = false
@@ -53,10 +53,10 @@ class RecommendedPlantCell: UICollectionViewCell {
         
         layer.masksToBounds = false
     }
-        
+    
     func configure(with plant: PlantModel_Ved) {
-           nameLabel.text = plant.name
-           tagLabel.text = plant.tagline
-           plantImageView.image = UIImage(named: plant.imageName)
-       }
+        nameLabel.text = plant.name
+        tagLabel.text = plant.tagline
+        plantImageView.image = UIImage(named: plant.imageName)
+    }
 }

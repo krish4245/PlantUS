@@ -1024,7 +1024,7 @@
                                 <rect key="frame" x="0.0" y="733" width="393" height="60"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a comment..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJm-OZ-GN8">
-                                        <rect key="frame" x="16" y="15.333333333333373" width="289.66666666666669" height="18.666666666666671"/>
+                                        <rect key="frame" x="16" y="15.333333333333373" width="289.66666666666669" height="18.666666666666679"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -1192,17 +1192,17 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SenderCell" id="FJm-bn-pbG" customClass="ChatBubbleCell" customModule="PlantApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="52.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="51.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FJm-bn-pbG" id="Acw-aS-rPY">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="52.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="51.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BY9-2J-p8X">
-                                                    <rect key="frame" x="312" y="5" width="66" height="42.333333333333336"/>
+                                                    <rect key="frame" x="312" y="5" width="66" height="41.333333333333336"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9m-MK-F4S">
-                                                            <rect key="frame" x="12" y="9.9999999999999982" width="42" height="22.333333333333329"/>
+                                                            <rect key="frame" x="12" y="9.9999999999999982" width="42" height="21.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.97140625000000003" green="0.97140625000000003" blue="0.97140625000000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
@@ -1230,17 +1230,17 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceiverCell" id="YQ5-Lk-Jw1" customClass="ChatBubbleCell" customModule="PlantApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="102.33333206176758" width="393" height="52.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="101.33333206176758" width="393" height="51.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YQ5-Lk-Jw1" id="KD6-fF-Z9Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="52.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="51.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="357-i5-Jsv">
-                                                    <rect key="frame" x="15" y="5" width="66" height="42.333333333333336"/>
+                                                    <rect key="frame" x="15" y="5" width="66" height="41.333333333333336"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcY-Sb-3ns">
-                                                            <rect key="frame" x="12" y="9.9999999999999982" width="42" height="22.333333333333329"/>
+                                                            <rect key="frame" x="12" y="9.9999999999999982" width="42" height="21.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1399,7 +1399,6 @@
         <!--My Garden-->
         <scene sceneID="Xbr-0E-Tsx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tpm-hh-aRG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController title="My Garden" automaticallyAdjustsScrollViewInsets="NO" id="bMK-hj-RLf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Garden" image="leaf.fill" catalog="system" selectedImage="leaf.fill" id="cDZ-eT-3FM"/>
                     <toolbarItems/>
@@ -1412,6 +1411,7 @@
                         <segue destination="CLu-0a-SCJ" kind="relationship" relationship="rootViewController" id="vsY-SU-GCr"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tpm-hh-aRG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2277" y="-1670"/>
         </scene>
@@ -3899,7 +3899,7 @@ continuous flowers.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTF-1W-BFd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2103" y="-3351"/>
+            <point key="canvasLocation" x="3404" y="-3598"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

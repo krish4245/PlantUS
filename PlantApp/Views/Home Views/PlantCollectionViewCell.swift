@@ -8,17 +8,17 @@
 import UIKit
 
 class PlantCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var plantImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-
-   
-
+    
+    
+    
     
     private var imageTask: URLSessionDataTask?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -28,7 +28,7 @@ class PlantCollectionViewCell: UICollectionViewCell {
         cardView.layer.masksToBounds = true
         plantImageView.layer.cornerRadius = 12
     }
-
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         imageTask?.cancel()
@@ -49,59 +49,59 @@ class PlantCollectionViewCell: UICollectionViewCell {
         
         layer.masksToBounds = false
     }
-
-//    func configure(with plant: Plant) {
-//        nameLabel.text = plant.name
-//        subtitleLabel.text = plant.subtitle
-//
-//        if let localImage = UIImage(named: plant.imageName) {
-//            plantImageView.image = localImage
-//            return
-//        } else {
-//            // Debug aid: see which names fail
-//            print("DEBUG: UIImage(named:) failed for asset '\(plant.imageName)'")
-//            plantImageView.image = UIImage(named: plant.imageName)
-//        }
-//
-//    //If plant.imageName is a valid URL (contains http:// or https://)
-//    // Downloads the image asynchronously
-//    // Sets it on the main thread when received
-//    //Stores the task in imageTask (likely for cancellation)
-//        
-//        if let url = URL(string: plant.imageName), url.scheme != nil {
-//            plantImageView.image = nil
-//            imageTask = URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
-//                guard let self = self,
-//                      let data = data,
-//                      let image = UIImage(data: data) else { return }
-//                DispatchQueue.main.async {
-//                    self.plantImageView.image = image
-//                }
-//            }
-//            imageTask?.resume()
-//        } else {
-//            plantImageView.image = nil
-//        }
-//    }
+    
+    //    func configure(with plant: Plant) {
+    //        nameLabel.text = plant.name
+    //        subtitleLabel.text = plant.subtitle
+    //
+    //        if let localImage = UIImage(named: plant.imageName) {
+    //            plantImageView.image = localImage
+    //            return
+    //        } else {
+    //            // Debug aid: see which names fail
+    //            print("DEBUG: UIImage(named:) failed for asset '\(plant.imageName)'")
+    //            plantImageView.image = UIImage(named: plant.imageName)
+    //        }
+    //
+    //    //If plant.imageName is a valid URL (contains http:// or https://)
+    //    // Downloads the image asynchronously
+    //    // Sets it on the main thread when received
+    //    //Stores the task in imageTask (likely for cancellation)
+    //        
+    //        if let url = URL(string: plant.imageName), url.scheme != nil {
+    //            plantImageView.image = nil
+    //            imageTask = URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
+    //                guard let self = self,
+    //                      let data = data,
+    //                      let image = UIImage(data: data) else { return }
+    //                DispatchQueue.main.async {
+    //                    self.plantImageView.image = image
+    //                }
+    //            }
+    //            imageTask?.resume()
+    //        } else {
+    //            plantImageView.image = nil
+    //        }
+    //    }
     
     func configure(with plantModel: PlantModel_Ved, userPlant: UserPlant, careType: CareType) {
         nameLabel.text = plantModel.name
         
         
         switch careType {
-              case .watering:
-                  subtitleLabel.text = "Water Today"
-              case .trimming:
-                  subtitleLabel.text = "Prune Today"
-              case .fertilizing:
-                  subtitleLabel.text = "Fertilize Today"
-              case .repotting:
-                  subtitleLabel.text = "Repot Soon"
-              }
+        case .watering:
+            subtitleLabel.text = "Water Today"
+        case .trimming:
+            subtitleLabel.text = "Prune Today"
+        case .fertilizing:
+            subtitleLabel.text = "Fertilize Today"
+        case .repotting:
+            subtitleLabel.text = "Repot Soon"
+        }
         
         plantImageView.image = UIImage(named: plantModel.imageName)
-
-        }
-    
         
+    }
+    
+    
 }

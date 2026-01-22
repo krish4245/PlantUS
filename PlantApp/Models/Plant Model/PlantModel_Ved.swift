@@ -31,7 +31,7 @@ struct PlantModel_Ved: Identifiable, Codable {
     
     // Image
     let imageName: String   // local asset or URL
-    let careTasks: [CareType]
+
 
     
 

@@ -8,7 +8,7 @@
 import UIKit
 
 class Search_2CollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var maintenanceLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var plantImageView: UIImageView!
@@ -18,5 +18,5 @@ class Search_2CollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

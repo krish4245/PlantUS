@@ -14,11 +14,11 @@ import Foundation
 struct MyGardenSite: Identifiable, Codable {
     var id: UUID
     var name: String
-//    var cardColor: UIColorCodable
+    //    var cardColor: UIColorCodable
     var icon: String
     var plantCount : Int = 0 // default
     
-        
+    
 }
 
 struct UIColorCodable: Codable {
@@ -27,7 +27,7 @@ struct UIColorCodable: Codable {
     init(_ color: UIColor) {
         self.color = color
     }
-
+    
     enum CodingKeys: String, CodingKey {
         case red, green, blue, alpha
     }
@@ -39,7 +39,7 @@ struct UIColorCodable: Codable {
         var b: CGFloat = 0
         var a: CGFloat = 0
         color.getRed(&r, green: &g, blue: &b, alpha: &a)
-
+        
         try container.encode(Double(r), forKey: .red)
         try container.encode(Double(g), forKey: .green)
         try container.encode(Double(b), forKey: .blue)
