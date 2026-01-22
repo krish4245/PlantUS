@@ -42,12 +42,12 @@ class SearchPeopleViewController: UIViewController, UITableViewDelegate, UITable
 
     func loadData() {
         CommunityDataStore.shared.fetchAllUsers { [weak self] users in
+            let currentUserID = CommunityDataStore.shared.currentLoggedInUserID
             guard let self = self else { return }
-                self.allUsers = users
-                self.tableView.reloadData()
-            }
+            self.allUsers = users.filter { $0.id != currentUserID }
+            self.tableView.reloadData()
         }
-
+    }
     // MARK: - Setup Functions
     
     func setupSearchController() {
@@ -114,9 +114,10 @@ class SearchPeopleViewController: UIViewController, UITableViewDelegate, UITable
         cell.nameLabel.text = user.name
         cell.messageLabel.text = user.searchSubtitle
         
-        if let imageView = cell.avatarImageView {
-            imageView.image = UIImage(systemName: user.profileImageString)
-        }
+        let imageName = CommunityDataStore.shared.profileImageString(for: user.id)
+        cell.avatarImageView.configureImage(with: imageName)
+        cell.avatarImageView.tintColor = .label
+
         
         cell.timeLabel.isHidden = true
         cell.accessoryType = .disclosureIndicator

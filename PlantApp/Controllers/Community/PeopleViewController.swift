@@ -9,8 +9,8 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // MARK: - Search & Data
     let searchController = UISearchController(searchResultsController: nil)
     
-    var allFriends: [User] = []
-    var filteredFriends: [User] = []
+    var allUsers: [User] = []
+    var filteredUsers: [User] = []
     
     // Computed property: Are we currently searching?
     var isSearching: Bool {
@@ -43,8 +43,9 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func loadData() {
         CommunityDataStore.shared.fetchAllUsers { [weak self] users in
+            let currentUserID = CommunityDataStore.shared.currentLoggedInUserID
             guard let self = self else { return }
-            self.allFriends = users.filter { $0.isFriend == true }
+            self.allUsers = users.filter { $0.id != currentUserID }
             self.tableView.reloadData()
         }
     }
@@ -86,7 +87,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func filterContentForSearchText(_ searchText: String) {
-        filteredFriends = allFriends.filter { (user: User) -> Bool in
+        filteredUsers = allUsers.filter { (user: User) -> Bool in
             return user.name.lowercased().contains(searchText.lowercased()) ||
                    user.username.lowercased().contains(searchText.lowercased())
         }
@@ -95,26 +96,38 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     // MARK: - TableView Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isSearching ? filteredFriends.count : allFriends.count
+        return isSearching ? filteredUsers.count : allUsers.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // hv to reuse xib here
         let cell = tableView.dequeueReusableCell(withIdentifier: "PeopleTableViewCell", for: indexPath) as! PeopleTableViewCell
-        let user = isSearching ? filteredFriends[indexPath.row] : allFriends[indexPath.row]
+        let user = isSearching ? filteredUsers[indexPath.row] : allUsers[indexPath.row]
         
         cell.nameLabel.text = user.name
         cell.messageLabel.text = "Hey! How are your plants? 🌱"
         cell.timeLabel.text = "9:41 AM"
-        cell.avatarImageView.configureImage(with: user.profileImageString)
+        let imageName = CommunityDataStore.shared.profileImageString(for: user.id)
+        cell.avatarImageView.configureImage(with: imageName)
+        cell.avatarImageView.tintColor = .label
+
+        
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let user = isSearching ? filteredFriends[indexPath.row] : allFriends[indexPath.row]
-        print("Selected: \(user.name)")
+        let selectedUser = isSearching ? filteredUsers[indexPath.row] : allUsers[indexPath.row]
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let chatVC = storyboard.instantiateViewController(
+                withIdentifier: "ChatViewController"
+            ) as! ChatViewController
+        
+        chatVC.user = selectedUser
+        navigationController?.pushViewController(chatVC, animated: true)
+        //print("Selected: \(user.name)")
         
         //performSegue(withIdentifier: "OpenChat", sender: user)
     }

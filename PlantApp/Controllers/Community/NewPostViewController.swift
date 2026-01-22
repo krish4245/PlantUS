@@ -23,8 +23,8 @@ class NewPostViewController: UIViewController, PHPickerViewControllerDelegate, U
         setupCaptionTextView()
     
         // fetches user
-        CommunityDataStore.shared.fetchAllUsers { users in
-            self.currentUser = users.first
+        CommunityDataStore.shared.fetchCurrentUser { [weak self] user in
+            self?.currentUser = user
         }
     }
     

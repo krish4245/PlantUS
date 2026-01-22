@@ -63,17 +63,20 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         //Fill Text
         nameLabel.text = user.name
         handleLabel.text = "@\(user.username)"
-        statsLabel.text = user.searchSubtitle
-        profileImageView.configureImage(with: user.profileImageString)
+        //statsLabel.text = user.searchSubtitle
+        let imageName = CommunityDataStore.shared.profileImageString(for: user.id)
+        profileImageView.configureImage(with: imageName)
+
 
         navigationItem.rightBarButtonItem = menuButton
 
         //Toggle UI based on Identity
         if isCurrentUser {
-            otherUserButtonsStack.isHidden = true
-    
+            //otherUserButtonsStack.isHidden = true
+            updateCurrentUserStats()
         } else {
-            otherUserButtonsStack.isHidden = false
+            //otherUserButtonsStack.isHidden = false
+            showOtherUserStats()
         }
 
         //Fetch Posts
@@ -86,11 +89,28 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         setupMenu()
     }
     
+    private func updateCurrentUserStats() {
+        let allUserPlants = PlantStore.shared.plants
+        
+        let totalPlants = allUserPlants.reduce(0) { $0 + $1.quantity }
+        
+        if( totalPlants == 1){
+            statsLabel.text = "\(totalPlants) Plant"
+        } else{
+            statsLabel.text = "\(totalPlants) Plants"
+        }
+    }
+    private func showOtherUserStats() {
+        statsLabel.text = "12 Plants • 3 Sites"
+    }
+
+
+    
 
         
-        // MARK: - Actions
+        // Actions Performed
         
-        @IBAction func messageTapped(_ sender: UIButton) {
+    @IBAction func messageTapped(_ sender: UIButton) {
             print("Opening Chat with \(user?.name ?? "User")...")
              performSegue(withIdentifier: "OpenChat", sender: self.user)
                 }

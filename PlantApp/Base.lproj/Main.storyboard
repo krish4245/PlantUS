@@ -336,6 +336,11 @@
                                                         <constraint firstAttribute="height" constant="20" id="NIn-kh-lAO"/>
                                                     </constraints>
                                                 </stackView>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1zX-jP-L0P">
+                                                    <rect key="frame" x="0.0" y="396" width="393" height="3"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="9eL-iO-fni" firstAttribute="leading" secondItem="60q-GZ-GP8" secondAttribute="leading" id="2vG-Ye-0DX"/>
@@ -350,6 +355,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="9eL-iO-fni" secondAttribute="bottom" constant="90" id="Z2i-S4-77B"/>
                                                 <constraint firstItem="ns7-QW-i21" firstAttribute="leading" secondItem="60q-GZ-GP8" secondAttribute="leading" constant="16" id="bCm-Zd-i6I"/>
                                                 <constraint firstAttribute="trailing" secondItem="9eL-iO-fni" secondAttribute="trailing" id="flH-1Z-0PT"/>
+                                                <constraint firstItem="1zX-jP-L0P" firstAttribute="top" secondItem="q5s-Ma-XL4" secondAttribute="bottom" constant="1.6666666666666856" id="h1N-wr-K5U"/>
                                                 <constraint firstItem="Jcu-xC-le3" firstAttribute="leading" secondItem="60q-GZ-GP8" secondAttribute="leading" constant="16" id="iOI-tg-YDG"/>
                                                 <constraint firstItem="9eL-iO-fni" firstAttribute="top" secondItem="woy-Uo-fZ0" secondAttribute="bottom" constant="10" id="jDp-DX-PJn"/>
                                                 <constraint firstItem="woy-Uo-fZ0" firstAttribute="top" secondItem="VMY-Ta-XvC" secondAttribute="bottom" constant="2" id="sac-Eb-2CO"/>
@@ -730,6 +736,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vII-ZV-y6I">
                                 <rect key="frame" x="146" y="224" width="101" height="100"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="o6U-MN-a21"/>
                                 </constraints>
@@ -1192,17 +1199,17 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SenderCell" id="FJm-bn-pbG" customClass="ChatBubbleCell" customModule="PlantApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="51.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="52.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FJm-bn-pbG" id="Acw-aS-rPY">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="51.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="52.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BY9-2J-p8X">
-                                                    <rect key="frame" x="312" y="5" width="66" height="41.333333333333336"/>
+                                                    <rect key="frame" x="312" y="5" width="66" height="42.333333333333336"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G9m-MK-F4S">
-                                                            <rect key="frame" x="12" y="9.9999999999999982" width="42" height="21.333333333333329"/>
+                                                            <rect key="frame" x="12" y="9.9999999999999982" width="42" height="22.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.97140625000000003" green="0.97140625000000003" blue="0.97140625000000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
@@ -1230,17 +1237,17 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceiverCell" id="YQ5-Lk-Jw1" customClass="ChatBubbleCell" customModule="PlantApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="101.33333206176758" width="393" height="51.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="102.33333206176758" width="393" height="52.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YQ5-Lk-Jw1" id="KD6-fF-Z9Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="51.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="52.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="357-i5-Jsv">
-                                                    <rect key="frame" x="15" y="5" width="66" height="41.333333333333336"/>
+                                                    <rect key="frame" x="15" y="5" width="66" height="42.333333333333336"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcY-Sb-3ns">
-                                                            <rect key="frame" x="12" y="9.9999999999999982" width="42" height="21.333333333333329"/>
+                                                            <rect key="frame" x="12" y="9.9999999999999982" width="42" height="22.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -1283,6 +1290,7 @@
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HBQ-fB-w67">
                                         <rect key="frame" x="161.66666666666666" y="-40" width="70" height="70"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="9kD-Oe-Uub"/>
                                             <constraint firstAttribute="width" secondItem="HBQ-fB-w67" secondAttribute="height" multiplier="1:1" id="YAY-rw-SUV"/>
@@ -3963,6 +3971,9 @@ continuous flowers.</string>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
