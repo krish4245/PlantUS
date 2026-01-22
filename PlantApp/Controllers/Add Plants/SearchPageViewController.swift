@@ -7,15 +7,17 @@
 
 import UIKit
 
-class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UIImagePickerControllerDelegate & UINavigationControllerDelegate, UISearchResultsUpdating {
    
-    
 
     @IBOutlet weak var collectionView: UICollectionView!
     
     let plantDataSource = PlantDataSource.shared
-
+    let searchController = UISearchController(searchResultsController: nil)
     
+    var filteredBrowsePlants: [PlantModel_Ved] = []
+    var browsePlants: [PlantModel_Ved] = []
+    var isSearching = false
 
     
     enum SearchSection : Int,CaseIterable {
@@ -28,7 +30,12 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.keyboardDismissMode = .onDrag
+        
+        browsePlants = PlantDataSource.shared.allPlants
+        filteredBrowsePlants = browsePlants
+        
+        setupSearchController()
+       
         
         
         // Do any additional setup after loading the view.
@@ -48,6 +55,22 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
             action: #selector(moreTapped)
         )
         navigationItem.rightBarButtonItem = moreButton
+    }
+    func setupSearchController() {
+        // 1. connect delegate
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Categories"
+
+        // 2. Add to Navigation Item (This puts it in the large title area like Apple Health)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+
+        // 3. Prevent the search bar from hiding the Tab Bar
+        definesPresentationContext = true
+    }
+    @objc func dismissKeyboard() {
+        searchController.searchBar.resignFirstResponder()
     }
     
     @objc private func moreTapped() {
@@ -141,23 +164,64 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
 
+    
+    
+    func filterContentForSearchText(_ searchText: String) {
+        let lowerText = searchText.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+
+        if lowerText.isEmpty {
+            isSearching = false
+            filteredBrowsePlants = browsePlants
+        } else {
+            isSearching = true
+            filteredBrowsePlants = browsePlants.filter { plant in
+                plant.name.lowercased().contains(lowerText)
+            }
+        }
+        
+        collectionView.setCollectionViewLayout(createLayout(), animated: false) // ✅
+        collectionView.reloadData()
+    }
+
+
+    
     
    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        SearchSection.allCases.count
+        return SearchSection.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section : Int)-> Int {
+        
+        
+      
+        
         let sectionType = SearchSection(rawValue: section)!
 
-           return sectionType == .recommended
-               ? PlantDataSource.shared.recommendedPlants.count
-               : PlantDataSource.shared.allPlants.count
+           switch sectionType {
+
+           case .recommended:
+               //  Hide recommended while searching
+               return isSearching ? 0 : plantDataSource.recommendedPlants.count
+
+           case .browseAll:
+               // ✅ Always show browse - filtered or full
+               return filteredBrowsePlants.count
+           }
     }
     
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+       
+    
+       
+       
         let sectionType = SearchSection(rawValue : indexPath.section)!
        print("Section:", indexPath.section, "Item:", indexPath.item)
 
@@ -178,9 +242,8 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
                for: indexPath
            ) as! BrowseAllPlantCell
 
-           let plant = plantDataSource.allPlants[indexPath.item]
-                   cell.configure(with: plant)
-
+           let plant = filteredBrowsePlants[indexPath.item]
+           cell.configure(with: plant)
 
            return cell
        }
@@ -195,15 +258,33 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
             withReuseIdentifier: "SearchSectionHeaderView",
             for: indexPath
         ) as! SearchSectionHeaderView
+        
+        
 
         let sectionType = SearchSection(rawValue: indexPath.section)!
+        
+        // ✅ If searching: show header ONLY for browseAll section
+           if isSearching {
+               if sectionType == .recommended {
+                   header.titleLabel.text = ""
+                   header.isHidden = true
+                   return header
+               } else {
+                   header.titleLabel.text = "Browse Plants"
+                   header.isHidden = false
+                   return header
+               }
+           }
+        
+        // ✅ Normal (not searching)
+          header.isHidden = false
+          switch sectionType {
+          case .recommended:
+              header.titleLabel.text = "Recommended Plants"
+          case .browseAll:
+              header.titleLabel.text = "Browse Plants"
+          }
 
-        switch sectionType {
-        case .recommended:
-            header.titleLabel.text = "Recommended Plants"
-        case .browseAll:
-            header.titleLabel.text = "Browse Plants"
-        }
 
         return header
     }
@@ -212,8 +293,14 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
     func createLayout() -> UICollectionViewLayout {
 
         return UICollectionViewCompositionalLayout { sectionIndex, _ in
-            let sectionType = SearchSection(rawValue: sectionIndex)!
+            
+            if self.isSearching {
+                       return self.browseAllSectionLayout()
+                   }
 
+            let sectionType = SearchSection(rawValue: sectionIndex)!
+            
+           
             switch sectionType {
             case .recommended:
                 return self.recommendedSectionLayout()
@@ -228,7 +315,7 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(44)
+            heightDimension: isSearching ? .absolute(0) : .absolute(44)
         )
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
@@ -261,7 +348,7 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
         
         
         
-        section.boundarySupplementaryItems = [header]
+        section.boundarySupplementaryItems = isSearching ? [] : [header]
 
         return section
     }
@@ -314,6 +401,14 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
+        
+        
+        
+        if isSearching {
+              let plant = filteredBrowsePlants[indexPath.item]
+              navigateToPlantDetail(with: plant)
+              return
+          }
 
         let sectionType = SearchSection(rawValue: indexPath.section)!
 
@@ -323,7 +418,7 @@ class SearchPageViewController: UIViewController, UICollectionViewDelegate, UICo
         case .recommended:
             plant = PlantDataSource.shared.recommendedPlants[indexPath.item]
         case .browseAll:
-            plant = PlantDataSource.shared.allPlants[indexPath.item]
+            plant = filteredBrowsePlants[indexPath.item]
         }
 
         navigateToPlantDetail(with: plant)

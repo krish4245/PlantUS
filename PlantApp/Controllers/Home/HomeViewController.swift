@@ -196,9 +196,9 @@ final class HomeViewController: UIViewController {
 
         statusCardView.layer.cornerRadius = 18
         statusCardView.layer.shadowColor = UIColor.black.withAlphaComponent(0.12).cgColor
-        statusCardView.layer.shadowOpacity = 1
-        statusCardView.layer.shadowRadius = 10
-        statusCardView.layer.shadowOffset = CGSize(width: 0, height: 4)
+       statusCardView.layer.shadowOpacity = 1
+       statusCardView.layer.shadowRadius = 10
+       statusCardView.layer.shadowOffset = CGSize(width: 0, height: 4)
     }
     
     

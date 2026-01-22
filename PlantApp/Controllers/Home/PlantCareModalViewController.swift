@@ -23,6 +23,7 @@ class PlantCareModalViewController: UIViewController {
     
     @IBOutlet weak var pruningButton: UIButton!
     
+    @IBOutlet weak var fertilizingButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -31,19 +32,23 @@ class PlantCareModalViewController: UIViewController {
         
     }
     
-    @IBAction func markWateringDoneTapped(_ sender: UIButton) {
+    @IBAction func markWateringDone(_ sender: UIButton) {
         updateTask(.watering, sender: sender)
     }
-    @IBAction func markRepotDoneTapped(_ sender: UIButton) {
+    @IBAction func markRepotDone(_ sender: UIButton) {
         updateTask(.repotting               , sender: sender)
     }
-    @IBAction func markPruningDoneTapped(_ sender: UIButton) {
+    @IBAction func markPruningDone(_ sender: UIButton) {
         updateTask(.trimming, sender: sender)
     }
-   
+    
+    @IBAction func markFertilizingDone(_ sender: UIButton) {
+        updateTask(.fertilizing, sender: sender)
+    }
+    
     private func setupUI(){
         plantNameLabel.text = plantModel?.name ?? "Plant"
-        siteNameLabel.text = userPlant?.siteName
+        siteNameLabel.text = "Location: \(userPlant?.siteName ?? "Unknown")"
     }
     
     private func updateTask(_ careType: CareType, sender: UIButton) {
@@ -69,6 +74,7 @@ class PlantCareModalViewController: UIViewController {
         setDoneUI(for: wateringButton, isDone: updatedUserPlant.wateringDone)
         setDoneUI(for: pruningButton, isDone: updatedUserPlant.pruningDone)
         setDoneUI(for: repottingButton, isDone: updatedUserPlant.repottingDone)
+        setDoneUI(for: fertilizingButton, isDone: updatedUserPlant.fertilizingDone)
     }
 
     private func setDoneUI(for button: UIButton, isDone: Bool) {
