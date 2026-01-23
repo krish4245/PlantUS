@@ -30,6 +30,23 @@ class WateringConsistencyViewController: UIViewController {
         blueView.layer.masksToBounds = true
 
         // Do any additional setup after loading the view.
+        ThisMonth.isUserInteractionEnabled = true
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(calendarTapped))
+            ThisMonth.addGestureRecognizer(tapGesture)
+    }
+    @objc private func calendarTapped() {
+        let calendarVC = CalendarViewController()
+
+        let navVC = UINavigationController(rootViewController: calendarVC)
+        navVC.modalPresentationStyle = .pageSheet
+
+        // Optional: nice iOS sheet behavior
+        if let sheet = navVC.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersGrabberVisible = true
+        }
+
+        present(navVC, animated: true)
     }
 
 }
