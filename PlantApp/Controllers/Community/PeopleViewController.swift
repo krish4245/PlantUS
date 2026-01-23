@@ -122,7 +122,7 @@ class PeopleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let chatVC = storyboard.instantiateViewController(
-                withIdentifier: "ChatViewController"
+                withIdentifier: "ChatView"
             ) as! ChatViewController
         
         chatVC.user = selectedUser
