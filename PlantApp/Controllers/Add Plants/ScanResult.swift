@@ -34,7 +34,7 @@ class ScanResult: UIViewController {
         ) as! ScanResult
 
         vc.capturedImage = image
-        vc.plantName = "Monstera" // temporary hardcoded name
+//        vc.plantName = "Monstera" // temporary hardcoded name
 
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -72,15 +72,5 @@ class ScanResult: UIViewController {
             plantNameLabel.text = "ML Model error"
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
