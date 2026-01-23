@@ -76,7 +76,7 @@ class PostsTableViewCell: UITableViewCell {
         usernameLabel.text = post.author?.username
         captionUsernameLabel.text = post.author?.username
         captionLabel.text = post.caption
-        timeLabel.text = "2h ago" // Replace with real date logic later
+        timeLabel.text = "Just now" // Replace with real date logic later
         
         // Load Images
         postImageView.configureImage(with: post.postImageString)

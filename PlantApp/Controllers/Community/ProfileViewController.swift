@@ -74,9 +74,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         if isCurrentUser {
             //otherUserButtonsStack.isHidden = true
             updateCurrentUserStats()
+            messageButton.isHidden = true
         } else {
             //otherUserButtonsStack.isHidden = false
             showOtherUserStats()
+            postsSegmentedControl.removeSegment(at: 1, animated: false)
+            
         }
 
         //Fetch Posts

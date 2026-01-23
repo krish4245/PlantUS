@@ -31,7 +31,7 @@ class CameraOptionViewController: UIViewController,
         setupImagePlaceholder()
 
         //        saveButton.tintColor = UIColor.
-        saveButton.backgroundColor = .green
+        //saveButton.backgroundColor = .green
     }
 
     // MARK: - Add Tap Gesture to ImageView
