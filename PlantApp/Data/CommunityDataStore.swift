@@ -7,7 +7,8 @@ class CommunityDataStore {
     
     private var users: [User] = []
     private var posts: [Post] = []
-    //private var comments: [String: [Comment]] = [:]
+    private var savedPostsByUser: [String: Set<String>] = [:]
+
     
     var currentLoggedInUserID: String = "u2"
     
@@ -16,14 +17,63 @@ class CommunityDataStore {
     }
     
     func fetchAllPosts(completion: @escaping ([Post]) -> Void) {
-        completion(self.posts)
+        let userId = currentLoggedInUserID
+        let savedIDs = savedPostsByUser[userId] ?? []
+
+        let updatedPosts = posts.map { post in
+            var post = post
+            post.isSaved = savedIDs.contains(post.id)
+            return post
+        }
+
+        completion(updatedPosts)
     }
     
+    func fetchSavedPostsForCurrentUser(completion: @escaping ([Post]) -> Void) {
+        let userId = currentLoggedInUserID
+        let savedIDs = savedPostsByUser[userId] ?? []
+
+        let savedPosts = posts
+            .filter { savedIDs.contains($0.id) }
+            .map { post in
+                var post = post
+                post.isSaved = true
+                return post
+            }
+
+        completion(savedPosts)
+    }
+
+
+
+    func toggleSave(postId: String) {
+        let userId = currentLoggedInUserID
+
+        if savedPostsByUser[userId] == nil {
+            savedPostsByUser[userId] = []
+        }
+
+        if savedPostsByUser[userId]!.contains(postId) {
+            savedPostsByUser[userId]!.remove(postId)
+        } else {
+            savedPostsByUser[userId]!.insert(postId)
+        }
+    }
+
     func fetchPosts(forUserId userId: String, completion: @escaping ([Post]) -> Void) {
-        // Return immediately
-        let userPosts = self.posts.filter { $0.userId == userId }
+        let savedIDs = savedPostsByUser[currentLoggedInUserID] ?? []
+
+        let userPosts = posts
+            .filter { $0.userId == userId }
+            .map { post in
+                var post = post
+                post.isSaved = savedIDs.contains(post.id)
+                return post
+            }
+
         completion(userPosts)
     }
+
     
     func fetchAllUsers(completion: @escaping ([User]) -> Void) {
         completion(self.users)
@@ -210,44 +260,5 @@ class CommunityDataStore {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             completion(true)
         }
-        //        func addFriend(userId: String) {
-        //            if let index = users.firstIndex(where: { $0.id == userId }) {
-        //                users[index].isFriend = true
-        //                // If you have a separate "friends" list, append them there too
-        //            }
-        //        }
-        
-        func addNewPost(caption: String, image: UIImage, currentUser: User, completion: @escaping (Bool) -> Void) {
-            
-            //Save Image to Disk
-            let imageID = UUID().uuidString // Generate unique name
-            if let data = image.jpegData(compressionQuality: 0.8) {
-                let filename = getDocumentsDirectory().appendingPathComponent(imageID)
-                try? data.write(to: filename)
-            }
-            
-            //Create the Post Object
-            let newPost = Post(
-                id: UUID().uuidString,
-                userId: currentUser.id,
-                postImageString: imageID,
-                likesCount: 0,
-                caption: caption,
-                timestamp: Date(),
-                author: currentUser
-            )
-            
-            //Add to the top of the list
-            self.posts.insert(newPost, at: 0)
-            
-            // show success
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                completion(true)
-            }
-        }
-        
-      
-        
-        
     }
 }

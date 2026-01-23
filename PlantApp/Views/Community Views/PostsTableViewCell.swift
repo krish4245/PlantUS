@@ -19,6 +19,7 @@ class PostsTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     
     // Buttons
+    @IBOutlet weak var savePostsButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var likesCountLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
@@ -28,6 +29,8 @@ class PostsTableViewCell: UITableViewCell {
     // Closures for button taps
     var onAvatarTapped: (() -> Void)?
     var onLikeTapped: ((Bool, Int) -> Void)?
+    var onSaveTapped: (() -> Void)?
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -68,6 +71,11 @@ class PostsTableViewCell: UITableViewCell {
         
                 onLikeTapped?(post.isLiked, post.likesCount)
     }
+    
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        onSaveTapped?()
+    }
+
 
     func configure(with post: Post) {
         
@@ -83,6 +91,8 @@ class PostsTableViewCell: UITableViewCell {
 
         
         updateLikeUI(isLiked: post.isLiked, count: post.likesCount)
+        updateSaveUI(isSaved: post.isSaved)
+
     }
     
     func updateLikeUI(isLiked: Bool, count : Int) {
@@ -103,4 +113,12 @@ class PostsTableViewCell: UITableViewCell {
                      likesCountLabel.text = "\(count) likes"
                 }
     }
+    
+    func updateSaveUI(isSaved: Bool) {
+        guard let saveButton = savePostsButton else { return }
+        let imageName = isSaved ? "bookmark.fill" : "bookmark"
+        saveButton.setImage(UIImage(systemName: imageName), for: .normal)
+    }
+
+
 }
