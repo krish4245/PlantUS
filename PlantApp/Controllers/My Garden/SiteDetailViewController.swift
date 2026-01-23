@@ -72,7 +72,7 @@ class SiteDetailViewController: UIViewController,   UICollectionViewDelegate,
         
         let userPlant = plants[indexPath.item]
         
-        cell.configure(with: userPlant)
+        cell.configure(userPlant: userPlant)
         return cell
     }
     

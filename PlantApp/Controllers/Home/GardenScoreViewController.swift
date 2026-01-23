@@ -16,6 +16,7 @@ class GardenScoreViewController: UIViewController {
     
     @IBOutlet weak var needsAttentionLabel: UILabel!
     
+    @IBOutlet weak var healthScorePercent: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,18 @@ class GardenScoreViewController: UIViewController {
                return result + (needsAttention ? plant.quantity : 0)
            }
         
-        healthyPlantsLabel.text = "\(totalPlants - needsAttentionPlants)"
+        let healthyPlants = totalPlants - needsAttentionPlants
+        
+        healthyPlantsLabel.text = "\(healthyPlants)"
           needsAttentionLabel.text = "\(needsAttentionPlants)"
+        
+        let healthScoreValue: Int
+           if totalPlants == 0 {
+               healthScoreValue = 0
+           } else {
+               healthScoreValue = Int((Double(healthyPlants) / Double(totalPlants)) * 100)
+           }
+
+           healthScorePercent.text = "\(healthScoreValue)%"
     }
 }

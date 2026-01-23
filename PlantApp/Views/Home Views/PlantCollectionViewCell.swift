@@ -26,7 +26,7 @@ class PlantCollectionViewCell: UICollectionViewCell {
         
         cardView.layer.cornerRadius = 16
         cardView.layer.masksToBounds = true
-        plantImageView.layer.cornerRadius = 12
+//        plantImageView.layer.cornerRadius = 16
     }
     
     override func prepareForReuse() {
@@ -99,7 +99,12 @@ class PlantCollectionViewCell: UICollectionViewCell {
             subtitleLabel.text = "Repot Soon"
         }
         
-        plantImageView.image = UIImage(named: plantModel.imageName)
+        if let imageData = userPlant.imageData,
+             let image = UIImage(data: imageData) {
+              plantImageView.image = image
+          } else {
+              plantImageView.image = UIImage(named: plantModel.imageName)
+          }
         
     }
     

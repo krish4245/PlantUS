@@ -47,18 +47,19 @@ class siteDetailCollectionViewCell: UICollectionViewCell {
     }
     
     
-    public  func configure(with userPlant: UserPlant) {
+    public  func configure(userPlant: UserPlant) {
         let plantModel = PlantDataSource.shared.plant(for: userPlant.plantId)
         plantNameLabel.text = "\(plantModel?.name ?? "Unknown Plant") "
         
         
-        if let data = userPlant.imageData {
-            plantImageView.image = UIImage(data: data)
-        } else if let imageName = plantModel?.imageName {
-            plantImageView.image = UIImage(named: imageName)
-        } else {
-            plantImageView.image = UIImage(systemName: "leaf")
-        }
+        if let imageData = userPlant.imageData,
+              let image = UIImage(data: imageData) {
+               plantImageView.image = image
+           } else if let imageName = plantModel?.imageName {
+               plantImageView.image = UIImage(named: imageName)
+           } else {
+               plantImageView.image = UIImage(systemName: "leaf")
+           }
     }
     
     static func nib() -> UINib {

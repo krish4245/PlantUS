@@ -1,40 +1,44 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var greetingLabel: UILabel!
     
     // MARK: - Outlets
     @IBOutlet weak var scrollView: UIScrollView!
-
+    
     @IBOutlet weak var careTypeCollectionView: UICollectionView!
     @IBOutlet weak var plantsCollectionView: UICollectionView!
     @IBOutlet weak var emptyStateView: UIView!
-
+    
     @IBOutlet weak var card1: UIView!
     @IBOutlet weak var gardenStatusContainerView: UIView!
     @IBOutlet weak var wateringContainerView: UIView!
-  
-
+    
+    
     @IBOutlet weak var card2: UIView!
     @IBOutlet weak var statusCardView: UIView!
     @IBOutlet weak var totalPlantsCardView: UIView?
     @IBOutlet weak var spacesCardView: UIView?
-
+    
     @IBOutlet weak var userSiteCount: UILabel!
     @IBOutlet weak var userPlantCount: UILabel!
+    
+    @IBOutlet weak var healthScoreLabel: UILabel!
+    
+    
     // MARK: - Data
-
+    
     private let careTypes: [CareType] = [.watering, .trimming, .repotting, .fertilizing]
     private var selectedCareIndex: Int = 0
     
     private var visibleUserPlants: [UserPlant] = []
     private var selectedUserPlant: UserPlant?
-
-
-
+    
+    
+    
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,15 +50,15 @@ final class HomeViewController: UIViewController {
         
         
         updateUserStats()
-
-
-
-
+        
+        
+        
+        
         
         navigationController?.navigationBar.scrollEdgeAppearance =
-            navigationController?.navigationBar.standardAppearance
+        navigationController?.navigationBar.standardAppearance
         scrollView.alwaysBounceVertical = true
-
+        
         
         NotificationCenter.default.addObserver(
             self,
@@ -69,13 +73,13 @@ final class HomeViewController: UIViewController {
         updateUserStats()
         applyCareFilter(index: selectedCareIndex)
     }
-
-
+    
+    
     // MARK: - Greeting
     
     private func updateGreeting() {
         let hour = Calendar.current.component(.hour, from: Date())
-
+        
         let greeting: String
         switch hour {
         case 5..<12:
@@ -87,59 +91,81 @@ final class HomeViewController: UIViewController {
         default:
             greeting = "Hello"
         }
-
+        
         greetingLabel.text = greeting
     }
-
+    
     
     func stylePlantCard(_ view: UIView) {
         view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 16
-
+        
         // Subtle outline
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.systemGray5.cgColor
-
+        
         // Very soft lift
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.04
         view.layer.shadowRadius = 6
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
-
+        
         view.layer.masksToBounds = false
     }
     
     private func updateUserStats() {
         let allUserPlants = PlantStore.shared.plants   // all UserPlant entries
-
+        
+        let activePlants = allUserPlants.filter { $0.isAddedToGarden == true && $0.quantity > 0 }
+        
         //  Total plants including quantity
         let totalPlants = allUserPlants.reduce(0) { $0 + $1.quantity }
         userPlantCount.text = "\(totalPlants)"
-
+        
         // Unique sites which contain plant quantity > 0
         let activeSiteIDs = Set(allUserPlants.filter { $0.quantity > 0 }.map { $0.siteID })
         userSiteCount.text = "\(activeSiteIDs.count)"
+        
+        let needsAttentionPlants = activePlants.reduce(0) { result, plant in
+            let needsAttention = (!plant.wateringDone ||
+                                  !plant.pruningDone ||
+                                  !plant.fertilizingDone ||
+                                  !plant.repottingDone)
+            
+            return result + (needsAttention ? plant.quantity : 0)
+        }
+        
+        let healthyPlants = totalPlants - needsAttentionPlants
+        
+        let healthScoreValue: Int
+        if totalPlants == 0 {
+            healthScoreValue = 0
+        } else {
+            healthScoreValue = Int((Double(healthyPlants) / Double(totalPlants)) * 100)
+        }
+        
+        healthScoreLabel.text = "\(healthScoreValue)% Healthy"
     }
-
-
+    
+    
     private func setupCollectionViews() {
         careTypeCollectionView.dataSource = self
         careTypeCollectionView.delegate = self
-
+        
         plantsCollectionView.dataSource = self
         plantsCollectionView.delegate = self
     }
-
+    
     private func applyCareFilter(index: Int) {
         let selectedType = careTypes[index]
         
         let allUserPlants = PlantStore.shared.plants
-
+        
         
         visibleUserPlants = allUserPlants.filter { userPlant in
             userPlant.isAddedToGarden == true  && userPlant.quantity > 0 && isPendingTask(for: userPlant, careType: selectedType)
         }
-
+        
         updateHomeUI()
         careTypeCollectionView.reloadData()
         plantsCollectionView.reloadData()
@@ -151,11 +177,11 @@ final class HomeViewController: UIViewController {
         case .watering:
             return plant.wateringDone == false
         case .trimming:
-                   return plant.pruningDone == false
+            return plant.pruningDone == false
         case .fertilizing:
-                   return plant.fertilizingDone == false
+            return plant.fertilizingDone == false
         case .repotting:
-                   return plant.repottingDone == false
+            return plant.repottingDone == false
         }
     }
     
@@ -164,28 +190,28 @@ final class HomeViewController: UIViewController {
     }
     
     @objc private func handlePlantCareCompleted(notification: Notification) {
-
+        
         applyCareFilter(index: selectedCareIndex)
     }
-
-
+    
+    
     private func updateHomeUI() {
         let hasPlants = !visibleUserPlants.isEmpty
         plantsCollectionView.isHidden = !hasPlants
         emptyStateView.isHidden = hasPlants
     }
-
-  
-
-
+    
+    
+    
+    
     // MARK: - UI Styling
-
+    
     private func styleCards() {
         [card1, card2].forEach {
             $0?.layer.cornerRadius = 16
             $0?.layer.masksToBounds = true
         }
-
+        
         let statCards = [totalPlantsCardView, spacesCardView]
         statCards.forEach {
             $0?.layer.cornerRadius = 18
@@ -193,37 +219,37 @@ final class HomeViewController: UIViewController {
                 red: 0.90, green: 0.97, blue: 0.90, alpha: 1.0
             )
         }
-
+        
         statusCardView.layer.cornerRadius = 18
         statusCardView.layer.shadowColor = UIColor.black.withAlphaComponent(0.12).cgColor
-       statusCardView.layer.shadowOpacity = 1
-       statusCardView.layer.shadowRadius = 10
-       statusCardView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        statusCardView.layer.shadowOpacity = 1
+        statusCardView.layer.shadowRadius = 10
+        statusCardView.layer.shadowOffset = CGSize(width: 0, height: 4)
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPlantCareModal" {
-
+            
             guard let vc = segue.destination as? PlantCareModalViewController else { return }
             guard let userPlant = selectedUserPlant else { return }
             guard let plantModel = getPlantModel(for: userPlant) else { return }
-
+            
             vc.userPlant = userPlant
             vc.plantModel = plantModel
-
-//             Modal sheet style settings
+            
+            //             Modal sheet style settings
             vc.modalPresentationStyle = .pageSheet
             
             if let sheet = vc.sheetPresentationController {
-                      sheet.detents = [
-                          .medium(),   // half screen
-                      ]
-                      sheet.prefersGrabberVisible = true
-                   
-                      sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-                  }
-
+                sheet.detents = [
+                    .medium(),   // half screen
+                ]
+                sheet.prefersGrabberVisible = true
+                
+                sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            }
+            
         }
     }
 }
@@ -231,10 +257,10 @@ final class HomeViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 
 extension HomeViewController: UICollectionViewDataSource {
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-
+        
         if collectionView == careTypeCollectionView {
             return careTypes.count
         } else {
@@ -244,19 +270,19 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 12   
+        return 12
     }
-
-
+    
+    
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       
+        
         if collectionView == careTypeCollectionView {
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "CareTypeCell",
                 for: indexPath
             ) as! CareTypeCollectionViewCell
-
+            
             let type = careTypes[indexPath.item]
             cell.configure(
                 title: type.displayName,
@@ -264,7 +290,7 @@ extension HomeViewController: UICollectionViewDataSource {
                 selected: indexPath.item == selectedCareIndex
             )
             return cell
-
+            
         } else {
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "PlantCell",
@@ -279,10 +305,10 @@ extension HomeViewController: UICollectionViewDataSource {
             }else{
                 cell.nameLabel.text = "Unknown Plant"
                 cell.subtitleLabel.text = ""
-                   cell.plantImageView.image = UIImage(named: "placeholder")
+                cell.plantImageView.image = UIImage(named: "placeholder")
             }
-
-
+            
+            
             return cell
         }
     }
@@ -291,20 +317,20 @@ extension HomeViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension HomeViewController: UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         
         
-
+        
         if collectionView == careTypeCollectionView {
             selectedCareIndex = indexPath.item
             applyCareFilter(index: selectedCareIndex)
-
+            
         } else {
             selectedUserPlant = visibleUserPlants[indexPath.item]
-               performSegue(withIdentifier: "showPlantCareModal", sender: self)
-           
+            performSegue(withIdentifier: "showPlantCareModal", sender: self)
+            
         }
     }
 }
@@ -312,11 +338,11 @@ extension HomeViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         if collectionView == careTypeCollectionView {
             let title = careTypes[indexPath.item].displayName
             let width = title.size(withAttributes: [
@@ -328,6 +354,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
-
-
+    
+    
 }
