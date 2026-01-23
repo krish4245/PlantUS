@@ -44,12 +44,9 @@ class NewPostViewController: UIViewController, PHPickerViewControllerDelegate, U
         captionTextView.text = placeholderText
         captionTextView.textColor = .lightGray
         captionTextView.font = UIFont.systemFont(ofSize: 16)
-        
-        // Remove the default padding so it aligns with the image
         captionTextView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
     }
     
-    // TextView Delegate: Clears placeholder when you start typing
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == placeholderText {
             textView.text = nil

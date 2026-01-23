@@ -7,7 +7,7 @@
 
 import UIKit
 
-// 1. Simple Model for our Messages
+// Model for our Messages
 struct Message {
     let text: String
     let isSender: Bool
@@ -30,7 +30,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var inputBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Data
-    var user: User? // The person we are talking to
+    var user: User?
     
     // Dummy Data
     var messages: [Message] = [
@@ -59,17 +59,16 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        //tableView.allowsSelection = false // Disable clicking cells
+        tableView.allowsSelection = false // Disable clicking cells
         
-        // 2. Setup Header Data (If user is passed)
+        //Setup Header Data (If user is passed)
         if let user = user {
             headerNameLabel.text = user.name
             let imageName = CommunityDataStore.shared.profileImageString(for: user.id)
                 headerImageView.configureImage(with: imageName)
             
         }
-        
-        // 3. Styling (Corner Radius in Code as requested)
+    
         headerImageView.layer.cornerRadius = headerImageView.frame.height / 2
         messageTextField.superview?.layer.cornerRadius = 18
     }
@@ -86,10 +85,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cellIdentifier = message.isSender ? "SenderCell" : "ReceiverCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ChatBubbleCell
         
-        // 2. Set Text
+
         cell.messageLabel.text = message.text
         
-        // 3. Apply Corner Radius
+  
         cell.bubbleView.layer.cornerRadius = 16
         if message.isSender {
             cell.bubbleView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner]
@@ -101,7 +100,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     // MARK: - Keyboard Handling ⌨️
-    // This moves the input bar up when keyboard opens
     func setupKeyboardObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -141,32 +139,29 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - Sending Logic 
 
-        // This function runs when the user hits "Return" or "Send" on the keyboard
+        // return or send func
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             sendMessage()
             return true
         }
 
         func sendMessage() {
-            // 1. Check if text exists and isn't just spaces
+            //Check if text exists and isn't just spaces
             guard let text = messageTextField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {
                 return
             }
 
-            // 2. Create the new message object (Me = isSender: true)
+            //Create the new message object
             let newMessage = Message(text: text, isSender: true)
 
-            // 3. Add to our data source
+            //Add to our data source
             messages.append(newMessage)
-
-            // 4. Insert the row into the TableView nicely (Animation)
+            //Insert the row into the TableView nicely (Animation)
             let newIndexPath = IndexPath(row: messages.count - 1, section: 0)
             tableView.insertRows(at: [newIndexPath], with: .right)
-            
-            // 5. Scroll to the new message
+            // Scroll to the new message
             tableView.scrollToRow(at: newIndexPath, at: .bottom, animated: true)
-
-            // 6. Clear the text field
+            //Clear the text field
             messageTextField.text = ""
         }
     
