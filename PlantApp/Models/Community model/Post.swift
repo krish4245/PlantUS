@@ -23,6 +23,8 @@ struct Post: Codable {
     var likesCount: Int
     let caption: String
     let timestamp: Date
+    var isSaved: Bool = false
+
     
     var author: User?
     var isLiked: Bool = false

@@ -54,6 +54,26 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             }
         
     }
+    
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+
+        guard let user = user else { return }
+
+        if sender.selectedSegmentIndex == 0 {
+            // Grid posts
+            CommunityDataStore.shared.fetchPosts(forUserId: user.id) { [weak self] posts in
+                self?.userPosts = posts
+                self?.collectionView.reloadData()
+            }
+        } else {
+            // Saved posts (ONLY current user)
+            CommunityDataStore.shared.fetchSavedPostsForCurrentUser { [weak self] posts in
+                self?.userPosts = posts
+                self?.collectionView.reloadData()
+            }
+        }
+    }
+
 
     func updateUI() {
         guard let user = user else { return }
@@ -75,6 +95,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             //otherUserButtonsStack.isHidden = true
             updateCurrentUserStats()
             messageButton.isHidden = true
+            //self?.collectionView.reloadData()
+            
         } else {
             //otherUserButtonsStack.isHidden = false
             showOtherUserStats()
@@ -181,6 +203,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             present(editVC, animated: true)
         }
     }
+
     
 
     // CollectionView

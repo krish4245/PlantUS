@@ -82,6 +82,16 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
             
             CommunityDataStore.shared.updateLikeStatus(forPostId: post.id, isLiked: newIsLiked, newCount: newCount)
         }
+        
+        cell.onSaveTapped = { [weak self] in
+            guard let self = self else { return }
+
+            CommunityDataStore.shared.toggleSave(postId: post.id)
+
+            self.posts[indexPath.row].isSaved.toggle()
+            cell.updateSaveUI(isSaved: self.posts[indexPath.row].isSaved)
+        }
+
         cell.onAvatarTapped = { [weak self] in if let author = post.author {
             self?.performSegue(withIdentifier: "ShowUserProfile", sender: author)
         }
@@ -98,7 +108,6 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
                 // We pass a "Callback" function.
                 // When NewPostViewController finishes uploading, it runs this code block.
                 newPostVC.onPostSuccess = { [weak self] in
-                    // Reload the data instantly
                     self?.loadData()
                 }
             }
@@ -122,7 +131,7 @@ class CommunityViewController: UIViewController, UITableViewDataSource, UITableV
                                     // Safety check to see if the index exists
                                     if rowIndex >= 0 && rowIndex < posts.count {
                                         destVC.post = posts[rowIndex]
-                                        print("✅ Data passed via Button Tag! Post: \(posts[rowIndex].caption)")
+                                        print(" Data passed via Button Tag! Post: \(posts[rowIndex].caption)")
                                     }
                                 }else if let cell = sender as? UITableViewCell,
                                          let indexPath = postsTableView.indexPath(for: cell) {
