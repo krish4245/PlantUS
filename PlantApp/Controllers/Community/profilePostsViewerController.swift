@@ -1,69 +1,131 @@
-//
-//  profilePostsViewerController.swift
-//  PlantApp
-//
-//  Created by SDC-USER on 14/01/26.
-//
-
 import UIKit
 
-class profilePostsViewerController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class profilePostsViewerController: UIViewController, UICollectionViewDelegate {
+
+    // MARK: - Outlets
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var tableView: UITableView!
-    
-    // The single post we want to show
+    // MARK: - Properties
+    // The single post passed from the Profile Screen
     var post: Post?
     
-    //a temporary list containing just that selected post
-    var tableData: [Post] = []
+    // Internal array for the CollectionView DataSource
+    private var posts: [Post] = []
     
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //setup the dummy data array
+        setupData()
+        setupCollectionView()
+    }
+    
+    // MARK: - Setup
+    private func setupData() {
+        // Wrap the single post into the array
         if let post = post {
-            tableData = [post] // The list has 1 item
+            self.posts = [post]
         }
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.tableFooterView = UIView()
     }
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count
+    private func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        // 1. Register XIB
+        let nib = UINib(nibName: "CommunityPostCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "CommunityPostCollectionViewCell")
+        
+        // 2. Set the Compositional Layout (Dynamic Height)
+        collectionView.collectionViewLayout = createLayout()
+        
+        collectionView.delaysContentTouches = false
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //used same tableview frim community posts
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostsTableViewCell else {
-            return UITableViewCell()
+    // MARK: - Layout Generator
+    private func createLayout() -> UICollectionViewLayout {
+        // Item
+        // .estimated(600) allows the XIB to determine its own height based on content
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(600)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        // Group
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(600)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        // Section
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 0 // Spacing between posts
+        
+        return UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowComments" {
+            if let commentsVC = segue.destination as? CommentsViewController,
+               let post = sender as? Post {
+                commentsVC.post = post
+            }
+        }
+    }
+}
+
+// MARK: - UICollectionView DataSource
+extension profilePostsViewerController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "CommunityPostCollectionViewCell",
+            for: indexPath
+        ) as? CommunityPostCollectionViewCell else {
+            return UICollectionViewCell()
         }
         
-        let currentPost = tableData[indexPath.row]
-        
-        //reused same config func from postsTableView
+        let currentPost = posts[indexPath.item]
         cell.configure(with: currentPost)
-        cell.onLikeTapped = { [weak self] (newIsLiked, newCount) in
+        
+        // MARK: - Handle Actions
+        
+        // 1. Like Action
+        cell.onLikeTapped = { [weak self] (isLiked, newCount) in
             guard let self = self else { return }
             
-            //updating main datastore
-            self.post?.isLiked = newIsLiked
-            self.post?.likesCount = newCount
-            self.tableData[0] = self.post! //updating local list
-            CommunityDataStore.shared.updateLikeStatus(forPostId: currentPost.id, isLiked: newIsLiked, newCount: newCount)
+            // Update local model
+            self.posts[indexPath.item].isLiked = isLiked
+            self.posts[indexPath.item].likesCount = newCount
+            
+            // Update Database
+            CommunityDataStore.shared.updateLikeStatus(
+                forPostId: currentPost.id,
+                isLiked: isLiked,
+                newCount: newCount
+            )
+        }
+        
+        // 2. Save Action
+        cell.onSaveTapped = { [weak self] in
+            guard let self = self else { return }
+            CommunityDataStore.shared.toggleSave(postId: currentPost.id)
+            self.posts[indexPath.item].isSaved.toggle()
+        }
+        
+        // 3. Comment Action
+        cell.onCommentTapped = { [weak self] in
+            // Trigger the segue to comments
+            self?.performSegue(withIdentifier: "ShowComments", sender: currentPost)
         }
         
         return cell
     }
 }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */

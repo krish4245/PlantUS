@@ -22,7 +22,7 @@ struct Post: Codable {
     let postImageString: String
     var likesCount: Int
     let caption: String
-    let timestamp: Date
+    let timestamp: String
     var isSaved: Bool = false
 
     

@@ -102,7 +102,7 @@ class CommunityDataStore {
             id: "u2",
             name: "Shubham",
             username: "shubham_r24",
-            profileImageString: "person.circle.fill",
+            profileImageString: "person.circle",
             plantCount: 32
         )
         
@@ -110,7 +110,7 @@ class CommunityDataStore {
             id: "u3",
             name: "Arya Kulkarni",
             username: "arya.grows",
-            profileImageString: "leaf.circle",
+            profileImageString: "person.circle",
             plantCount: 7
         )
         
@@ -118,7 +118,7 @@ class CommunityDataStore {
             id: "u4",
             name: "Rohan Mehta",
             username: "rohan.plants",
-            profileImageString: "tree.circle",
+            profileImageString: "person.circle",
             plantCount: 18
         )
         
@@ -126,7 +126,7 @@ class CommunityDataStore {
             id: "u5",
             name: "Neha Sharma",
             username: "neha.greens",
-            profileImageString: "sun.max.circle",
+            profileImageString: "person.circle",
             plantCount: 25
         )
         
@@ -134,7 +134,7 @@ class CommunityDataStore {
             id: "u6",
             name: "Kabir Verma",
             username: "kabir.gardens",
-            profileImageString: "drop.circle",
+            profileImageString: "person.circle",
             plantCount: 9
         )
         
@@ -154,7 +154,7 @@ class CommunityDataStore {
             postImageString: "plant_vedant",
             likesCount: 5,
             caption: "New leaf alert! 🌿",
-            timestamp: Date(),
+            timestamp: String(),
             author: vedant
         )
         
@@ -164,7 +164,7 @@ class CommunityDataStore {
             postImageString: "plant_shubham",
             likesCount: 3,
             caption: "Watering day 💧",
-            timestamp: Date(),
+            timestamp: String(),
             author: shubham
         )
         
@@ -174,7 +174,7 @@ class CommunityDataStore {
             postImageString: "plant_arya",
             likesCount: 12,
             caption: "My balcony jungle is thriving 🌱",
-            timestamp: Date(),
+            timestamp: String(),
             author: arya
         )
         
@@ -184,7 +184,7 @@ class CommunityDataStore {
             postImageString: "plant_rohan",
             likesCount: 8,
             caption: "Repotted my monstera today 🪴",
-            timestamp: Date(),
+            timestamp: String(),
             author: rohan
         )
         
@@ -194,7 +194,7 @@ class CommunityDataStore {
             postImageString: "plant_neha",
             likesCount: 21,
             caption: "Sunlight + patience = happy plants ☀️",
-            timestamp: Date(),
+            timestamp: String(),
             author: neha
         )
         
@@ -204,7 +204,7 @@ class CommunityDataStore {
             postImageString: "plant_kabir",
             likesCount: 2,
             caption: "Still learning, but loving it 🌿",
-            timestamp: Date(),
+            timestamp: String(),
             author: kabir
         )
         self.users = [vedant, shubham]
@@ -249,7 +249,7 @@ class CommunityDataStore {
             postImageString: imageID,
             likesCount: 0,
             caption: caption,
-            timestamp: Date(),
+            timestamp: String(),
             author: currentUser
         )
         
